@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'payrollberry',
+	'hostname' => 'redex.online',
+	'username' => 'u6531002_redex',
+	'password' => 'redex6565',
+	'database' => 'u6531002_ExampleMysql',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
