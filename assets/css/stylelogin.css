@@ -1,6 +1,7 @@
 body {
   font-family: "Montserrat", sans-serif;
-  background: #f7edd5;
+  /*background: #f7edd5;*/
+  background: #BBBFCA;
 }
 
 .container {
@@ -218,7 +219,7 @@ section#formHolder {
   display: none;
 }
 .form form input[type=password] {
-  color: #f95959;
+  /*color: #f95959;*/
 }
 .form form .CTA {
   margin-top: 30px;

@@ -202,7 +202,8 @@ ul {
   text-decoration: none;
 }
 .tm-nav li a.active {
-  background: url(../images/logo.png) no-repeat, url(../images/nav-underline.png) no-repeat;
+  /*background: url(../images/logo.png) no-repeat, url(../images/nav-underline.png) no-repeat;*/
+  background: url(../images/logo.png) no-repeat;
   background-size: 20px, 74px 17px;
   background-position: 0% 30%, center bottom;
 }
@@ -239,7 +240,7 @@ ul {
   text-transform: uppercase;
 }
 .tm-welcome-content {
-  margin: 150px auto 350px;
+  margin: 50px auto 350px;
   max-width: 650px;
 }
 .tm-welcome-description { text-align: justify; }

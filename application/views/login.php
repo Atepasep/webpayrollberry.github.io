@@ -25,8 +25,8 @@
               </div>
 
               <div class="success-msg">
-                 <p>Selamat, anda berhasil login</p>
-                 <a href="<?= base_url().'main' ?>" class="btn btn-sm btn-danger font-tebal">Lanjutkan</a>
+                 <p style="font-size: 18px;">Selamat, anda berhasil login !</p>
+                 <a href="<?= base_url().'main' ?>" class="btn btn-sm font-tebal" style="background-color: #5D3F32; color: white; border-radius: 0px;">Lanjutkan</a>
               </div>
            </div>
 
@@ -51,7 +51,7 @@
 
                     <div class="CTA">
                       <!--<input type="submit" value="Login">-->
-                       <a href="#" class="btn btn-sm btn-danger font-tebal" id="submitakun">Submit</a>
+                       <a href="#" class="btn btn-lg font-tebal" id="submitakun" style="background-color: #5D3F32;">Submit</a>
                        <a href="#" class="switch">Belum punya Akun</a>
                     </div>
                  </form>
@@ -93,7 +93,7 @@
 
                     <div class="CTA">
                        <!--<input type="submit" value="Signup Now" id="submit">-->
-                       <a href="#" class="btn btn-sm btn-danger font-tebal" id="submitakunbaru">Submit</a>
+                       <a href="#" class="btn btn-lg font-tebal" id="submitakunbaru" style="background-color: #5D3F32;">Submit</a>
                        <a href="#" class="switch">Sudah punya Akun</a>
                     </div>
                  </form>
