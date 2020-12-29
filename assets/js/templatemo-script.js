@@ -1,11 +1,5 @@
-/**
- *	www.templatemo.com
- */
-
-/* HTML document is loaded. DOM is ready.
------------------------------------------*/
 $(document).ready(function(){
-
+  $('body').addClass('loaded');
 	// Mobile menu
 	$('.mobile-menu-icon').click(function(){
 		$('.tm-nav').slideToggle();
@@ -19,11 +13,8 @@ $(document).ready(function(){
 		}
 	});
 
-  // http://stackoverflow.com/questions/2851663/how-do-i-simulate-a-hover-with-a-touch-in-touch-enabled-browsers
   $('body').bind('touchstart', function() {});
 
-  // Smooth scroll
-  // https://css-tricks.com/snippets/jquery/smooth-scrolling/
   $('a[href*=#]:not([href=#])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);
