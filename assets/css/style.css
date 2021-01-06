@@ -5,3 +5,15 @@
 	width: 50px;
 	height: auto;
 }
+.section-utama {
+	font-family: 'Roboto',sans-serif;
+	font-size: 13px;
+	padding: 0 10px;
+}
+.isi {
+	min-height: 500px;
+	background-color: #E4E4E4;
+}
+.font-kecil {
+	font-size: 22px;
+}

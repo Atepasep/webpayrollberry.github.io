@@ -149,7 +149,7 @@ COLOR CODES
 }
 /* end Preloader */
 
-body { overflow-x: hidden; }
+body {min-height: 100%; overflow-x: hidden;}
 ul { 
   margin: 0; 
   padding: 0;
@@ -385,6 +385,8 @@ ul {
 }
 .tm-popular-items-container:last-child { margin-top: 15px; }
 .tm-popular-item-description {
+  font-family: 'Roboto',sans-serif;
+  font-size: 13px;
   padding: 0 30px 60px;
   position: relative;
   text-align: center;

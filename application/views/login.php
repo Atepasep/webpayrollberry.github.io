@@ -17,7 +17,7 @@
 
            <!-- Brand Box -->
            <div class="col-sm-6 brand">
-              <a href="#" class="logo"><img src="<?= base_url().'assets/images/gambar.png' ?>"></a>
+              <a href="#" class="logo"><img src="<?= base_url().'assets/images/logo2.png' ?>"></a>
 
               <div class="heading">
                  <h2>Payroll</h2>
