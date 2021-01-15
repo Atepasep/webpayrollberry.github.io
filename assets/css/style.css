@@ -17,3 +17,14 @@
 .font-kecil {
 	font-size: 22px;
 }
+.sidebar-brand-icon img {
+	height: 45px;
+	width: auto;
+}
+.sisinya {
+	font-family: 'Nunito Sans',sans-serif;
+	font-size: 12px;
+}
+.text-coklat {
+	color: #6b5747 !important;
+}
