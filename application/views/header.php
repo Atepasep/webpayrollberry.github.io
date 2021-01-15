@@ -74,8 +74,9 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-0 collapse-inner">
                         <h6 class="collapse-header text-coklat">Pilih Modul</h6>
-                        <a class="collapse-item" href="buttons.html">Bagian</a>
-                        <a class="collapse-item" href="cards.html">Personil</a>
+                        <a class="collapse-item" href="#">Pendidikan</a>
+                        <a class="collapse-item" href="#">Bagian</a>
+                        <a class="collapse-item" href="#">Jabatan</a>
                     </div>
                 </div>
             </li>
@@ -138,7 +139,7 @@
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url().'login/logout' ?>">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw fa-door-open"></i>
                     <span>Tables</span></a>
             </li>
 
