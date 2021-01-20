@@ -21,6 +21,7 @@ class Login extends CI_Controller{
             if($cekadmin->num_rows() > 0){
             	$datalogin = $cekadmin->row();
             	$this->session->set_userdata('masukkepayroll',true);
+                $this->session->set_userdata('namalogpayroll',$datalogin->nama);
             	$this->session->set_flashdata('msgx','suksesbrad');
             	$url = base_url('login');
                 redirect($url);

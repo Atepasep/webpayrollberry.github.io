@@ -1,7 +1,7 @@
 <?php
 if(!defined('BASEPATH'))exit('No direct script access allowed');
 
-class Main extends CI_Controller {
+class Didik extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		if($this->session->userdata('masukkepayroll')!=true){
@@ -12,7 +12,7 @@ class Main extends CI_Controller {
 	function index(){
 		$header['namalogpayroll']=$this->session->userdata('namalogpayroll');
 		$this->load->view('header',$header);
-		$this->load->view('page/home');
+		$this->load->view('page/didik');
 		$this->load->view('footer');
 	}
 }

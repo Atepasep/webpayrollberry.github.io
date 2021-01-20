@@ -28,3 +28,24 @@
 .text-coklat {
 	color: #6b5747 !important;
 }
+.flat {
+	border-radius: 0px !important;
+}
+.border-left-coklat {
+  border-left: 0.25rem solid #5d3f32 !important;
+}
+.tabelku {
+	font-size: 13px;
+}
+.tabelku tbody tr td {
+	padding: 5px 5px;
+	font-style: normal;
+	color: black;
+}
+hr.small {
+	border-color: black;
+	margin-top: 0px;
+}
+.warnahitam {
+	color: black !important;
+}

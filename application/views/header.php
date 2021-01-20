@@ -21,7 +21,7 @@
     <link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
     <!-- Custom styles for this template-->
-    <link href="<?= base_url().'assets/css/sb-admin-2.min.css' ?>" rel="stylesheet">
+    <link href="<?= base_url().'assets/css/sb-admin-2.css' ?>" rel="stylesheet">
     <link href="<?= base_url().'assets/css/style.css' ?>" rel="stylesheet">
 
 </head>
@@ -72,9 +72,9 @@
                     <span>Master Data</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-0 collapse-inner">
+                    <div class="bg-white py-0 collapse-inner flat" style="border-radius: 0px;">
                         <h6 class="collapse-header text-coklat">Pilih Modul</h6>
-                        <a class="collapse-item" href="#">Pendidikan</a>
+                        <a class="collapse-item" href="<?= base_url().'didik' ?>">Pendidikan</a>
                         <a class="collapse-item" href="#">Bagian</a>
                         <a class="collapse-item" href="#">Jabatan</a>
                     </div>
@@ -152,11 +152,11 @@
             </div>
 
             <!-- Sidebar Message -->
-            <div class="sidebar-card">
+<!--             <div class="sidebar-card">
                 <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="">
                 <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
                 <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div>
+            </div> -->
 
         </ul>
         <!-- End of Sidebar -->
@@ -168,7 +168,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-2 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -339,7 +339,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-900 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-900 small"><?= $namalogpayroll ?></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
