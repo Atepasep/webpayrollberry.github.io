@@ -34,10 +34,10 @@
 .border-left-coklat {
   border-left: 0.25rem solid #5d3f32 !important;
 }
-.tabelku {
+#tabelku, .font-standar {
 	font-size: 13px;
 }
-.tabelku tbody tr td {
+#tabelku tbody tr td {
 	padding: 5px 5px;
 	font-style: normal;
 	color: black;
@@ -48,4 +48,7 @@ hr.small {
 }
 .warnahitam {
 	color: black !important;
+}
+.aktif {
+	background-color: rgba(212, 247, 226,.5);
 }

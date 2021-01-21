@@ -27,6 +27,7 @@
               <div class="success-msg">
                  <p style="font-size: 18px;">Selamat, anda berhasil login !</p>
                  <a href="<?= base_url().'main' ?>" class="btn btn-sm font-tebal" style="background-color: #5D3F32; color: white; border-radius: 0px;">Lanjutkan</a>
+                 <a href="<?= base_url().'login/logout' ?>" class="btn btn-sm font-tebal" style="background-color: #e0d7d7; color: black; border-radius: 0px;">Kembali</a>
               </div>
            </div>
 
@@ -51,6 +52,7 @@
 
                     <div class="CTA">
                       <!--<input type="submit" value="Login">-->
+                      <button type="submit" class="btn btn-lg font-tebal" style="display: none;">Test</button>
                        <a href="#" class="btn btn-lg font-tebal" id="submitakun" style="background-color: #5D3F32;">Submit</a>
                        <a href="#" class="switch">Belum punya Akun</a>
                     </div>

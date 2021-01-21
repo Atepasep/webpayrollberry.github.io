@@ -10,6 +10,7 @@ class Main extends CI_Controller {
 		}
 	}
 	function index(){
+		//$header['submodul'] = 1;
 		$header['namalogpayroll']=$this->session->userdata('namalogpayroll');
 		$this->load->view('header',$header);
 		$this->load->view('page/home');
