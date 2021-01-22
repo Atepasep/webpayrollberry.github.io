@@ -37,6 +37,9 @@
 #tabelku, .font-standar {
 	font-size: 13px;
 }
+.font-kecil {
+	font-size: 12px;
+}
 #tabelku tbody tr td {
 	padding: 5px 5px;
 	font-style: normal;
@@ -51,4 +54,10 @@ hr.small {
 }
 .aktif {
 	background-color: rgba(212, 247, 226,.5);
+}
+.aktie {
+	background-color: red;
+}
+.hilang {
+	display: none;
 }

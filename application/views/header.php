@@ -48,9 +48,23 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
+            <?php
+                $tif1 = "";$tif2 = ""; $tif3 = "";
+                switch ($submodul) {
+                    case 1:
+                        $tif1 = "active";
+                        break;
+                    case 2:
+                        $tif2 = "active";
+                        break;
+                    default:
+                        $tif1 = "active";
+                        break;
+                }
+            ?>
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            <li class="nav-item <?= $tif1 ?>">
                 <a class="nav-link" href="<?= base_url() ?>">
                     <i class="fas fa-fw fa-city"></i>
                     <span>Dashboard</span></a>
@@ -65,7 +79,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item <?= $tif2 ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fa fa-fw fa-cog"></i>
@@ -82,7 +96,7 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item <?= $tif3 ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
@@ -319,7 +333,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                        <img class="rounded-circle" src=""
                                             alt="">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
@@ -341,7 +355,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-900 small"><?= $namalogpayroll ?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="<?= base_url().'assets/images/undraw_profile.svg' ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
