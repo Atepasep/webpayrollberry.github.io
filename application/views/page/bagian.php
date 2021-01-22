@@ -6,7 +6,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-3">
-                                Data Pendidikan
+                                Data Bagian
                             </div>
                             <div class="row">
                                 <div class="col-sm-4">
@@ -15,7 +15,7 @@
                                             <thead class="bg-secondary text-light">
                                                 <tr>
                                                     <th scope="col">Kode</th>
-                                                    <th scope="col">Pendidikan</th>
+                                                    <th scope="col">Nama Bagian</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="data-tabelku">
@@ -23,7 +23,7 @@
                                                     <td>SD</td>
                                                     <td>Sekolah Dasar</td>
                                                 </tr> -->
-                                                <?php $no=0; foreach ($datadidik as $data) { $no++;
+                                                <?php $no=0; foreach ($databagian as $data) { $no++;
                                                     if($this->session->flashdata('kodeid')){
                                                         $aktif = $data['id']==$this->session->flashdata('kodeid') ? "aktif" : ""; 
                                                     }else{
@@ -31,7 +31,7 @@
                                                     } ?>
                                                     <tr rel="<?= $data['id'] ?>" class="<?= $aktif ?>">
                                                         <td><?= $data['kode'] ?></td>
-                                                        <td><?= $data['pendidikan'] ?></td>
+                                                        <td><?= $data['bagian'] ?></td>
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>
@@ -39,11 +39,11 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-8" class="warnahitam" style="color: black">
-                                    Master Data
+                                    Master Data Bagian
                                     <hr class="small">
                                     <input type="text" name="urlsimpan" id="urlsimpan" value="<?= $urlsimpan ?>" class="hilang">
                                     <input type="text" name="urledit" id="urledit" value="<?= $urledit ?>" class="hilang">
-                                    <form method="post" name="formdidik" id="formdidik" action="">
+                                    <form method="post" name="formbagian" id="formbagian" action="">
                                         <input type="text" class="form-control form-control-sm flat warnahitam hilang" name="id" id="id">
                                         <div class="form-group row mb-0">
                                             <label for="inputEmail3" class="col-sm-2 col-form-label-sm">Kode</label>
@@ -52,44 +52,44 @@
                                             </div>
                                         </div>
                                         <div class="form-group row" style="margin-top: 0px;">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label-sm">Pendidikan</label>
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label-sm">Bagian</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control form-control-sm flat warnahitam" name="pendidikan" id="pendidikan" placeholder="pendidikan">
+                                                <input type="text" class="form-control form-control-sm flat warnahitam" name="bagian" id="bagian" placeholder="Nama Bagian">
                                             </div>
                                         </div>
                                     </form>
                                     <div style="text-align: center;">
-                                        <a href="#" class="btn btn-success btn-icon-split btn-sm flat font-kecil hilang" id="savedidik">
+                                        <a href="#" class="btn btn-success btn-icon-split btn-sm flat font-kecil hilang" id="savebagian">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-save"></i>
                                             </span>
                                             <span class="text">Simpan</span>
                                         </a>
-                                        <a href="#" class="btn btn-danger btn-icon-split btn-sm flat font-kecil hilang" id="bataldidik">
+                                        <a href="#" class="btn btn-danger btn-icon-split btn-sm flat font-kecil hilang" id="batalbagian">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-times"></i>
                                             </span>
                                             <span class="text">Batal</span>
                                         </a>
-                                        <a href="#" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="adddidik">
+                                        <a href="#" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="addbagian">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-plus"></i>
                                             </span>
                                             <span class="text">Tambah</span>
                                         </a>
-                                        <a href="#" class="btn btn-primary btn-icon-split btn-sm flat font-kecil" id="editdidik">
+                                        <a href="#" class="btn btn-primary btn-icon-split btn-sm flat font-kecil" id="editbagian">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-edit"></i>
                                             </span>
                                             <span class="text">Ubah</span>
                                         </a>
-                                        <a href="#" class="btn btn-danger btn-icon-split btn-sm flat font-kecil" id="hapusdidik" data-toggle="modal" data-target="#confirm-delete" data-href="<?= base_url().'didik/hapus/x' ?>">
+                                        <a href="#" class="btn btn-danger btn-icon-split btn-sm flat font-kecil" id="hapusbagian" data-toggle="modal" data-target="#confirm-delete" data-href="<?= base_url().'bagian/hapus/x' ?>">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash-alt"></i>
                                             </span>
                                             <span class="text">Hapus</span>
                                         </a>
-                                        <a href="#" class="btn btn-info btn-icon-split btn-sm flat font-kecil" id="cetakdidik">
+                                        <a href="#" class="btn btn-info btn-icon-split btn-sm flat font-kecil" id="cetakbagian">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-print"></i>
                                             </span>

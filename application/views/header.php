@@ -27,6 +27,48 @@
 </head>
 
 <body id="page-top">
+ <div class="modal fade" id="modalBox" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class='modal-dialog modal-lg'>
+        <div class='modal-content'>
+          <div class='modal-header bg-warning'>
+            <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+            <h4 class='modal-title' id='myModalLabel'> Pengaturan Pengguna</h4>
+          </div>
+          <div class="fetched-data"></div>
+      </div>
+    </div>
+ </div>
+<div class='modal fade' id='confirm-delete' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+      <div class='modal-header btn-info'>
+        <!-- <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button> -->
+        <h4 class='modal-title' id='myModalLabel'><i class='fa fa-exclamation-triangle text-danger'></i> Konfirmasi</h4>
+        </div>
+        <div class='modal-body'>
+            Apakah Anda yakin ingin menghapus data ini?
+        </div>
+        <div class='modal-footer'>
+<!--           <a class='btn-ok'>
+            <button type="button" class="btn btn-social btn-flat btn-danger btn-sm" id="ok-delete"><i class='fa fa-trash-o'></i> Hapus</button>
+          </a> -->
+            <a href="#" class="btn-ok btn btn-danger btn-icon-split btn-sm flat font-kecil" id="ok-delete">
+                <span class="icon text-white-50">
+                    <i class="fas fa-trash-alt"></i>
+                </span>
+                <span class="text">Hapus</span>
+            </a>
+            <a href="#" class="btn btn-warning btn-icon-split btn-sm flat font-kecil"data-dismiss="modal">
+                <span class="icon text-white-50">
+                    <i class="fas fa-sign-out-alt"></i>
+                </span>
+                <span class="text">Batal</span>
+            </a>
+          <!-- <button type="button" class="btn btn-social btn-flat btn-warning btn-sm" data-dismiss="modal"><i class='fa fa-sign-out'></i> Tutup</button> -->
+        </div>
+    </div>
+  </div>
+</div>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -89,8 +131,8 @@
                     <div class="bg-white py-0 collapse-inner flat" style="border-radius: 0px;">
                         <h6 class="collapse-header text-coklat">Pilih Modul</h6>
                         <a class="collapse-item" href="<?= base_url().'didik' ?>">Pendidikan</a>
-                        <a class="collapse-item" href="#">Bagian</a>
-                        <a class="collapse-item" href="#">Jabatan</a>
+                        <a class="collapse-item" href="<?= base_url().'bagian' ?>">Bagian</a>
+                        <a class="collapse-item" href="<?= base_url().'jabatan' ?>">Jabatan</a>
                     </div>
                 </div>
             </li>
@@ -99,17 +141,15 @@
             <li class="nav-item <?= $tif3 ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Personil</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner">
-                        <h6 class="collapse-header text-coklat">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <h6 class="collapse-header text-coklat">Data Personil & Login</h6>
+                        <a class="collapse-item" href="utilities-color.html">Karyawan</a>
+                        <a class="collapse-item" href="utilities-border.html">Master Gaji</a>
                     </div>
                 </div>
             </li>

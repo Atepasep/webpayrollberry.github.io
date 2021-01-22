@@ -16,11 +16,6 @@ class Didik extends CI_Controller {
 		$data['datadidik'] = $this->mdidik->getdata()->result_array();
 		$data['urlsimpan'] = base_url().'didik/simpandidik';
 		$data['urledit'] = base_url().'didik/editdidik';
-		if($this->session->userdata('kodeid')){
-			$data['datakodeid'] = $this->session->userdata('kodeid');
-		}else{
-			$data['datakodeid'] = null;
-		}
 		$footer['modul'] = 'didik';
 		$this->load->view('header',$header);
 		$this->load->view('page/didik',$data);
@@ -32,14 +27,26 @@ class Didik extends CI_Controller {
 		echo json_encode($hasil);
 	}
 	function simpandidik(){
-		// $kode = $_POST['kode'];
-		// $pendidikan = $_POST['pendidikan'];
-		$hasil = $this->mdidik->simpandidik($kode,$pendidikan)->row();
-		$this->session->set_userdata('kodeid',$hasil->id);
-		// if($hasil=='1'){
+		$hasil = $this->mdidik->simpandidik();
+		if($hasil->num_rows() > 0){
+			$jadi = $hasil->row(); //$this->mdidik->getdatabykode($kode)->row();
+			$this->session->set_flashdata('kodeid',$jadi->id);
 			$url = base_url().'didik';
 			redirect($url);
-		// }
-		//echo json_encode($hasil);
+		}
+	}
+	function editdidik(){
+		$hasil = $this->mdidik->editdidik();
+		if($hasil->num_rows() > 0){
+			$jadi = $hasil->row(); //$this->mdidik->getdatabykode($kode)->row();
+			$this->session->set_flashdata('kodeid',$jadi->id);
+			$url = base_url().'didik';
+			redirect($url);
+		}		
+	}
+	function hapusdidik($id){
+		$this->mdidik->hapusdidik($id);
+		$url = base_url().'didik';
+		redirect($url);
 	}
 }

@@ -52,13 +52,23 @@
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url().'assets/js/sb-admin-2.min.js' ?>"></script>
 
+    <!-- Custom scripts me-->
+    <script src="<?= base_url().'assets/js/myscript.js' ?>"></script>
+
     <!-- Custom JS untuk tiap page -->
     <?php switch ($modul) {
         case 'didik': ?>
             <script src="<?= base_url().'assets/js/jsdidik.js' ?>"></script>
     <?php
             break;
-        
+        case 'bagian' : ?>
+            <script src="<?= base_url().'assets/js/jsbagian.js' ?>"></script>
+    <?php
+            break;
+        case 'jabatan' : ?>
+            <script src="<?= base_url().'assets/js/jsjabatan.js' ?>"></script>
+    <?php 
+            break;
         default:
             # code...
             break;

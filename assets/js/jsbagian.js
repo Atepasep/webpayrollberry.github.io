@@ -1,47 +1,47 @@
 $(document).ready(function(){
 	$("#data-tabelku tr.aktif").click();
 })
-$("#adddidik").click(function(){
+$("#addbagian").click(function(){
 	//alert('Anda mengklik tambah');
-	document.formdidik.setAttribute('action',$("#urlsimpan").val());
+	document.formbagian.setAttribute('action',$("#urlsimpan").val());
 	$(this).addClass('hilang');
-	$("#editdidik").addClass('hilang');
-	$("#hapusdidik").addClass('hilang');
-	$("#cetakdidik").addClass('hilang');
-	$("#savedidik").removeClass('hilang');
-	$("#bataldidik").removeClass('hilang');
+	$("#editbagian").addClass('hilang');
+	$("#hapusbagian").addClass('hilang');
+	$("#cetakbagian").addClass('hilang');
+	$("#savebagian").removeClass('hilang');
+	$("#batalbagian").removeClass('hilang');
 	$("#kode").val('');
-	$("#pendidikan").val('');
+	$("#bagian").val('');
 	$("#kode").focus();
 })
 //TOmbol Edit
-$("#editdidik").click(function(){
+$("#editbagian").click(function(){
 	//alert('Anda mengklik tambah');
-	document.formdidik.setAttribute('action',$("#urledit").val());
+	document.formbagian.setAttribute('action',$("#urledit").val());
 	$(this).addClass('hilang');
-	$("#adddidik").addClass('hilang');
-	$("#hapusdidik").addClass('hilang');
-	$("#cetakdidik").addClass('hilang');
-	$("#savedidik").removeClass('hilang');
-	$("#bataldidik").removeClass('hilang');
+	$("#addbagian").addClass('hilang');
+	$("#hapusbagian").addClass('hilang');
+	$("#cetakbagian").addClass('hilang');
+	$("#savebagian").removeClass('hilang');
+	$("#batalbagian").removeClass('hilang');
 	$("#kode").focus();
 })
 //Tombol Cetak
-$("#cetakdidik").click(function(){
+$("#cetakbagian").click(function(){
 	alert('dalam pembuatan, hubungi programmer');
 })
 // Tombol batal
-$("#bataldidik").click(function(){
+$("#batalbagian").click(function(){
 	$(this).addClass('hilang');
-	$("#editdidik").removeClass('hilang');
-	$("#hapusdidik").removeClass('hilang');
-	$("#cetakdidik").removeClass('hilang');
-	$("#adddidik").removeClass('hilang');
-	$("#savedidik").addClass('hilang');
+	$("#editbagian").removeClass('hilang');
+	$("#hapusbagian").removeClass('hilang');
+	$("#cetakbagian").removeClass('hilang');
+	$("#addbagian").removeClass('hilang');
+	$("#savebagian").addClass('hilang');
 	$("#data-tabelku tr.aktif").click();
 })
-$("#savedidik").click(function(){
-	document.formdidik.submit();
+$("#savebagian").click(function(){
+	document.formbagian.submit();
 	// var a = $("#kode").val();
 	// var b = $("#pendidikan").val();
 	// $.ajax({
@@ -65,16 +65,16 @@ $("#savedidik").click(function(){
 $("#data-tabelku tr").on('click',function(){
 	var ide = $(this).attr('rel')
 	$("#data-tabelku tr").removeClass('aktif');
-	$("#hapusdidik").attr('data-href','didik/hapusdidik/'+ide);
+	$("#hapusbagian").attr('data-href','bagian/hapusbagian/'+ide);
 	$(this).addClass('aktif');
 	$.ajax({
 		dataType : 'json',
 		type : "POST",
-		url : "didik/getdatasatu",
+		url : "bagian/getdatasatu",
 		data : {id : ide},
 		success : function(data){
 			$("#kode").val(data[0].kode);
-			$("#pendidikan").val(data[0].pendidikan);
+			$("#bagian").val(data[0].bagian);
 			$("#id").val(data[0].id);
 		}
 	})
