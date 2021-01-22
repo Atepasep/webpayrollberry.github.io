@@ -44,7 +44,7 @@
                                     <form method="post" name="formjabatan" id="formjabatan" action="">
                                         <input type="text" class="form-control form-control-sm flat warnahitam hilang" name="id" id="id">
                                         <div class="form-group row" style="margin-top: 0px;">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label-sm">Bagian</label>
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label-sm">Jabatan</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control form-control-sm flat warnahitam" name="jabatan" id="jabatan" placeholder="Nama Jabatan">
                                             </div>
