@@ -43,7 +43,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url().'assets/plugins/jquery/jquery.min.js' ?>"></script>
+    <script src="<?= base_url().'assets/plugins/jquery/jquery-3.3.1.js' ?>"></script>
     <script src="<?= base_url().'assets/plugins/bootstrap/js/bootstrap.bundle.min.js' ?>"></script>
 
     <!-- Core plugin JavaScript-->
@@ -68,6 +68,10 @@
         case 'jabatan' : ?>
             <script src="<?= base_url().'assets/js/jsjabatan.js' ?>"></script>
     <?php 
+            break;
+        case 'pengguna' : ?>
+            <script src="<?= base_url().'assets/js/jspengguna.js' ?>"></script>
+    <?php
             break;
         default:
             # code...

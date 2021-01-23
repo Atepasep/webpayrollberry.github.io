@@ -133,6 +133,7 @@
                         <a class="collapse-item" href="<?= base_url().'didik' ?>">Pendidikan</a>
                         <a class="collapse-item" href="<?= base_url().'bagian' ?>">Bagian</a>
                         <a class="collapse-item" href="<?= base_url().'jabatan' ?>">Jabatan</a>
+                        <a class="collapse-item" href="<?= base_url().'pengguna' ?>">User Aplikasi</a>
                     </div>
                 </div>
             </li>

@@ -61,3 +61,10 @@ hr.small {
 .hilang {
 	display: none;
 }
+.kartuku {
+	padding: 5px 10px;
+}
+img.foto-profil {
+	width: 100px;
+	height: auto;
+}
