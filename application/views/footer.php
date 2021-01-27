@@ -48,12 +48,19 @@
 
     <!-- Core plugin JavaScript-->
     <script src="<?= base_url().'assets/plugins/jquery-easing/jquery.easing.min.js' ?>"></script>
+    <script src="<?= base_url().'assets/plugins/toast/jquery.toast.min.js' ?>"></script>    
 
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url().'assets/js/sb-admin-2.min.js' ?>"></script>
 
     <!-- Custom scripts me-->
     <script src="<?= base_url().'assets/js/myscript.js' ?>"></script>
+
+    <?php if($this->session->flashdata('msg')=='akseserror'){ ?>
+            <script type="text/javascript">
+                pesan('warning','Ada masalah akses program, hubungi administrator');
+            </script>
+        <?php } ?>
 
     <!-- Custom JS untuk tiap page -->
     <?php switch ($modul) {

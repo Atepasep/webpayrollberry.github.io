@@ -34,7 +34,7 @@ $("#editpengguna").click(function(){
 })
 //Tombol Cetak
 $("#cetakpengguna").click(function(){
-	alert('dalam pembuatan, hubungi programmer');
+	pesan('info','dalam pembuatan, hubungi programmer');
 })
 // Tombol batal
 $("#batalpengguna").click(function(){
@@ -68,19 +68,56 @@ $("#savepengguna").click(function(){
 	// 	}
 	// })
 })
+$("#pass").on('dblclick',function(){
+	var tip = $(this).attr('type');
+	if (tip=='password') {
+		$(this).attr('type','input');
+	}else{
+		$(this).attr('type','password');
+	}
+})
 $("#data-tabelku tr").on('click',function(){
 	var ide = $(this).attr('rel')
 	$("#data-tabelku tr").removeClass('aktif');
 	$("#hapuspengguna").attr('data-href','pengguna/hapuspengguna/'+ide);
 	$(this).addClass('aktif');
+	document.getElementById('aktiv').checked = false;
 	$.ajax({
 		dataType : 'json',
 		type : "POST",
 		url : "pengguna/getdatasatu",
 		data : {id : ide},
 		success : function(data){
+			$("#nama").val(data[0].nama);
 			$("#jabatan").val(data[0].jabatan);
 			$("#id").val(data[0].id);
+			$("#username").val(data[0].username);
+			if(data[0].aktiv==1){
+				document.getElementById('aktiv').checked = true;
+			}
+			var xmodul = data[0].modul;
+			for(ex=1;ex<=6;ex++){
+				var cek_ = xmodul.substr(ex,1);
+				if (cek_=='1') {
+					document.getElementById("modul"+ex).checked = true;
+				}else{
+					document.getElementById("modul"+ex).checked = false;
+				}
+			}
+			//$("#pass").val(data[0].pass);
+			getpass(data[0].id);
 		}
 	})
 })
+function getpass(id){
+	$.ajax({
+		dataType : 'json',
+		type : "POST",
+		url : "pengguna/getpass",
+		data : {ide:id},
+		success : function(data){
+			//alert(data);
+			$("#pass").val(data);
+		}
+	})
+}

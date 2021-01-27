@@ -36,7 +36,7 @@ function modalBox(){
 	});
 	return false;
 }
-function pesan(pesan,jenis){
+function pesan(jenis,pesan){
 	if(jenis = 'info'){
 		var head = 'Information';
 	}

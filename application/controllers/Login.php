@@ -12,16 +12,17 @@ class Login extends CI_Controller{
 	}
 	function cekauth(){
 		if($this->input->post('username')!=null AND $this->input->post('password')!=null){
-			$username=strip_tags(strtoupper(str_replace("'", "", $this->input->post('username'))));
+			$username=strip_tags(str_replace("'", "", $this->input->post('username')));
             $password=strip_tags(str_replace("'", "", $this->input->post('password')));
-            $u      = strtoupper($username);
-            $pe     = $password;
+            $u      = $username; //strtoupper($username);
+            $pe     = encrypto($password);
             // $p      = $this->encrypt->encode($pe);
             $cekadmin = $this->mlogin->ceklogin($u,$pe);
             if($cekadmin->num_rows() > 0){
             	$datalogin = $cekadmin->row();
             	$this->session->set_userdata('masukkepayroll',true);
                 $this->session->set_userdata('namalogpayroll',$datalogin->nama);
+                $this->session->set_userdata('modulpayroll',$datalogin->modul);
             	$this->session->set_flashdata('msgx','suksesbrad');
             	$url = base_url('login');
                 redirect($url);

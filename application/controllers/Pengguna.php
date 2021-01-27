@@ -7,6 +7,12 @@ class Pengguna extends CI_Controller {
 		if($this->session->userdata('masukkepayroll')!=true){
 			$url = base_url('login');
 			redirect($url);
+		}else{
+			if(substr($this->session->userdata('modulpayroll'),4,1)!='1'){
+				$this->session->set_flashdata('msg','akseserror');
+				$url = base_url('main');
+				redirect($url);
+			}
 		}
 		$this->load->model('mpengguna');
 	}
@@ -48,5 +54,10 @@ class Pengguna extends CI_Controller {
 		$this->mpengguna->hapuspengguna($id);
 		$url = base_url().'pengguna';
 		redirect($url);
+	}
+	function getpass(){
+		$id = $_POST['ide'];
+		$hasil = $this->mpengguna->getpass($id);
+		echo json_encode($hasil);
 	}
 }
