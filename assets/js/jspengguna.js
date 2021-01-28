@@ -13,11 +13,12 @@ $("#addpengguna").click(function(){
 	$("#nama").val('');
 	$("#jabatan").val('');
 	$("#username").val('');
-	$("#password").val('');
+	$("#pass").val('');
 	document.getElementById("aktiv").checked = false;
 	for(x=1;x<=6;x++){
 		document.getElementById("modul"+x).checked = false;
 	}
+	nonaktifkanmodul();
 	$("#nama").focus();
 })
 //TOmbol Edit
@@ -68,6 +69,14 @@ $("#savepengguna").click(function(){
 	// 	}
 	// })
 })
+$("#aktiv").on('click',function(){
+	var onof = document.getElementById('aktiv').checked;
+	if (onof==true) {
+		aktifkanmodul();
+	}else{
+		nonaktifkanmodul();
+	}
+})
 $("#pass").on('dblclick',function(){
 	var tip = $(this).attr('type');
 	if (tip=='password') {
@@ -76,12 +85,20 @@ $("#pass").on('dblclick',function(){
 		$(this).attr('type','password');
 	}
 })
+$("#foto-profil").on('dblclick',function(){
+	$("#file").click();
+})
+$("#file").change(function(){
+	$("#file_path").val($(this).val());
+})
 $("#data-tabelku tr").on('click',function(){
 	var ide = $(this).attr('rel')
+	var lokfile = $("#lokfile").attr('rel');
 	$("#data-tabelku tr").removeClass('aktif');
 	$("#hapuspengguna").attr('data-href','pengguna/hapuspengguna/'+ide);
 	$(this).addClass('aktif');
 	document.getElementById('aktiv').checked = false;
+	nonaktifkanmodul();
 	$.ajax({
 		dataType : 'json',
 		type : "POST",
@@ -94,6 +111,7 @@ $("#data-tabelku tr").on('click',function(){
 			$("#username").val(data[0].username);
 			if(data[0].aktiv==1){
 				document.getElementById('aktiv').checked = true;
+				aktifkanmodul();
 			}
 			var xmodul = data[0].modul;
 			for(ex=1;ex<=6;ex++){
@@ -104,6 +122,9 @@ $("#data-tabelku tr").on('click',function(){
 					document.getElementById("modul"+ex).checked = false;
 				}
 			}
+			$("#old_logo").val(data[0].profil);
+			$("#lokfile").val(lokfile+data[0].profil);
+			$("#foto-profil").attr('src',lokfile+data[0].profil);
 			//$("#pass").val(data[0].pass);
 			getpass(data[0].id);
 		}
@@ -120,4 +141,18 @@ function getpass(id){
 			$("#pass").val(data);
 		}
 	})
+}
+function aktifkanmodul(){
+	$("#username").attr('disabled',false);
+	$("#pass").attr('disabled',false);
+	for(ex=1;ex<=6;ex++){
+		$("#modul"+ex).attr('disabled',false);
+	}
+}
+function nonaktifkanmodul(){
+	$("#username").attr('disabled',true);
+	$("#pass").attr('disabled',true);
+	for(ex=1;ex<=6;ex++){
+		$("#modul"+ex).attr('disabled',true);
+	}
 }

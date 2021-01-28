@@ -7,6 +7,12 @@ class Jabatan extends CI_Controller {
 		if($this->session->userdata('masukkepayroll')!=true){
 			$url = base_url('login');
 			redirect($url);
+		}else{
+			if(substr($this->session->userdata('modulpayroll'),3,1)!='1'){
+				$this->session->set_flashdata('msg','akseserror');
+				$url = base_url('main');
+				redirect($url);
+			}
 		}
 		$this->load->model('mjabatan');
 	}

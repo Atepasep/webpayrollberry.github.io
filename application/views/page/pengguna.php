@@ -47,7 +47,7 @@
                                         <div class="col-sm-8">
                                             <input type="text" name="urlsimpan" id="urlsimpan" value="<?= $urlsimpan ?>" class="hilang">
                                             <input type="text" name="urledit" id="urledit" value="<?= $urledit ?>" class="hilang">
-                                            <form method="post" name="formpengguna" id="formpengguna" action="">
+                                            <form method="post" name="formpengguna" id="formpengguna" action="" enctype="multipart/form-data">
                                                 <input type="text" class="form-control form-control-sm flat warnahitam hilang" name="id" id="id">
                                                 <div class="form-group row" style="margin-bottom: 0px;">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Nama</label>
@@ -82,8 +82,14 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-4" style="text-align: center;">
-                                                <img src="<?= base_url().'assets/images/nophoto.png' ?>" class="foto-profil">
+                                                <img src="<?= base_url().'assets/images/nophoto.png' ?>" class="foto-profil" id="foto-profil">
                                                 <div style="font-size: 8px;">double klik icon Foto <br>apabila ingin mengganti Foto</div>
+                                                <div class="input-group input-group-flat">
+                                                    <input type="text" name="lokfile" id="lokfile" value="" rel="<?= LOK_FOTO_USER ?>">
+                                                    <input type="text" class="form-control flat" name="file_path" id="file_path" autocomplete="off">
+                                                    <input type="file" name="logo" id="file" class="hidden">
+                                                    <input type="text" name="old_logo" id="old_logo" value="">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="card mb-4 flat font-kecil">
