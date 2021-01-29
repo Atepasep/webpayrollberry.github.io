@@ -83,12 +83,12 @@
                                             </div>
                                             <div class="col-sm-4" style="text-align: center;">
                                                 <img src="<?= base_url().'assets/images/nophoto.png' ?>" class="foto-profil" id="foto-profil">
-                                                <div style="font-size: 8px;">double klik icon Foto <br>apabila ingin mengganti Foto</div>
+                                                <div style="font-size: 9px;">double klik Foto <br>apabila ingin mengganti Foto</div>
                                                 <div class="input-group input-group-flat">
-                                                    <input type="text" name="lokfile" id="lokfile" value="" rel="<?= LOK_FOTO_USER ?>">
-                                                    <input type="text" class="form-control flat" name="file_path" id="file_path" autocomplete="off">
-                                                    <input type="file" name="logo" id="file" class="hidden">
-                                                    <input type="text" name="old_logo" id="old_logo" value="">
+                                                    <input type="text" name="lokfile" class="hilang" id="lokfile" value="" rel="<?= LOK_FOTO_USER ?>">
+                                                    <input type="text" class="form-control flat hilang" name="file_path" id="file_path" autocomplete="off">
+                                                    <input type="file" name="logo" id="file" class="hidden hilang">
+                                                    <input type="text" name="old_logo" id="old_logo" value="" class="hilang">
                                                 </div>
                                             </div>
                                         </div>
@@ -103,10 +103,10 @@
                                                             <input type="checkbox" name="modul1" id="modul1"> Pendidikan
                                                         </div>
                                                         <div class="checkbox">
-                                                            <input type="checkbox" name="modul2" id="modul2"> Jabatan
+                                                            <input type="checkbox" name="modul2" id="modul2"> Bagian
                                                         </div>
                                                         <div class="checkbox">
-                                                            <input type="checkbox" name="modul3" id="modul3"> Bagian
+                                                            <input type="checkbox" name="modul3" id="modul3"> Jabatan
                                                         </div>
                                                         <div class="checkbox">
                                                             <input type="checkbox" name="modul4" id="modul4"> User Aplikasi

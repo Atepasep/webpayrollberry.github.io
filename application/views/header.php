@@ -15,6 +15,8 @@
     <link href="<?= base_url().'assets/plugins/fontawesome-free/css/all.min.css' ?>" rel="stylesheet">
     <link href="<?= base_url().'assets/plugins/font-awesome/css/font-awesome.min.css' ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url().'assets/plugins/toast/jquery.toast.min.css' ?>">
+    <link rel="stylesheet" href="<?= base_url().'assets/plugins/datatables/css/dataTables.bootstrap.min.css' ?>">
+    <link rel="stylesheet" href="<?= base_url().'assets/plugins/datatables/css/responsive.bootstrap.min.css' ?>">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -100,6 +102,9 @@
                     case 2:
                         $tif2 = "active";
                         break;
+                    case 3:
+                        $tif3 = "active";
+                        break;
                     default:
                         $tif1 = "active";
                         break;
@@ -150,7 +155,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner">
                         <h6 class="collapse-header text-coklat">Data Personil & Login</h6>
-                        <a class="collapse-item" href="utilities-color.html">Karyawan</a>
+                        <a class="collapse-item" href="<?= base_url().'personil' ?>">Karyawan</a>
                         <a class="collapse-item" href="utilities-border.html">Master Gaji</a>
                     </div>
                 </div>
@@ -396,21 +401,21 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-900 small"><?= $namalogpayroll ?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="<?= base_url().'assets/images/undraw_profile.svg' ?>">
+                                <img class="img-profile rounded-circle" src="<?= LOK_FOTO_USER.$this->session->userdata('fotoprofilnya') ?>">
+                                <!-- base_url().'assets/images/undraw_profile.svg' -->
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="<?= base_url() ?>">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="<?= base_url() ?>">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="<?= base_url() ?>">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a>

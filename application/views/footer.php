@@ -5,7 +5,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Payroll Management IFN <?= date('Y') ?></span>
                     </div>
                 </div>
             </footer>
@@ -48,7 +48,12 @@
 
     <!-- Core plugin JavaScript-->
     <script src="<?= base_url().'assets/plugins/jquery-easing/jquery.easing.min.js' ?>"></script>
-    <script src="<?= base_url().'assets/plugins/toast/jquery.toast.min.js' ?>"></script>    
+    <script src="<?= base_url().'assets/plugins/toast/jquery.toast.min.js' ?>"></script>  
+
+    <script src="<?= base_url().'assets/plugins/datatables/js/jquery.dataTables.min.js' ?>"></script>
+    <script src="<?= base_url().'assets/plugins/datatables/js/dataTables.bootstrap.min.js' ?>"></script>
+    <script src="<?= base_url().'assets/plugins/datatables/js/dataTables.responsive.min.js' ?>"></script>
+    <script src="<?= base_url().'assets/plugins/datatables/js/responsive.bootstrap.min.js' ?>"></script>  
 
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url().'assets/js/sb-admin-2.min.js' ?>"></script>
@@ -58,10 +63,14 @@
 
     <?php if($this->session->flashdata('msg')=='akseserror'){ ?>
             <script type="text/javascript">
-                pesan('warning','Ada masalah akses program, hubungi administrator');
+                pesan('info','Anda tidak bisa akses Menu, Hubungi administrator data');
             </script>
-        <?php } ?>
-
+    <?php } ?>
+    <?php if($this->session->flashdata('msgupload')){ ?>
+            <script type="text/javascript">
+                pesan('warning','Gambar tidak bisa diupload, pastikan ukuran max 1MB dan tipe File PNG,JPG atau JPEG');
+            </script>
+    <?php } ?>
     <!-- Custom JS untuk tiap page -->
     <?php switch ($modul) {
         case 'didik': ?>

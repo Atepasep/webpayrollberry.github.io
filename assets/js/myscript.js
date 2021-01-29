@@ -1,12 +1,13 @@
 $(document).ready(function(){
 	modalBox();
 
-	// $(".datatable").DataTable({
-	// 	paging : false,
-	// 	searching: false,
-	// 	info: false,
-	// 	scrollY: false
-	// });
+	$(".datatable").DataTable({
+		//paging : false,
+		//searching: false,
+		//info: false,
+		//scrollY: false
+		//responsive : true
+	});
 
 	$('#confirm-delete').on('show.bs.modal', function(e) {
 		var string = document.getElementById("confirm-delete").innerHTML;
@@ -37,17 +38,31 @@ function modalBox(){
 	return false;
 }
 function pesan(jenis,pesan){
-	if(jenis = 'info'){
-		var head = 'Information';
+	if(jenis == 'info'){
+		var warna = "#17A2B8";
+		var head = "Information";
+	}else{
+		if(jenis == 'warning'){
+			//var warna = "#F6C23E";
+			var warna = "#17A2B8";
+			var head = "Warning";
+		}else{
+			if(jenis == 'error'){
+				var warna = "#E74A3B";
+				var head = "Peringatan";
+			}
+		}
 	}
+	//warning = #F6C23E
 	$.toast({
-				heading: head,
-				text: pesan,
-				showHideTransition: 'slide',
-				icon: jenis,
-				hideAfter: 5000,
-				position: 'bottom-right',
-				bgColor: ' 	#17A2B8'
+			heading: head,
+			text: pesan,
+			showHideTransition: 'slide',
+			icon: jenis,
+			hideAfter: 4000,
+			position: 'bottom-right',
+			bgColor: warna,
+			loader : false
 		});
 }
 function rupiah(amount, decimalSeparator, thousandsSeparator, nDecimalDigits){  

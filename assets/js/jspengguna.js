@@ -18,6 +18,8 @@ $("#addpengguna").click(function(){
 	for(x=1;x<=6;x++){
 		document.getElementById("modul"+x).checked = false;
 	}
+	$('#foto-profil').attr('src',$("#lokfile").attr('rel')+'nophoto.png');
+	$('#foto-profil').attr('alt', $("#lokfile").attr('rel')+'nophoto.png');
 	nonaktifkanmodul();
 	$("#nama").focus();
 })
@@ -90,6 +92,7 @@ $("#foto-profil").on('dblclick',function(){
 })
 $("#file").change(function(){
 	$("#file_path").val($(this).val());
+	bacaGambar(this); 
 })
 $("#data-tabelku tr").on('click',function(){
 	var ide = $(this).attr('rel')
@@ -155,4 +158,13 @@ function nonaktifkanmodul(){
 	for(ex=1;ex<=6;ex++){
 		$("#modul"+ex).attr('disabled',true);
 	}
+}
+function bacaGambar(input) {
+   if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          $('#foto-profil').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+   }
 }

@@ -1,11 +1,11 @@
 <?php
-	class Mpengguna extends CI_Model {
+	class Mpersonil extends CI_Model {
 		function getdata(){
-			$hasil = $this->db->query("select * from pengguna");
+			$hasil = $this->db->query("select * from karyawan");
 			return $hasil;
 		}
 		function getdatasatu($id){
-			$hasil = $this->db->query("select * from pengguna where id =".$id." ");
+			$hasil = $this->db->query("select * from karyawan where id =".$id." ");
 			return $hasil;
 		}
 		function simpanpengguna(){
@@ -80,7 +80,6 @@
 			unset($data['lokfile']);
 			$this->db->where('id',$data['id']);
 			$simpan = $this->db->update('pengguna',$data);
-			//$this->session->set_userdata('modulpayroll',$data['modul']);
 			//getdatabykode($data['kode']);
 			if($simpan){
 				$hasil = $this->db->query("select * from pengguna where id ='".$data['id']."' ");
