@@ -50,10 +50,8 @@
     <script src="<?= base_url().'assets/plugins/jquery-easing/jquery.easing.min.js' ?>"></script>
     <script src="<?= base_url().'assets/plugins/toast/jquery.toast.min.js' ?>"></script>  
 
-    <script src="<?= base_url().'assets/plugins/datatables/js/jquery.dataTables.min.js' ?>"></script>
-    <script src="<?= base_url().'assets/plugins/datatables/js/dataTables.bootstrap.min.js' ?>"></script>
-    <script src="<?= base_url().'assets/plugins/datatables/js/dataTables.responsive.min.js' ?>"></script>
-    <script src="<?= base_url().'assets/plugins/datatables/js/responsive.bootstrap.min.js' ?>"></script>  
+    <!-- Page level plugins -->
+    <script src="<?= base_url().'assets/plugins/datatables/dataTables.min.js' ?>"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url().'assets/js/sb-admin-2.min.js' ?>"></script>
@@ -87,6 +85,10 @@
             break;
         case 'pengguna' : ?>
             <script src="<?= base_url().'assets/js/jspengguna.js' ?>"></script>
+    <?php 
+            break;
+        case 'personil' : ?>
+            <script src="<?= base_url().'assets/js/jspersonil.js' ?>"></script>
     <?php
             break;
         default:

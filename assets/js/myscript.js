@@ -6,7 +6,21 @@ $(document).ready(function(){
 		//searching: false,
 		//info: false,
 		//scrollY: false
-		//responsive : true
+		"language": {
+            "lengthMenu": "Tampilkan _MENU_ rekod per halaman",
+            "zeroRecords": "- Data belum tersedia -",
+            "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
+            "infoEmpty": "-",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "search":         "Cari:",
+            "paginate": {
+		        "first":      "Pertama",
+		        "last":       "Terakhir",
+		        "next":       "Selanjutnya",
+		        "previous":   "Sebelumnya"
+		    }
+        },
+        resposive : true
 	});
 
 	$('#confirm-delete').on('show.bs.modal', function(e) {

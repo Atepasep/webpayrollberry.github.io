@@ -70,3 +70,22 @@ img.foto-profil {
 	border-radius: 50%;
 	margin-top: 20px;
 }
+.dataTables_filter, .dataTables_length, .dataTables_info {
+	font-size: 13px;
+	color: black;
+}
+.dataTables_filter input {
+   border-radius: 0px;
+}
+.dataTables_length select {
+	border-radius: 0px;
+	color: black !important;
+}
+.page-item.active .page-link {
+    background-color: lightgrey !important;
+    border: 1px solid black;
+}
+.page-link {
+    color: black !important;
+    font-size: 13px;
+}
