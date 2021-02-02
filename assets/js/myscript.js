@@ -22,6 +22,8 @@ $(document).ready(function(){
         },
         resposive : true
 	});
+	$("#tgllahir").datepicker({autoclose: true,todayHighlight: true,format: 'dd-mm-yyyy'});
+	$("#tglmasuk").datepicker({autoclose: true,todayHighlight: true,format: 'dd-mm-yyyy'});
 
 	$('#confirm-delete').on('show.bs.modal', function(e) {
 		var string = document.getElementById("confirm-delete").innerHTML;

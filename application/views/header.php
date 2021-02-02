@@ -14,7 +14,7 @@
     <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
     <link href="<?= base_url().'assets/plugins/fontawesome-free/css/all.min.css' ?>" rel="stylesheet">
     <link href="<?= base_url().'assets/plugins/font-awesome/css/font-awesome.min.css' ?>" rel="stylesheet">
-    <link rel="stylesheet" href="<?= base_url().'assets/plugins/toast/jquery.toast.min.css' ?>">
+    <link href="<?= base_url().'assets/plugins/toast/jquery.toast.min.css' ?>" rel="stylesheet">
     <link href="<?= base_url().'assets/plugins/datatables/dataTables.min.css' ?>" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -25,6 +25,8 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url().'assets/css/sb-admin-2.css' ?>" rel="stylesheet">
     <link href="<?= base_url().'assets/css/style.css' ?>" rel="stylesheet">
+
+    <link href="<?= base_url().'assets/plugins/datepicker/dist/css/bootstrap-datepicker.css' ?>" rel="stylesheet">
 
 </head>
 

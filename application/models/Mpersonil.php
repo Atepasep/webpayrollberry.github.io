@@ -1,32 +1,31 @@
 <?php
 	class Mpersonil extends CI_Model {
 		function getdata(){
-			$hasil = $this->db->query("select * from karyawan");
+			$hasil = $this->db->query("SELECT karyawan.*,bagian.bagian AS xbagian,jabatan.jabatan AS xjabatan FROM karyawan
+					 LEFT JOIN bagian ON bagian.id=karyawan.bagian 
+					 LEFT JOIN jabatan ON jabatan.id=karyawan.jabatan");
 			return $hasil;
 		}
 		function getdatasatu($id){
 			$hasil = $this->db->query("select * from karyawan where id =".$id." ");
 			return $hasil;
 		}
-		function simpanpengguna(){
+		function simpanpersonil(){
 			$data = $_POST;
-			$data['modul'] = str_repeat('0', 40);
-			for($l=0;$l<=10;$l++){
-				$cek = $this->input->post('modul'.$l);
-				if($cek=='on'){
-					$data['modul'] = substr_replace($data['modul'], '1', $l,1);
-				}
-				unset($data['modul'.$l]);
-			}
-			$data['aktiv'] = 0;
-			$dek = $this->input->post('aktiv');
-			if($dek=='on'){
-				$data['aktiv'] = 1; 
-			}
+			$data['noinduk'] = $this->input->post('noinduk');
 			$data['nama'] = $this->input->post('nama');
+			$data['jenkel'] = $this->input->post('jenkel');
+			$data['tempatlahir'] = $this->input->post('tempatlahir');
+			$data['tgllahir'] = tglmysql($this->input->post('tgllahir'));
+			$data['identitas'] = $this->input->post('identitas');
+			$data['noidentitas'] = $this->input->post('noidentitas');
+			$data['alamat'] = $this->input->post('alamat');
+			$data['pendidikan'] = $this->input->post('pendidikan');
+			$data['email'] = $this->input->post('email');
+			$data['notelp'] = $this->input->post('notelp');
+			$data['tglmasuk'] = tglmysql($this->input->post('tglmasuk'));
+			$data['bagian'] = $this->input->post('bagian');
 			$data['jabatan'] = $this->input->post('jabatan');
-			$data['username'] = $this->input->post('username');
-			$data['pass'] = encrypto($this->input->post('pass'));
 			$foto = $this->input->post('file_path');
 			if(!empty($foto)){
 				$data['profil'] = $this->uploadLogo();
@@ -37,10 +36,10 @@
 			unset($data['file_path']);
 			unset($data['lokfile']);
 			unset($data['id']);
-			$simpan = $this->db->insert('pengguna',$data);
+			$simpan = $this->db->insert('karyawan',$data);
 			//getdatabykode($data['kode']);
 			if($simpan){
-				$hasil = $this->db->query("select * from pengguna where nama ='".$data['nama']."' ");
+				$hasil = $this->db->query("select * from karyawan where noinduk ='".$data['noinduk']."' ");
 			}else{
 				$hasil = "gagal";
 			}
@@ -88,15 +87,15 @@
 			}
 			return $hasil;			
 		}
-		function hapuspengguna($id){
-			$hasil = $this->db->query("select profil from pengguna where id ='".$id."' ")->row();
+		function hapuspersonil($id){
+			$hasil = $this->db->query("select profil from karyawan where id ='".$id."' ")->row();
 			$foto_old = $hasil->profil;
 			if ($foto_old!='nophoto.png') {
 				$fotodulu = FCPATH."assets/images/user/".$foto_old;
 				unlink($fotodulu);
 			}
 			$this->db->where('id',$id);
-			$this->db->delete('pengguna');
+			$this->db->delete('karyawan');
 		}
 		function getpass($id){
 			$hasil = $this->db->query("select pass from pengguna where id = '".$id."' ")->row();

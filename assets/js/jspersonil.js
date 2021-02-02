@@ -24,6 +24,9 @@ $("#addpersonil").click(function(){
 	// $("#nama").focus();
 	// alert('tambah');
 })
+document.on('click','#editpengguna',function(){
+	alert($(this).attr('rel'));
+})
 //TOmbol Edit
 $("#editpengguna").click(function(){
 	//alert('Anda mengklik tambah');
@@ -50,8 +53,8 @@ $("#batalpengguna").click(function(){
 	$("#savepengguna").addClass('hilang');
 	$("#data-tabelku tr.aktif").click();
 })
-$("#savepengguna").click(function(){
-	document.formpengguna.submit();
+$("#savepersonil").click(function(){
+	document.formpersonil.submit();
 	// var a = $("#kode").val();
 	// var b = $("#pendidikan").val();
 	// $.ajax({
