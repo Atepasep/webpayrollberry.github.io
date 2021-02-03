@@ -33,6 +33,7 @@ $(document).ready(function(){
 		var string2 = document.getElementById("confirm-delete").innerHTML;
 		var hasil2 = string2.replace("Konfirmasi", "&nbspKonfirmasi");
 		document.getElementById("confirm-delete").innerHTML = hasil2;
+		document.getElementById("test").innerHTML = $(e.relatedTarget).data('news');
 		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 	});
 	$('#confirm-task').on('show.bs.modal', function(e) {

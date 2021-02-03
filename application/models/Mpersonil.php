@@ -45,25 +45,22 @@
 			}
 			return $hasil;
 		}
-		function editpengguna(){
+		function editpersonil(){
 			$data = $_POST;
-			$data['modul'] = str_repeat('0', 40);
-			for($l=0;$l<=10;$l++){
-				$cek = $this->input->post('modul'.$l);
-				if($cek=='on'){
-					$data['modul'] = substr_replace($data['modul'], '1', $l,1);
-				}
-				unset($data['modul'.$l]);
-			}
-			$data['aktiv'] = 0;
-			$dek = $this->input->post('aktiv');
-			if($dek=='on'){
-				$data['aktiv'] = 1; 
-			}
+			$data['noinduk'] = $this->input->post('noinduk');
 			$data['nama'] = $this->input->post('nama');
+			$data['jenkel'] = $this->input->post('jenkel');
+			$data['tempatlahir'] = $this->input->post('tempatlahir');
+			$data['tgllahir'] = tglmysql($this->input->post('tgllahir'));
+			$data['identitas'] = $this->input->post('identitas');
+			$data['noidentitas'] = $this->input->post('noidentitas');
+			$data['alamat'] = $this->input->post('alamat');
+			$data['pendidikan'] = $this->input->post('pendidikan');
+			$data['email'] = $this->input->post('email');
+			$data['notelp'] = $this->input->post('notelp');
+			$data['tglmasuk'] = tglmysql($this->input->post('tglmasuk'));
+			$data['bagian'] = $this->input->post('bagian');
 			$data['jabatan'] = $this->input->post('jabatan');
-			$data['username'] = $this->input->post('username');
-			$data['pass'] = encrypto($this->input->post('pass'));
 			$foto = $this->input->post('file_path');
 			if(!empty($foto)){
 				$data['profil'] = $this->uploadLogo();
@@ -78,10 +75,10 @@
 			unset($data['file_path']);
 			unset($data['lokfile']);
 			$this->db->where('id',$data['id']);
-			$simpan = $this->db->update('pengguna',$data);
+			$simpan = $this->db->update('karyawan',$data);
 			//getdatabykode($data['kode']);
 			if($simpan){
-				$hasil = $this->db->query("select * from pengguna where id ='".$data['id']."' ");
+				$hasil = $this->db->query("select * from karyawan where id ='".$data['id']."' ");
 			}else{
 				$hasil = "gagal";
 			}

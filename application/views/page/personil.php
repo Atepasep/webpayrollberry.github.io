@@ -52,8 +52,8 @@
                                                 <td><?= tglmysql($data['tglmasuk']) ?></td>
                                                 <td><?= $data['email'].'-'.$data['notelp'] ?></td>
                                                 <td style="text-align: center;">
-                                                    <a href="<?= base_url().'personil/editdata/'.$data['id'] ?>" title="Update data" id="editpersonil" style="cursor: pointer;"><img src="<?= LOK_FOTO.'edit.png' ?>"></a>
-                                                    <a data-toggle="modal" data-target="#confirm-delete" data-href="<?= base_url().'personil/hapuspersonil/'.$data['id'] ?>" title="Delete data" id="hapuspersonil" style="cursor: pointer;"><img src="<?= LOK_FOTO.'del.png' ?>"></a>
+                                                    <a href="<?= base_url().'personil/updatepersonil/'.$data['id'] ?>" title="Update data" id="editpersonil" style="cursor: pointer;"><img src="<?= LOK_FOTO.'edit.png' ?>"></a>
+                                                    <a data-toggle="modal" data-target="#confirm-delete" data-href="<?= base_url().'personil/hapuspersonil/'.$data['id'] ?>" title="Delete data" id="hapuspersonil" data-news="Apakah Anda yakin ingin menghapus data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer;"><img src="<?= LOK_FOTO.'del.png' ?>"></a>
                                                 </td>
                                             </tr>
                                         <?php } ?>

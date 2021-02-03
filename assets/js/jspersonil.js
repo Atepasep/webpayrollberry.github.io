@@ -1,60 +1,97 @@
 $(document).ready(function(){
-	$("#data-tabelku tr.aktif").click();
+	//$("#data-tabelku tr.aktif").click();
 })
-$("#addpersonil").click(function(){
-	//alert('Anda mengklik tambah');
-	// document.formpengguna.setAttribute('action',$("#urlsimpan").val());
-	// $(this).addClass('hilang');
-	// $("#editpengguna").addClass('hilang');
-	// $("#hapuspengguna").addClass('hilang');
-	// $("#cetakpengguna").addClass('hilang');
-	// $("#savepengguna").removeClass('hilang');
-	// $("#batalpengguna").removeClass('hilang');
-	// $("#nama").val('');
-	// $("#jabatan").val('');
-	// $("#username").val('');
-	// $("#pass").val('');
-	// document.getElementById("aktiv").checked = false;
-	// for(x=1;x<=6;x++){
-	// 	document.getElementById("modul"+x).checked = false;
-	// }
-	// $('#foto-profil').attr('src',$("#lokfile").attr('rel')+'nophoto.png');
-	// $('#foto-profil').attr('alt', $("#lokfile").attr('rel')+'nophoto.png');
-	// nonaktifkanmodul();
-	// $("#nama").focus();
-	// alert('tambah');
-})
-document.on('click','#editpengguna',function(){
-	alert($(this).attr('rel'));
-})
-//TOmbol Edit
-$("#editpengguna").click(function(){
-	//alert('Anda mengklik tambah');
-	document.formpengguna.setAttribute('action',$("#urledit").val());
-	$(this).addClass('hilang');
-	$("#addpengguna").addClass('hilang');
-	$("#hapuspengguna").addClass('hilang');
-	$("#cetakpengguna").addClass('hilang');
-	$("#savepengguna").removeClass('hilang');
-	$("#batalpengguna").removeClass('hilang');
-	$("#jabatan").focus();
-})
-//Tombol Cetak
-$("#cetakpengguna").click(function(){
-	pesan('info','dalam pembuatan, hubungi programmer');
-})
-// Tombol batal
-$("#batalpengguna").click(function(){
-	$(this).addClass('hilang');
-	$("#editpengguna").removeClass('hilang');
-	$("#hapuspengguna").removeClass('hilang');
-	$("#cetakpengguna").removeClass('hilang');
-	$("#addpengguna").removeClass('hilang');
-	$("#savepengguna").addClass('hilang');
-	$("#data-tabelku tr.aktif").click();
-})
+// $("#addpersonil").click(function(){
+// 	//alert('Anda mengklik tambah');
+// 	// document.formpengguna.setAttribute('action',$("#urlsimpan").val());
+// 	// $(this).addClass('hilang');
+// 	// $("#editpengguna").addClass('hilang');
+// 	// $("#hapuspengguna").addClass('hilang');
+// 	// $("#cetakpengguna").addClass('hilang');
+// 	// $("#savepengguna").removeClass('hilang');
+// 	// $("#batalpengguna").removeClass('hilang');
+// 	// $("#nama").val('');
+// 	// $("#jabatan").val('');
+// 	// $("#username").val('');
+// 	// $("#pass").val('');
+// 	// document.getElementById("aktiv").checked = false;
+// 	// for(x=1;x<=6;x++){
+// 	// 	document.getElementById("modul"+x).checked = false;
+// 	// }
+// 	// $('#foto-profil').attr('src',$("#lokfile").attr('rel')+'nophoto.png');
+// 	// $('#foto-profil').attr('alt', $("#lokfile").attr('rel')+'nophoto.png');
+// 	// nonaktifkanmodul();
+// 	// $("#nama").focus();
+// 	// alert('tambah');
+// })
+// document.on('click','#editpengguna',function(){
+// 	alert($(this).attr('rel'));
+// })
+// //TOmbol Edit
+// $("#editpengguna").click(function(){
+// 	//alert('Anda mengklik tambah');
+// 	document.formpengguna.setAttribute('action',$("#urledit").val());
+// 	$(this).addClass('hilang');
+// 	$("#addpengguna").addClass('hilang');
+// 	$("#hapuspengguna").addClass('hilang');
+// 	$("#cetakpengguna").addClass('hilang');
+// 	$("#savepengguna").removeClass('hilang');
+// 	$("#batalpengguna").removeClass('hilang');
+// 	$("#jabatan").focus();
+// })
+// //Tombol Cetak
+// $("#cetakpengguna").click(function(){
+// 	pesan('info','dalam pembuatan, hubungi programmer');
+// })
+// // Tombol batal
+// $("#batalpengguna").click(function(){
+// 	$(this).addClass('hilang');
+// 	$("#editpengguna").removeClass('hilang');
+// 	$("#hapuspengguna").removeClass('hilang');
+// 	$("#cetakpengguna").removeClass('hilang');
+// 	$("#addpengguna").removeClass('hilang');
+// 	$("#savepengguna").addClass('hilang');
+// 	$("#data-tabelku tr.aktif").click();
+// })
 $("#savepersonil").click(function(){
-	document.formpersonil.submit();
+	var jadi = true;
+	$("#noinduk").removeClass('is-invalid');
+	$("#nama").removeClass('is-invalid');
+	$("#tempatlahir").removeClass('is-invalid');
+	$("#tgllahir").removeClass('is-invalid');
+	$("#alamat").removeClass('is-invalid');
+	if($("#noinduk").val()==''){
+		$("#noinduk").addClass('is-invalid');
+	}
+	if($("#nama").val()==''){
+		$("#nama").addClass('is-invalid');
+		jadi = false;
+	}
+	if($("#tempatlahir").val()==''){
+		$("#tempatlahir").addClass('is-invalid');
+		jadi = false;
+	}
+	if($("#tgllahir").val()==''){
+		$("#tgllahir").addClass('is-invalid');
+		jadi = false;
+	}
+	if($("#alamat").val()==''){
+		$("#alamat").addClass('is-invalid');
+		jadi = false;
+	}
+	if($("#email").val()==''){
+		$("#email").addClass('is-invalid');
+		jadi = false;
+	}else{
+		if (!validasiEmail($("#email").val())) {
+			$("#email").addClass('is-invalid');
+			document.getElementById('feedbackemail').innerHTML = 'alamat email tidak valid, cek email';
+			jadi = false;
+		}
+	}
+	if(jadi){
+		document.formpersonil.submit();
+	}
 	// var a = $("#kode").val();
 	// var b = $("#pendidikan").val();
 	// $.ajax({
@@ -75,22 +112,22 @@ $("#savepersonil").click(function(){
 	// 	}
 	// })
 })
-$("#aktiv").on('click',function(){
-	var onof = document.getElementById('aktiv').checked;
-	if (onof==true) {
-		aktifkanmodul();
-	}else{
-		nonaktifkanmodul();
-	}
-})
-$("#pass").on('dblclick',function(){
-	var tip = $(this).attr('type');
-	if (tip=='password') {
-		$(this).attr('type','input');
-	}else{
-		$(this).attr('type','password');
-	}
-})
+// $("#aktiv").on('click',function(){
+// 	var onof = document.getElementById('aktiv').checked;
+// 	if (onof==true) {
+// 		aktifkanmodul();
+// 	}else{
+// 		nonaktifkanmodul();
+// 	}
+// })
+// $("#pass").on('dblclick',function(){
+// 	var tip = $(this).attr('type');
+// 	if (tip=='password') {
+// 		$(this).attr('type','input');
+// 	}else{
+// 		$(this).attr('type','password');
+// 	}
+// })
 $("#foto-profil").on('dblclick',function(){
 	$("#file").click();
 })
@@ -171,4 +208,8 @@ function bacaGambar(input) {
       }
       reader.readAsDataURL(input.files[0]);
    }
+}
+function validasiEmail(email) {
+  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
 }
