@@ -157,7 +157,7 @@
                     <div class="bg-white py-2 collapse-inner">
                         <h6 class="collapse-header text-coklat">Data Personil & Login</h6>
                         <a class="collapse-item" href="<?= base_url().'personil' ?>">Karyawan</a>
-                        <a class="collapse-item" href="utilities-border.html">Master Gaji</a>
+                        <a class="collapse-item" href="<?= base_url().'mastergaji' ?>">Master Gaji</a>
                     </div>
                 </div>
             </li>
