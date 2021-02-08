@@ -7,7 +7,9 @@
 			return $hasil;
 		}
 		function getdatasatu($id){
-			$hasil = $this->db->query("select * from karyawan where id =".$id." ");
+			$hasil = $this->db->query("SELECT karyawan.*,bagian.bagian AS xbagian,jabatan.jabatan AS xjabatan FROM karyawan
+					 LEFT JOIN bagian ON bagian.id=karyawan.bagian 
+					 LEFT JOIN jabatan ON jabatan.id=karyawan.jabatan where karyawan.id =".$id." ");
 			return $hasil;
 		}
 		function simpanpersonil(){

@@ -23,11 +23,21 @@ class Mastergaji extends CI_Controller {
 	function index(){
 		$header['submodul'] = 3;
 		$header['namalogpayroll']=$this->session->userdata('namalogpayroll');
-		$data['datapersonil'] = $this->mpersonil->getdata()->result_array();
+		$data['datagaji'] = $this->mmastergaji->getdata()->result_array();
 		$footer['modul'] = 'mastergaji';
 		$this->load->view('header',$header);
 		$this->load->view('page/mastergaji',$data);
 		$this->load->view('footer',$footer);
+	}
+	function addgaji($id){
+		$header['submodul'] = 3;
+		$header['namalogpayroll']=$this->session->userdata('namalogpayroll');
+		$data['datapersonil'] = $this->mpersonil->getdatasatu($id)->result_array();
+		$data['gajisekarang'] = $this->mmastergaji->getdatasatu($id)->result_array();
+		$footer['modul'] = 'mastergaji';
+		$this->load->view('header',$header);
+		$this->load->view('page/addgaji',$data);
+		$this->load->view('footer',$footer);		
 	}
 	function tambahdata(){
 		$header['submodul'] = 3;

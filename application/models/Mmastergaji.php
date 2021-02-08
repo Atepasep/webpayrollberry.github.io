@@ -1,13 +1,14 @@
 <?php
 	class Mmastergaji extends CI_Model {
 		function getdata(){
-			$hasil = $this->db->query("SELECT karyawan.*,bagian.bagian AS xbagian,jabatan.jabatan AS xjabatan FROM karyawan
-					 LEFT JOIN bagian ON bagian.id=karyawan.bagian 
-					 LEFT JOIN jabatan ON jabatan.id=karyawan.jabatan");
+			$hasil = $this->db->query("SELECT a.id as id_personil,a.noinduk,a.nama,c.bagian,d.jabatan,b.* FROM karyawan a
+										LEFT JOIN bagian c ON a.bagian = c.id
+										LEFT JOIN jabatan d ON a.jabatan = d.id
+										left JOIN gaji b ON a.id = b.id_karyawan");
 			return $hasil;
 		}
 		function getdatasatu($id){
-			$hasil = $this->db->query("select * from karyawan where id =".$id." ");
+			$hasil = $this->db->query("select * from gaji where id_karyawan =".$id." and sampai is null ");
 			return $hasil;
 		}
 		function simpanpersonil(){

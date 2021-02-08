@@ -10,7 +10,7 @@
                             </div>
                             <hr class="small mb-1">
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <div class="table-responsive">
                                         <table class="table table-bordered dt-responsive datatable table-hover" id="tabelku" width="100%" cellspacing="0">
                                             <thead class="bg-secondary text-light">
@@ -18,6 +18,11 @@
                                                     <th>NIK</th>
                                                     <th>Nama</th>
                                                     <th>Bagian</th>
+                                                    <th>Jabatan</th>
+                                                    <th>Gaji Pokok</th>
+                                                    <th>Tunj Jabatan</th>
+                                                    <th>Tunj Skill</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
@@ -25,14 +30,27 @@
                                                     <th>NIK</th>
                                                     <th>Nama</th>
                                                     <th>Bagian</th>
+                                                    <th>Jabatan</th>
+                                                    <th>Gaji Pokok</th>
+                                                    <th>Tunj Jabatan</th>
+                                                    <th>Tunj Skill</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody id="data-tabelku">
-                                                <?php foreach($datapersonil as $data){ ?>
+                                                <?php foreach($datagaji as $data){ ?>
                                                     <tr>
                                                         <td><?= $data['noinduk'] ?></td>
                                                         <td><?= $data['nama'] ?></td>
-                                                        <td><?= $data['xbagian'] ?></td>
+                                                        <td><?= $data['bagian'] ?></td>
+                                                        <td><?= $data['jabatan'] ?></td>
+                                                        <td><?= $data['gaji'] ?></td>
+                                                        <td><?= $data['tunjab'] ?></td>
+                                                        <td><?= $data['tunskill'] ?></td>
+                                                        <td style="text-align: center;">
+                                                            <a href="<?= base_url().'mastergaji/addgaji/'.$data['id_personil'] ?>" title="edit gaji <?= $data['nama'] ?>"><img src="<?= base_url().'assets/images/edit.png' ?>"></a>
+                                                            <a href="#" title="view gaji <?= $data['nama'] ?>"><img src="<?= base_url().'assets/images/view.png' ?>"></a>
+                                                        </td>
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>
