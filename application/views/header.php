@@ -34,9 +34,9 @@
  <div class="modal fade" id="modalBox" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class='modal-dialog modal-lg'>
         <div class='modal-content'>
-          <div class='modal-header bg-warning'>
-            <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-            <h4 class='modal-title' id='myModalLabel'> Pengaturan Pengguna</h4>
+          <div class='modal-header bg-info'>
+            <!-- <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button> -->
+            <h4 class='modal-title text-white' id='myModalLabel'> Pengaturan Pengguna</h4>
           </div>
           <div class="fetched-data"></div>
       </div>
@@ -124,7 +124,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Master
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -135,7 +135,7 @@
                     <span>Master Data</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-0 collapse-inner flat" style="border-radius: 0px;">
+                    <div class="bg-white py-2 collapse-inner flat" style="border-radius: 0px;">
                         <h6 class="collapse-header text-coklat">Pilih Modul</h6>
                         <a class="collapse-item" href="<?= base_url().'didik' ?>">Pendidikan</a>
                         <a class="collapse-item" href="<?= base_url().'bagian' ?>">Bagian</a>
@@ -154,7 +154,7 @@
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner">
+                    <div class="bg-white py-2 collapse-inner flat">
                         <h6 class="collapse-header text-coklat">Data Personil & Mst Gaji</h6>
                         <a class="collapse-item" href="<?= base_url().'personil' ?>">Personil</a>
                         <a class="collapse-item" href="<?= base_url().'mastergaji' ?>">Master Gaji</a>
@@ -167,35 +167,20 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                Payroll
             </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <span>Payroll</span></a>
+            </li>
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="charts.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Validasi</span></a>
             </li>
 
             <!-- Nav Item - Tables -->

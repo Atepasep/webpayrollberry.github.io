@@ -44,12 +44,12 @@
                                                         <td><?= $data['nama'] ?></td>
                                                         <td><?= $data['bagian'] ?></td>
                                                         <td><?= $data['jabatan'] ?></td>
-                                                        <td><?= $data['gaji'] ?></td>
-                                                        <td><?= $data['tunjab'] ?></td>
-                                                        <td><?= $data['tunskill'] ?></td>
+                                                        <td class="kanan"><?= rupiah($data['gaji'],0,',','.') ?></td>
+                                                        <td class="kanan"><?= rupiah($data['tunjab'],0,',','.') ?></td>
+                                                        <td class="kanan"><?= rupiah($data['tunskill'],0,',','.') ?></td>
                                                         <td style="text-align: center;">
                                                             <a href="<?= base_url().'mastergaji/addgaji/'.$data['id_personil'] ?>" title="edit gaji <?= $data['nama'] ?>"><img src="<?= base_url().'assets/images/edit.png' ?>"></a>
-                                                            <a href="#" title="view gaji <?= $data['nama'] ?>"><img src="<?= base_url().'assets/images/view.png' ?>"></a>
+                                                            <a href="<?= base_url().'mastergaji/getview/'.$data['id_personil'] ?>" title="view gaji <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="View History Gaji" data-target="#modalBox" ><img src="<?= base_url().'assets/images/view.png' ?>"></a>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>

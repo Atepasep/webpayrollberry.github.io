@@ -20,6 +20,9 @@
 		}
 		return $hasil;
 	}
+	function keangka($rp){
+		return str_replace(',', '', $rp);
+	}
 
 	function caricek($ini,$ke){
 		$kata = '';

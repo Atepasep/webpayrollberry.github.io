@@ -34,6 +34,8 @@ class Mastergaji extends CI_Controller {
 		$header['namalogpayroll']=$this->session->userdata('namalogpayroll');
 		$data['datapersonil'] = $this->mpersonil->getdatasatu($id)->result_array();
 		$data['gajisekarang'] = $this->mmastergaji->getdatasatu($id)->result_array();
+		$data['listgaji'] = $this->mmastergaji->daftargajisatu($id)->result_array();
+		$data['urlnya'] = base_url().'mastergaji/simpangaji';
 		$footer['modul'] = 'mastergaji';
 		$this->load->view('header',$header);
 		$this->load->view('page/addgaji',$data);
@@ -101,12 +103,12 @@ class Mastergaji extends CI_Controller {
 		$hasil = $this->mpengguna->getdatasatu($id)->result();
 		echo json_encode($hasil);
 	}
-	function simpanpersonil(){
-		$hasil = $this->mpersonil->simpanpersonil();
+	function simpangaji(){
+		$hasil = $this->mmastergaji->simpangaji();
 		if($hasil->num_rows() > 0){
 			$jadi = $hasil->row(); //$this->mpengguna->getdatabykode($kode)->row();
 			$this->session->set_flashdata('kodeid',$jadi->id);
-			$url = base_url().'personil';
+			$url = base_url().'mastergaji';
 			redirect($url);
 		}
 	}
@@ -128,5 +130,14 @@ class Mastergaji extends CI_Controller {
 		$id = $_POST['ide'];
 		$hasil = $this->mpengguna->getpass($id);
 		echo json_encode($hasil);
+	}
+	function getview($id){
+		$temp = $this->mpersonil->getdatasatu($id)->row_array();
+		$data['nama'] = $temp['nama'];
+		$data['noinduk'] = $temp['noinduk'];
+		$data['xbagian'] = $temp['xbagian'];
+		$data['xjabatan'] = $temp['xjabatan'];
+		$data['listgaji'] = $this->mmastergaji->daftargajisatu($id)->result_array();
+		$this->load->view('page/viewgaji',$data);
 	}
 }

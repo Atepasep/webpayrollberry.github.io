@@ -91,6 +91,10 @@
             break;
         case 'personil' : ?>
             <script src="<?= base_url().'assets/js/jspersonil.js' ?>"></script>
+    <?php 
+            break;
+        case 'mastergaji' : ?>
+            <script src="<?= base_url().'assets/js/jsmastergaji.js' ?>"></script>
     <?php
             break;
         default:
