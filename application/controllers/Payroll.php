@@ -1,14 +1,14 @@
 <?php
 if(!defined('BASEPATH'))exit('No direct script access allowed');
 
-class Mastergaji extends CI_Controller {
+class Payroll extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		if($this->session->userdata('masukkepayroll')!=true){
 			$url = base_url('login');
 			redirect($url);
 		}else{
-			if(substr($this->session->userdata('modulpayroll'),6,1)!='1'){
+			if(substr($this->session->userdata('modulpayroll'),7,1)!='1'){
 				$this->session->set_flashdata('msg','akseserror');
 				$url = base_url('main');
 				redirect($url);
@@ -19,14 +19,15 @@ class Mastergaji extends CI_Controller {
 		$this->load->model('mdidik');
 		$this->load->model('mbagian');
 		$this->load->model('mjabatan');
+		$this->load->model('mpayroll');
 	}
 	function index(){
-		$header['submodul'] = 3;
+		$header['submodul'] = 4;
 		$header['namalogpayroll']=$this->session->userdata('namalogpayroll');
-		$data['datagaji'] = $this->mmastergaji->getdata()->result_array();
-		$footer['modul'] = 'mastergaji';
+		$data['datapayroll'] = $this->mpayroll->getdata()->result_array();
+		$footer['modul'] = 'payroll';
 		$this->load->view('header',$header);
-		$this->load->view('page/mastergaji',$data);
+		$this->load->view('page/payroll',$data);
 		$this->load->view('footer',$footer);
 	}
 	function addgaji($id){

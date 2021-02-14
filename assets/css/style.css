@@ -92,3 +92,7 @@ img.foto-profil {
 .kanan {
 	text-align: right !important;
 }
+input.kecil, select.kecil {
+	padding: 4px !important;
+	height: 29px;
+}

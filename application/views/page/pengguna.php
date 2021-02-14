@@ -119,6 +119,9 @@
                                                         <div class="checkbox">
                                                             <input type="checkbox" name="modul6" id="modul6"> Master Gaji
                                                         </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="modul7" id="modul7"> Payroll
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

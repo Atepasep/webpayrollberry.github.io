@@ -15,7 +15,7 @@ $("#addpengguna").click(function(){
 	$("#username").val('');
 	$("#pass").val('');
 	document.getElementById("aktiv").checked = false;
-	for(x=1;x<=6;x++){
+	for(x=1;x<=10;x++){
 		document.getElementById("modul"+x).checked = false;
 	}
 	$('#foto-profil').attr('src',$("#lokfile").attr('rel')+'nophoto.png');
@@ -117,7 +117,7 @@ $("#data-tabelku tr").on('click',function(){
 				aktifkanmodul();
 			}
 			var xmodul = data[0].modul;
-			for(ex=1;ex<=6;ex++){
+			for(ex=1;ex<=10;ex++){
 				var cek_ = xmodul.substr(ex,1);
 				if (cek_=='1') {
 					document.getElementById("modul"+ex).checked = true;
@@ -148,14 +148,14 @@ function getpass(id){
 function aktifkanmodul(){
 	$("#username").attr('disabled',false);
 	$("#pass").attr('disabled',false);
-	for(ex=1;ex<=6;ex++){
+	for(ex=1;ex<=10;ex++){
 		$("#modul"+ex).attr('disabled',false);
 	}
 }
 function nonaktifkanmodul(){
 	$("#username").attr('disabled',true);
 	$("#pass").attr('disabled',true);
-	for(ex=1;ex<=6;ex++){
+	for(ex=1;ex<=10;ex++){
 		$("#modul"+ex).attr('disabled',true);
 	}
 }

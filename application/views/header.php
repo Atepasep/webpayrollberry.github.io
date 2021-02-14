@@ -172,7 +172,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="<?= base_url().'payroll' ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Payroll</span></a>
             </li>
