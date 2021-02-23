@@ -35,8 +35,18 @@
                 </div>
                 <div class="modal-body">Pilih Logout untuk keluar dari sesi ini.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-sm btn-secondary flat" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-sm btn-primary flat" href="<?= base_url().'login/logout' ?>">Logout</a>
+                    <a href="" data-dismiss="modal" class="btn btn-danger btn-icon-split btn-sm flat font-kecil mb-1">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-arrow-circle-left"></i>
+                        </span>
+                        <span class="text">Batal</span>
+                    </a>
+                    <a href="<?= base_url().'login/logout' ?>" class="btn btn-success btn-icon-split btn-sm flat font-kecil mb-1">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-fw fa-door-open"></i>
+                        </span>
+                        <span class="text">Logout</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -95,6 +105,10 @@
             break;
         case 'mastergaji' : ?>
             <script src="<?= base_url().'assets/js/jsmastergaji.js' ?>"></script>
+    <?php
+            break;
+        case 'payroll' : ?>
+            <script src="<?= base_url().'assets/js/jspayroll.js' ?>"></script>
     <?php
             break;
         default:

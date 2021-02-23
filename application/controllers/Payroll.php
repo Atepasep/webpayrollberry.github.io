@@ -29,6 +29,7 @@ class Payroll extends CI_Controller {
 			//$data['tahunperiode'] = date('Y');
 			$this->session->set_flashdata('bulanperiode',date('m'));
 			$this->session->set_flashdata('tahunperiode',date('Y'));
+			$this->session->set_flashdata('kodepayroll',1);
 		}
 		$data['datapayroll'] = $this->mpayroll->getdata()->result_array();
 		$footer['modul'] = 'payroll';

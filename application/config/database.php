@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'redex.online',
-	'username' => 'u6531002_redex',
-	'password' => 'redex6565',
+	'hostname' => 'localhost', //'redex.online',
+	'username' => 'root', //'u6531002_redex',
+	'password' => '', //'redex6565',
 	'database' => 'u6531002_ExampleMysql',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

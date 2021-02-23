@@ -11,6 +11,12 @@
                                 </div>
                                 <div style="float: right;">
                                     <div class="form-inline">
+                                        <select class="form-control small flat kecil mr-1 font-kecil hitam" id="kodepayroll" name="kodepayroll">
+                                            <?= $k = $this->session->flashdata('kodepayroll'); ?>
+                                            <option <?php if($k==1){ echo "selected";} ?>>Salary</option>
+                                            <option <?php if($k==2){ echo "selected";} ?>>THR</option>
+                                            <option <?php if($k==3){ echo "selected";} ?>>Bonus</option>
+                                        </select>
                                         <select class="form-control small flat kecil mr-1 font-kecil hitam" id="bulanperiode" name="bulanperiode">
                                             <?= $l = $this->session->flashdata('bulanperiode'); ?>
                                             <option <?php if($l==1){ echo "selected";} ?>>Januari</option>

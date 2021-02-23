@@ -59,7 +59,7 @@ hr.small {
 	background-color: red;
 }
 .hilang {
-	display: none;
+	display: none !important;
 }
 .kartuku {
 	padding: 5px 10px;

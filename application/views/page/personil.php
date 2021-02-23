@@ -5,11 +5,10 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-3">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-3" style="float: left;">
                                 Data Karyawan / Personil
                             </div>
-                            <hr class="small mb-1">
-                            <div style="text-align: right;">
+                            <div style="text-align: right; left: right;">
                                 <a href="<?= base_url().'personil/tambahdata' ?>" class="btn btn-success btn-icon-split btn-sm flat font-kecil mb-1" id="addpersonil">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
@@ -17,7 +16,7 @@
                                     <span class="text">Tambah data Personil</span>
                                 </a>
                             </div>
-                            <hr class="small">
+                            <hr class="small" style="clear: both;">
                             <div class="table-responsive">
                                 <table class="table table-bordered dt-responsive datatable table-hover" id="tabelku" width="100%" cellspacing="0">
                                     <thead class="bg-secondary text-light">
