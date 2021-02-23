@@ -7,28 +7,31 @@
                         <div class="col mr-2">
                             <div>
                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-3" style="float: left;">
-                                    Payroll Management Bulan Tahun
+                                    Payroll Management <?= namabulan($this->session->flashdata('bulanperiode')),' '.$this->session->flashdata('tahunperiode') ?>
                                 </div>
                                 <div style="float: right;">
                                     <div class="form-inline">
                                         <select class="form-control small flat kecil mr-1 font-kecil hitam" id="bulanperiode" name="bulanperiode">
-                                            <option>Januari</option>
-                                            <option>Februari</option>
-                                            <option>Maret</option>
-                                            <option>April</option>
-                                            <option>Mei</option>
-                                            <option>Juni</option>
-                                            <option>Juli</option>
-                                            <option>Agustus</option>
-                                            <option>September</option>
-                                            <option>Desember</option>
+                                            <?= $l = $this->session->flashdata('bulanperiode'); ?>
+                                            <option <?php if($l==1){ echo "selected";} ?>>Januari</option>
+                                            <option <?php if($l==2){ echo "selected";} ?>>Februari</option>
+                                            <option <?php if($l==3){ echo "selected";} ?>>Maret</option>
+                                            <option <?php if($l==4){ echo "selected";} ?>>April</option>
+                                            <option <?php if($l==5){ echo "selected";} ?>>Mei</option>
+                                            <option <?php if($l==6){ echo "selected";} ?>>Juni</option>
+                                            <option <?php if($l==7){ echo "selected";} ?>>Juli</option>
+                                            <option <?php if($l==8){ echo "selected";} ?>>Agustus</option>
+                                            <option <?php if($l==9){ echo "selected";} ?>>September</option>
+                                            <option <?php if($l==10){ echo "selected";} ?>>Oktoberr</option>
+                                            <option <?php if($l==10){ echo "selected";} ?>>Nopember</option>
+                                            <option <?php if($l==10){ echo "selected";} ?>>Desember</option>
                                         </select>
-                                        <input type="text" class="form-control small flat kecil mr-3" style="width: 80px;" name="tahunperiode" id="tahunperiode">
+                                        <input type="text" class="form-control small flat kecil font-kecil mr-2" style="width: 60px;" name="tahunperiode" id="tahunperiode" value="<?= $this->session->flashdata('tahunperiode') ?>">
                                         <a href="#" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="prosespayroll">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-plus"></i>
                                             </span>
-                                            <span class="text">Proses Payroll</span>
+                                            <span class="text">Proses</span>
                                         </a>
                                     </div>
                                 </div>

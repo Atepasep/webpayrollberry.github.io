@@ -6,7 +6,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-3">
-                                Data Pengguna Aplikasi
+                                Data Pengguna Aplikasi <?php echo LOK_FOTO_USER ?>
                             </div>
                             <div class="row">
                                 <div class="col-sm-4">
@@ -87,7 +87,7 @@
                                                 <div class="input-group input-group-flat">
                                                     <input type="text" name="lokfile" class="hilang" id="lokfile" value="" rel="<?= LOK_FOTO_USER ?>">
                                                     <input type="text" class="form-control flat hilang" name="file_path" id="file_path" autocomplete="off">
-                                                    <input type="file" name="logo" id="file" class="hidden hilang">
+                                                    <input type="file" name="logo" id="file" class="hilang">
                                                     <input type="text" name="old_logo" id="old_logo" value="" class="hilang">
                                                 </div>
                                             </div>
@@ -121,6 +121,14 @@
                                                         </div>
                                                         <div class="checkbox">
                                                             <input type="checkbox" name="modul7" id="modul7"> Payroll
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="modul8" id="modul8"> Validasi
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="modul9" id="modul9"> In Progress
                                                         </div>
                                                     </div>
                                                 </div>

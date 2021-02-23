@@ -58,6 +58,6 @@ class Pengguna extends CI_Controller {
 	function getpass(){
 		$id = $_POST['ide'];
 		$hasil = $this->mpengguna->getpass($id);
-		echo json_encode($hasil);
+		echo json_encode(decrypto($hasil));
 	}
 }

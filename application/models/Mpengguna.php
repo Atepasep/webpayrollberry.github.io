@@ -101,7 +101,7 @@
 		}
 		function getpass($id){
 			$hasil = $this->db->query("select pass from pengguna where id = '".$id."' ")->row();
-			return decrypto($hasil->pass);
+			return $hasil->pass;
 		}
 		public function uploadLogo(){
 			$this->load->library('upload');

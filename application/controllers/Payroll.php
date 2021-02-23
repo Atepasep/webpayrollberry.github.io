@@ -24,6 +24,12 @@ class Payroll extends CI_Controller {
 	function index(){
 		$header['submodul'] = 4;
 		$header['namalogpayroll']=$this->session->userdata('namalogpayroll');
+		if(!$this->session->flashdata('bulanperiode')){
+			//$data['bulanperiode'] = date('m');
+			//$data['tahunperiode'] = date('Y');
+			$this->session->set_flashdata('bulanperiode',date('m'));
+			$this->session->set_flashdata('tahunperiode',date('Y'));
+		}
 		$data['datapayroll'] = $this->mpayroll->getdata()->result_array();
 		$footer['modul'] = 'payroll';
 		$this->load->view('header',$header);

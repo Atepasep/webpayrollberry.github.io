@@ -112,12 +112,14 @@ $("#data-tabelku tr").on('click',function(){
 			$("#jabatan").val(data[0].jabatan);
 			$("#id").val(data[0].id);
 			$("#username").val(data[0].username);
+			$("#pass").val(data[0].pass);
+			getpass(data[0].id);
 			if(data[0].aktiv==1){
 				document.getElementById('aktiv').checked = true;
 				aktifkanmodul();
 			}
 			var xmodul = data[0].modul;
-			for(ex=1;ex<=10;ex++){
+			for(ex=1;ex<=9;ex++){
 				var cek_ = xmodul.substr(ex,1);
 				if (cek_=='1') {
 					document.getElementById("modul"+ex).checked = true;
@@ -129,16 +131,17 @@ $("#data-tabelku tr").on('click',function(){
 			$("#lokfile").val(lokfile+data[0].profil);
 			$("#foto-profil").attr('src',lokfile+data[0].profil);
 			//$("#pass").val(data[0].pass);
-			getpass(data[0].id);
+			//getpass(data[0].id);
 		}
 	})
 })
 function getpass(id){
+	var idx = id;
 	$.ajax({
 		dataType : 'json',
 		type : "POST",
 		url : "pengguna/getpass",
-		data : {ide:id},
+		data : {ide:idx},
 		success : function(data){
 			//alert(data);
 			$("#pass").val(data);

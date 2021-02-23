@@ -95,7 +95,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <?php
-                $tif1 = "";$tif2 = ""; $tif3 = "";
+                $tif1 = "";$tif2 = ""; $tif3 = ""; $tif4 = "";
                 switch ($submodul) {
                     case 1:
                         $tif1 = "active";
@@ -105,6 +105,9 @@
                         break;
                     case 3:
                         $tif3 = "active";
+                        break;
+                    case 4:
+                        $tif4 = "active";
                         break;
                     default:
                         $tif1 = "active";
@@ -171,7 +174,7 @@
             </div>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            <li class="nav-item <?= $tif4 ?>">
                 <a class="nav-link" href="<?= base_url().'payroll' ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Payroll</span></a>
