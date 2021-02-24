@@ -33,7 +33,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Pilih Logout untuk keluar dari sesi ini.</div>
+                <div class="modal-body">Pilih Logout untuk keluar dari sesi ini..</div>
                 <div class="modal-footer">
                     <a href="" data-dismiss="modal" class="btn btn-danger btn-icon-split btn-sm flat font-kecil mb-1">
                         <span class="icon text-white-50">
