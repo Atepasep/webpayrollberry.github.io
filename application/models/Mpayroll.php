@@ -1,10 +1,12 @@
 <?php
 	class Mpayroll extends CI_Model {
 		function getdata(){
-			$hasil = $this->db->query("SELECT a.id as id_personil,a.noinduk,a.nama,c.bagian,d.jabatan,b.* FROM karyawan a
-										LEFT JOIN bagian c ON a.bagian = c.id
-										LEFT JOIN jabatan d ON a.jabatan = d.id
-										left JOIN gaji b ON a.id = b.id_karyawan where b.sampai is null");
+			$bl = $this->session->flashdata('bulanperiode');
+			$th = $this->session->flashdata('tahunperiode');
+			$py = $this->session->flashdata('kodepayroll');
+			$hasil = $this->db->query("SELECT a.nama,b.* FROM karyawan a
+										LEFT JOIN payroll b ON a.id = b.id_karyawan 
+										WHERE b.code = $py AND b.periode = $bl.$th");
 			return $hasil;
 		}
 		function getdatasatu($id){

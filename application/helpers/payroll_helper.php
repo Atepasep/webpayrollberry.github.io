@@ -60,4 +60,22 @@
 		}
 		return $hasil;
 	}
+	function getkodepayroll($id){
+		$hasil = '';
+		switch ($id) {
+			case 1:
+				$hasil = 'SALARY';
+				break;
+			case 2:
+				$hasil = 'THR';
+				break;
+			case 3:
+				$hasil = 'BONUS';
+				break;
+			default:
+				# code...
+				break;
+		}
+		return $hasil;
+	}
 ?>

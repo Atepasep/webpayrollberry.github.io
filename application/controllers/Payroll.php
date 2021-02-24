@@ -30,6 +30,10 @@ class Payroll extends CI_Controller {
 			$this->session->set_flashdata('bulanperiode',date('m'));
 			$this->session->set_flashdata('tahunperiode',date('Y'));
 			$this->session->set_flashdata('kodepayroll',1);
+		}else{
+			$this->session->set_flashdata('bulanperiode',date('m'));
+			$this->session->set_flashdata('tahunperiode',date('Y'));
+			$this->session->set_flashdata('kodepayroll',1);
 		}
 		$data['datapayroll'] = $this->mpayroll->getdata()->result_array();
 		$footer['modul'] = 'payroll';
@@ -37,16 +41,15 @@ class Payroll extends CI_Controller {
 		$this->load->view('page/payroll',$data);
 		$this->load->view('footer',$footer);
 	}
-	function addgaji($id){
-		$header['submodul'] = 3;
+	function prosespayroll(){
+		$header['submodul'] = 4;
 		$header['namalogpayroll']=$this->session->userdata('namalogpayroll');
-		$data['datapersonil'] = $this->mpersonil->getdatasatu($id)->result_array();
-		$data['gajisekarang'] = $this->mmastergaji->getdatasatu($id)->result_array();
-		$data['listgaji'] = $this->mmastergaji->daftargajisatu($id)->result_array();
-		$data['urlnya'] = base_url().'mastergaji/simpangaji';
-		$footer['modul'] = 'mastergaji';
+		$data['kodepayroll'] = $this->session->flashdata('kodepayroll');
+		$data['bulanperiode'] = $this->session->flashdata('bulanperiode');
+		$data['tahunperiode'] = $this->session->flashdata('tahunperiode');
+		$footer['modul'] = 'payroll';
 		$this->load->view('header',$header);
-		$this->load->view('page/addgaji',$data);
+		$this->load->view('page/prosespayroll',$data);
 		$this->load->view('footer',$footer);		
 	}
 	function getdatasatu(){

@@ -13,7 +13,7 @@
                                     <div class="form-inline">
                                         <select class="form-control small flat kecil mr-1 font-kecil hitam" id="kodepayroll" name="kodepayroll">
                                             <?= $k = $this->session->flashdata('kodepayroll'); ?>
-                                            <option <?php if($k==1){ echo "selected";} ?>>Salary</option>
+                                            <option <?php if($k==1){ echo "selected";} ?>>SALARY</option>
                                             <option <?php if($k==2){ echo "selected";} ?>>THR</option>
                                             <option <?php if($k==3){ echo "selected";} ?>>Bonus</option>
                                         </select>
@@ -33,7 +33,7 @@
                                             <option <?php if($l==10){ echo "selected";} ?>>Desember</option>
                                         </select>
                                         <input type="text" class="form-control small flat kecil font-kecil mr-2" style="width: 60px;" name="tahunperiode" id="tahunperiode" value="<?= $this->session->flashdata('tahunperiode') ?>">
-                                        <a href="#" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="prosespayroll">
+                                        <a href="<?= base_url().'payroll/prosespayroll' ?>" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="prosespayroll">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-plus"></i>
                                             </span>
