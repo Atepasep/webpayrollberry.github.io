@@ -29,11 +29,11 @@ class Payroll extends CI_Controller {
 			//$data['tahunperiode'] = date('Y');
 			$this->session->set_flashdata('bulanperiode',date('m'));
 			$this->session->set_flashdata('tahunperiode',date('Y'));
-			$this->session->set_flashdata('kodepayroll',1);
+			$this->session->set_flashdata('kodepayroll','SALARY');
 		}else{
 			$this->session->set_flashdata('bulanperiode',date('m'));
 			$this->session->set_flashdata('tahunperiode',date('Y'));
-			$this->session->set_flashdata('kodepayroll',1);
+			$this->session->set_flashdata('kodepayroll','SALARY');
 		}
 		$data['datapayroll'] = $this->mpayroll->getdata()->result_array();
 		$footer['modul'] = 'payroll';
@@ -47,10 +47,16 @@ class Payroll extends CI_Controller {
 		$data['kodepayroll'] = $this->session->flashdata('kodepayroll');
 		$data['bulanperiode'] = $this->session->flashdata('bulanperiode');
 		$data['tahunperiode'] = $this->session->flashdata('tahunperiode');
+		$data['urlnya'] = base_url().'payroll/simpanpayroll';
 		$footer['modul'] = 'payroll';
 		$this->load->view('header',$header);
 		$this->load->view('page/prosespayroll',$data);
 		$this->load->view('footer',$footer);		
+	}
+	function simpanpayroll(){
+		$hasil = $this->mpayroll->simpanpayroll();
+		$url = base_url().'payroll';
+		redirect($url);
 	}
 	function getdatasatu(){
 		$id = $_POST['id'];

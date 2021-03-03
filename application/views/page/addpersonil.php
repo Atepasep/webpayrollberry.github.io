@@ -143,6 +143,17 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <div class="form-group row" style="margin-bottom: 0px;">
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label-sm">PTKP</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="form-control form-control-sm flat warnahitam" name="ptkp" id="ptkp">
+                                                            <option>-- Daftar PTKP --</option>
+                                                            <?php foreach ($ptkp as $dataptkp) { ?>
+                                                                <option value="<?= $dataptkp['kodeptkp'] ?>" <?php if($xptkp==$dataptkp['kodeptkp']){ echo "selected"; } ?>><?= $dataptkp['kodeptkp'] ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Foto</label>
                                                     <div class="col-sm-9" style="text-align: center;">

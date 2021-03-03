@@ -12,6 +12,10 @@
 					 LEFT JOIN jabatan ON jabatan.id=karyawan.jabatan where karyawan.id =".$id." ");
 			return $hasil;
 		}
+		function getptkp(){
+			$hasil = $this->db->query("select * from ptkp");
+			return $hasil;
+		}
 		function simpanpersonil(){
 			$data = $_POST;
 			$data['noinduk'] = $this->input->post('noinduk');

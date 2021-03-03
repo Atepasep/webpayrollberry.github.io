@@ -35,6 +35,7 @@ class Personil extends CI_Controller {
 		$data['didik'] = $this->mdidik->getdata()->result_array();
 		$data['bagian'] = $this->mbagian->getdata()->result_array();
 		$data['jabatan'] = $this->mjabatan->getdata()->result_array();
+		$data['ptkp'] = $this->mpersonil->getptkp()->result_array();
 		$footer['modul'] = 'personil';
 		$data['id'] = null;
 		$data['noinduk'] = null;
@@ -51,6 +52,7 @@ class Personil extends CI_Controller {
 		$data['tglmasuk'] = null;
 		$data['xbagian'] = null;
 		$data['xjabatan'] = null;
+		$data['xptkp'] = null;
 		$data['profil'] = null;
 		$this->load->view('header',$header);
 		$this->load->view('page/addpersonil',$data);
@@ -63,6 +65,7 @@ class Personil extends CI_Controller {
 		$data['didik'] = $this->mdidik->getdata()->result_array();
 		$data['bagian'] = $this->mbagian->getdata()->result_array();
 		$data['jabatan'] = $this->mjabatan->getdata()->result_array();
+		$data['ptkp'] = $this->mpersonil->getptkp()->result_array();
 		$footer['modul'] = 'personil';
 		$datapersonil = $this->mpersonil->getdatasatu($id)->row_array();
 		$data['id'] = $id;
@@ -80,6 +83,7 @@ class Personil extends CI_Controller {
 		$data['tglmasuk'] = $datapersonil['tglmasuk'];
 		$data['xbagian'] = $datapersonil['bagian'];
 		$data['xjabatan'] = $datapersonil['jabatan'];
+		$data['xptkp'] = $datapersonil['ptkp'];
 		$data['profil'] = $datapersonil['profil'];
 		$this->load->view('header',$header);
 		$this->load->view('page/addpersonil',$data);

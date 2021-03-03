@@ -13,9 +13,9 @@
                                     <div class="form-inline">
                                         <select class="form-control small flat kecil mr-1 font-kecil hitam" id="kodepayroll" name="kodepayroll">
                                             <?= $k = $this->session->flashdata('kodepayroll'); ?>
-                                            <option <?php if($k==1){ echo "selected";} ?>>SALARY</option>
-                                            <option <?php if($k==2){ echo "selected";} ?>>THR</option>
-                                            <option <?php if($k==3){ echo "selected";} ?>>Bonus</option>
+                                            <option <?php if($k=='SALARY'){ echo "selected";} ?>>SALARY</option>
+                                            <option <?php if($k=='THR'){ echo "selected";} ?>>THR</option>
+                                            <option <?php if($k=='BONUS'){ echo "selected";} ?>>Bonus</option>
                                         </select>
                                         <select class="form-control small flat kecil mr-1 font-kecil hitam" id="bulanperiode" name="bulanperiode">
                                             <?= $l = $this->session->flashdata('bulanperiode'); ?>
@@ -33,7 +33,7 @@
                                             <option <?php if($l==10){ echo "selected";} ?>>Desember</option>
                                         </select>
                                         <input type="text" class="form-control small flat kecil font-kecil mr-2" style="width: 60px;" name="tahunperiode" id="tahunperiode" value="<?= $this->session->flashdata('tahunperiode') ?>">
-                                        <a href="<?= base_url().'payroll/prosespayroll' ?>" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="prosespayroll">
+                                        <a href="<?= base_url().'payroll/prosespayroll' ?>" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="xprosespayroll">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-plus"></i>
                                             </span>
@@ -82,8 +82,8 @@
                                                         <td class="kanan"><?= rupiah($data['tunjab'],0,',','.') ?></td>
                                                         <td class="kanan"><?= rupiah($data['tunskill'],0,',','.') ?></td>
                                                         <td style="text-align: center;">
-                                                            <a href="<?= base_url().'mastergaji/addgaji/'.$data['id_personil'] ?>" title="edit gaji <?= $data['nama'] ?>"><img src="<?= base_url().'assets/images/edit.png' ?>"></a>
-                                                            <a href="<?= base_url().'mastergaji/getview/'.$data['id_personil'] ?>" title="view gaji <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="View History Gaji" data-target="#modalBox" ><img src="<?= base_url().'assets/images/view.png' ?>"></a>
+                                                            <a href="<?= base_url().'mastergaji/addgaji/'.$data['id_karyawan'] ?>" title="edit gaji <?= $data['nama'] ?>"><img src="<?= base_url().'assets/images/edit.png' ?>"></a>
+                                                            <a href="<?= base_url().'mastergaji/getview/'.$data['id_karyawan'] ?>" title="view gaji <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="View History Gaji" data-target="#modalBox" ><img src="<?= base_url().'assets/images/view.png' ?>"></a>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>

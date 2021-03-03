@@ -14,11 +14,12 @@
                             <div class="row" style="clear: both;">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-6">
+                                    <form method="post" name="formprosespayroll" id="formprosespayroll" enctype="multipart/form-data" action="<?= $urlnya ?>">
                                     <div class="form-group row" style="margin-bottom: 0px;">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Kode</label>
                                         <div class="col-sm-9">
                                             <input type="hidden" name="code" id="code" value="<?= $kodepayroll ?>">
-                                            <input type="text" class="form-control form-control-sm flat warnahitam" name="xcode" id="xcode" placeholder="codepayroll" value="<?= getkodepayroll($kodepayroll) ?>">
+                                            <input type="text" class="form-control form-control-sm flat warnahitam" name="xcode" id="xcode" placeholder="codepayroll" value="<?= $kodepayroll ?>">
                                             <div class="invalid-feedback">
                                                 Kode Payroll Harap Di Isi
                                             </div>
@@ -80,6 +81,7 @@
                                             <span class="text">Batal</span>
                                         </a>
                                     </div>
+                                </form>
                                 </div>
                                 <div class="col-sm-3">
 

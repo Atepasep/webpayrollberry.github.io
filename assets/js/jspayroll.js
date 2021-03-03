@@ -27,3 +27,7 @@ $("#filekoperasi").change(function(){
 $("#filepathkoperasi").on('click',function(){
 	$("#carifilekoperasi").click();
 })
+$("#prosespayroll").on('click',function(){
+	alert('OK');
+	document.formprosespayroll.submit();
+})
