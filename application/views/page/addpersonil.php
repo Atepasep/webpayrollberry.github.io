@@ -86,9 +86,28 @@
                                                             alamat harap di isi
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>                                                
                                             </div>
                                             <div class="col-sm-6">
+                                                <div class="form-group row mt-2" style="margin-bottom: 0px;">
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Kontrak</label>
+                                                    <div class="col-sm-9">
+                                                        <div class="row">
+                                                            <div class="col-sm-2">
+                                                                <select class="form-control form-control-sm flat warnahitam" name="kontrak" id="kontrak">
+                                                                    <option value="1" <?php if($kontrak==1){ echo "selected"; } ?>>Ya</option>
+                                                                    <option value="0" <?php if($kontrak==0){ echo "selected"; } ?>>Tidak</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                <input type="text" class="form-control form-control-sm flat warnahitam  <?php if($kontrak==0){ echo "hilang";} ?>" name="kontrakuntil" id="kontrakuntil" placeholder="Kontrak sampai" value="<?= tglmysql($kontrakuntil) ?>">
+                                                                <div class="invalid-feedback">
+                                                                    Tanggal Lahir harap di isi
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="form-group row" style="margin-bottom: 0px;">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Pendidikan</label>
                                                     <div class="col-sm-9">
@@ -162,7 +181,7 @@
                                                         <div class="input-group input-group-flat">
                                                             <input type="text" name="lokfile" class="hilang" id="lokfile" value="" rel="<?= LOK_FOTO_USER ?>">
                                                             <input type="text" class="form-control flat hilang" name="file_path" id="file_path" autocomplete="off">
-                                                            <input type="file" name="logo" id="file" class="hidden hilang">
+                                                            <input type="file" name="logo" id="file" class="hidden hilang" accept=".jpg,.jpeg,.png,.bmp">
                                                             <input type="text" name="old_logo" id="old_logo" value="<?= $profil ?>" class="hilang">
                                                         </div>
                                                     </div>

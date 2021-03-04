@@ -24,16 +24,16 @@ class Payroll extends CI_Controller {
 	function index(){
 		$header['submodul'] = 4;
 		$header['namalogpayroll']=$this->session->userdata('namalogpayroll');
-		if(!$this->session->flashdata('bulanperiode')){
+		if(!$this->session->flashdata('kodepayroll')){
 			//$data['bulanperiode'] = date('m');
 			//$data['tahunperiode'] = date('Y');
 			$this->session->set_flashdata('bulanperiode',date('m'));
 			$this->session->set_flashdata('tahunperiode',date('Y'));
 			$this->session->set_flashdata('kodepayroll','SALARY');
 		}else{
-			$this->session->set_flashdata('bulanperiode',date('m'));
-			$this->session->set_flashdata('tahunperiode',date('Y'));
-			$this->session->set_flashdata('kodepayroll','SALARY');
+			$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+			$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+			$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
 		}
 		$data['datapayroll'] = $this->mpayroll->getdata()->result_array();
 		$data['count'] = count($data['datapayroll']);
@@ -42,22 +42,50 @@ class Payroll extends CI_Controller {
 		$this->load->view('page/payroll',$data);
 		$this->load->view('footer',$footer);
 	}
-	function prosespayroll(){
+	function clear(){
+		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+		$url = base_url().'payroll';
+		redirect($url);
+	}
+	function prosespayroll($id=0){
 		$header['submodul'] = 4;
 		$header['namalogpayroll']=$this->session->userdata('namalogpayroll');
+		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
 		$data['kodepayroll'] = $this->session->flashdata('kodepayroll');
 		$data['bulanperiode'] = $this->session->flashdata('bulanperiode');
 		$data['tahunperiode'] = $this->session->flashdata('tahunperiode');
-		$data['urlnya'] = base_url().'payroll/simpanpayroll';
+		if($id==1){
+			$data['urlnya'] = base_url().'payroll/simpanpayroll/1';
+			$data['tombol'] = "Reset dan Update";
+		}else{
+			$data['urlnya'] = base_url().'payroll/simpanpayroll';
+			$data['tombol'] = "Proses";
+		}
 		$footer['modul'] = 'payroll';
 		$this->load->view('header',$header);
 		$this->load->view('page/prosespayroll',$data);
 		$this->load->view('footer',$footer);		
 	}
-	function simpanpayroll(){
-		$hasil = $this->mpayroll->simpanpayroll();
+	function simpanpayroll($id=0){
+		$hasil = $this->mpayroll->simpanpayroll($id);
+		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
 		$url = base_url().'payroll';
 		redirect($url);
+	}
+	function ubahperiode(){
+		$kode = $_POST['kode'];
+		$bulan = $_POST['bulan'];
+		$tahun = $_POST['tahun'];
+		$this->session->set_flashdata('kodepayroll',$kode);
+		$this->session->set_flashdata('bulanperiode',$bulan);
+		$this->session->set_flashdata('tahunperiode',$tahun);
+		echo true;
 	}
 	function getdatasatu(){
 		$id = $_POST['id'];

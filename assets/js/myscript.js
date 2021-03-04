@@ -6,6 +6,7 @@ $(document).ready(function(){
 		//searching: false,
 		//info: false,
 		//scrollY: false
+		"pageLength" :50,
 		"language": {
             "lengthMenu": "Tampilkan _MENU_ rekod per halaman",
             "zeroRecords": "- Data belum tersedia -",
@@ -24,6 +25,7 @@ $(document).ready(function(){
 	});
 	$("#tgllahir").datepicker({autoclose: true,todayHighlight: true,format: 'dd-mm-yyyy'});
 	$("#tglmasuk").datepicker({autoclose: true,todayHighlight: true,format: 'dd-mm-yyyy'});
+	$("#kontrakuntil").datepicker({autoclose: true,todayHighlight: true,format: 'dd-mm-yyyy'});
 
 	$('#confirm-delete').on('show.bs.modal', function(e) {
 		var string = document.getElementById("confirm-delete").innerHTML;

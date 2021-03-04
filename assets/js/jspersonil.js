@@ -92,25 +92,6 @@ $("#savepersonil").click(function(){
 	if(jadi){
 		document.formpersonil.submit();
 	}
-	// var a = $("#kode").val();
-	// var b = $("#pendidikan").val();
-	// $.ajax({
-	// 	dataType : 'json',
-	// 	type : "POST",
-	// 	url : "didik/simpandidik",
-	// 	data : {kode:a,pendidikan:b},
-	// 	success : function(data){
-	// 		if (data.length > 0) {
-	// 			alert('Data berhasil disimpan');
-	// 			$("#data-tabelku tr").removeClass('aktif');
-	// 			var row = '<tr class="aktif" rel="'+data[0].id+'"><td>'+data[0].kode+'</td><td>'+data[0].pendidikan+'</td></tr>';
-	// 			$("#data-tabelku tr:last").after(row);
-	// 			$("#bataldidik").click();
-	// 		}else{
-	// 			alert('Data tidak berhasil di simpan');
-	// 		}
-	// 	}
-	// })
 })
 // $("#aktiv").on('click',function(){
 // 	var onof = document.getElementById('aktiv').checked;
@@ -128,6 +109,14 @@ $("#savepersonil").click(function(){
 // 		$(this).attr('type','password');
 // 	}
 // })
+$("#kontrak").on('change',function(){
+	var kontrak = $(this).val();
+	if (kontrak==1) {
+		$("#kontrakuntil").removeClass('hilang');
+	}else{
+		$("#kontrakuntil").addClass('hilang');
+	}
+})
 $("#foto-profil").on('dblclick',function(){
 	$("#file").click();
 })

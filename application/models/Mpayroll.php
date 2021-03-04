@@ -19,7 +19,7 @@
 			$hasil = $this->db->query("select * from gaji where id_karyawan =".$id." ");
 			return $hasil;
 		}
-		function simpanpayroll(){
+		function simpanpayroll($id){
 			$data = $_POST;
 			$data['periode'] = $data['tahunperiode'].$data['bulanperiode'];
 			unset($data['bulanperiode']);
@@ -31,6 +31,9 @@
 			unset($data['filepathkoperasi']);
 			unset($data['filetransport']);
 			unset($data['filepathtransport']);
+			if($id=1){
+				$this->db->query("delete from payroll where periode = '".$data['periode']."' ");
+			}
 			$datakaryawan = $this->db->query("SELECT a.id AS xid_karyawan,a.nama,a.ptkp as kodeptkp,c.ptkp,b.* FROM karyawan a
 												LEFT JOIN gaji b on a.id = b.id_karyawan
 												LEFT JOIN ptkp c ON a.ptkp = c.kodeptkp

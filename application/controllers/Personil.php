@@ -53,6 +53,8 @@ class Personil extends CI_Controller {
 		$data['xbagian'] = null;
 		$data['xjabatan'] = null;
 		$data['xptkp'] = null;
+		$data['kontrak'] = null;
+		$data['kontrakuntil'] = null;
 		$data['profil'] = null;
 		$this->load->view('header',$header);
 		$this->load->view('page/addpersonil',$data);
@@ -84,6 +86,8 @@ class Personil extends CI_Controller {
 		$data['xbagian'] = $datapersonil['bagian'];
 		$data['xjabatan'] = $datapersonil['jabatan'];
 		$data['xptkp'] = $datapersonil['ptkp'];
+		$data['kontrak'] = $datapersonil['kontrak'];
+		$data['kontrakuntil'] = $datapersonil['kontrakuntil'];
 		$data['profil'] = $datapersonil['profil'];
 		$this->load->view('header',$header);
 		$this->load->view('page/addpersonil',$data);

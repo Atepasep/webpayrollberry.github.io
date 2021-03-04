@@ -14,6 +14,8 @@
                             <div class="row" style="clear: both;">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-6">
+                                    <div class="font-weight-bold" style="text-align: center;">ANDA AKAN MEMPROSES <?= strtoupper($this->session->flashdata('kodepayroll')) ?> PERIODE <?= namabulan($this->session->flashdata('bulanperiode')),' '.$this->session->flashdata('tahunperiode') ?> ?</div>
+                                    <hr class="small mt-2">
                                     <form method="post" name="formprosespayroll" id="formprosespayroll" enctype="multipart/form-data" action="<?= $urlnya ?>">
                                     <div class="form-group row" style="margin-bottom: 0px;">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Kode</label>
@@ -45,8 +47,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <hr class="small">
-                                    <div class="input-group">
+                                    <hr class="small hilang">
+                                    <div class="input-group hilang">
                                         <input type="file" name="filetransport" id="filetransport" accept=".DBF" class="hilang">
                                         <input type="text" class="form-control form-control-sm bg-light flat warnahitam" id="filepathtransport" placeholder="File transport (DBF)"
                                             aria-label="Search" aria-describedby="basic-addon2">
@@ -56,7 +58,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="input-group mt-2">
+                                    <div class="input-group mt-2 hilang">
                                         <input type="file" name="filekoperasi" id="filekoperasi" accept=".DBF" class="hilang">
                                         <input type="text" class="form-control form-control-sm bg-light flat warnahitam" id="filepathkoperasi" placeholder="File koperasi (DBF)"
                                             aria-label="Search" aria-describedby="basic-addon2">
@@ -66,15 +68,15 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <hr class="small mt-3">
+                                    <hr class="small mt-3v">
                                     <div style="text-align: center;">
                                         <a href="#" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="prosespayroll">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-angle-double-down"></i>
                                             </span>
-                                            <span class="text">Proses</span>
+                                            <span class="text"><?= $tombol ?></span>
                                         </a>
-                                        <a href="<?= base_url().'payroll' ?>" class="btn btn-danger btn-icon-split btn-sm flat font-kecil" id="prosespayroll">
+                                        <a href="<?= base_url().'payroll/clear' ?>" class="btn btn-danger btn-icon-split btn-sm flat font-kecil">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-arrow-circle-left"></i>
                                             </span>
