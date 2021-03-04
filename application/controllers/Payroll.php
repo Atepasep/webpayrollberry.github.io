@@ -36,6 +36,7 @@ class Payroll extends CI_Controller {
 			$this->session->set_flashdata('kodepayroll','SALARY');
 		}
 		$data['datapayroll'] = $this->mpayroll->getdata()->result_array();
+		$data['count'] = count($data['datapayroll']);
 		$footer['modul'] = 'payroll';
 		$this->load->view('header',$header);
 		$this->load->view('page/payroll',$data);

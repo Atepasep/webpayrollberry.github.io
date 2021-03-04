@@ -31,3 +31,7 @@ $("#prosespayroll").on('click',function(){
 	alert('OK');
 	document.formprosespayroll.submit();
 })
+$("#xprosespayroll").on('click',function(){
+	var x = $("#xprosespayroll span").innerhtml;
+	alert(x);
+})

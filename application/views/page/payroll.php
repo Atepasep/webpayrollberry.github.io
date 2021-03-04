@@ -7,7 +7,7 @@
                         <div class="col mr-2">
                             <div>
                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-3" style="float: left;">
-                                    Payroll Management <?= APPPATH ?><?= namabulan($this->session->flashdata('bulanperiode')),' '.$this->session->flashdata('tahunperiode') ?>
+                                    Payroll Management <?= namabulan($this->session->flashdata('bulanperiode')),' '.$this->session->flashdata('tahunperiode') ?>
                                 </div>
                                 <div style="float: right;">
                                     <div class="form-inline">
@@ -33,11 +33,11 @@
                                             <option <?php if($l==10){ echo "selected";} ?>>Desember</option>
                                         </select>
                                         <input type="text" class="form-control small flat kecil font-kecil mr-2" style="width: 60px;" name="tahunperiode" id="tahunperiode" value="<?= $this->session->flashdata('tahunperiode') ?>">
-                                        <a href="<?= base_url().'payroll/prosespayroll' ?>" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="xprosespayroll">
+                                        <a href="<?php if($count > 0){ echo base_url().'payroll/prosespayroll/x'; }else{ echo base_url().'payroll/prosespayroll'; } ?>" class="btn <?php if($count > 0){ echo "btn-danger"; }else{ echo "btn-success"; } ?> btn-icon-split btn-sm flat font-kecil" id="xprosespayroll">
                                             <span class="icon text-white-50">
-                                                <i class="fas fa-plus"></i>
+                                                <i class="fas <?php if($count > 0){ echo "fa-sync-alt"; }else{ echo "fa-plus"; } ?>"></i>
                                             </span>
-                                            <span class="text">Proses</span>
+                                            <span class="text kode"><?php if($count > 0){ echo "Update"; }else{ echo "Proses"; } ?></span>
                                         </a>
                                     </div>
                                 </div>
@@ -82,8 +82,7 @@
                                                         <td class="kanan"><?= rupiah($data['tunjab'],0,',','.') ?></td>
                                                         <td class="kanan"><?= rupiah($data['tunskill'],0,',','.') ?></td>
                                                         <td style="text-align: center;">
-                                                            <a href="<?= base_url().'mastergaji/addgaji/'.$data['id_karyawan'] ?>" title="edit gaji <?= $data['nama'] ?>"><img src="<?= base_url().'assets/images/edit.png' ?>"></a>
-                                                            <a href="<?= base_url().'mastergaji/getview/'.$data['id_karyawan'] ?>" title="view gaji <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="View History Gaji" data-target="#modalBox" ><img src="<?= base_url().'assets/images/view.png' ?>"></a>
+                                                            <a href="<?= base_url().'mastergaji/getview/'.$data['id_karyawan'] ?>" title="view gaji <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="View History Gaji" data-target="#modalBox" ><img src="<?= base_url().'assets/images/viewicon.png' ?>"></a>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
