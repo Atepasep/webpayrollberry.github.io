@@ -142,7 +142,7 @@
                                                         <td class="kanan"><?= rupiah($data['realthp'],0,',','.') ?></td>
                                                         <td class="kanan"><?= rupiah($data['biayabank'],0,',','.') ?></td>
                                                         <td style="text-align: center;">
-                                                            <a href="<?= base_url().'mastergaji/getview/'.$data['id_karyawan'] ?>" title="Edit payroll <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="Edit Payroll" data-target="#modalBox" ><img src="<?= base_url().'assets/images/pencil.png' ?>"></a>
+                                                            <a href="<?= base_url().'payroll/editview/'.$data['id'] ?>" title="Edit payroll <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="Edit Payroll" data-target="#modalBox" ><img src="<?= base_url().'assets/images/pencil.png' ?>"></a>
                                                             <a href="<?= base_url().'mastergaji/getview/'.$data['id_karyawan'] ?>" title="Send for Validation" data-remote="false" data-toggle="modal" data-title="Send for Validation" data-target="#modalBox" ><img src="<?= base_url().'assets/images/paper-plane.png' ?>"></a>
                                                             <a href="<?= base_url().'mastergaji/getview/'.$data['id_karyawan'] ?>" title="View PDF" data-remote="false" data-toggle="modal" data-title="Send for Validation" data-target="#modalBox" ><img src="<?= base_url().'assets/images/file-pdf-icon.png' ?>"></a>
                                                         </td>

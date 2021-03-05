@@ -93,7 +93,7 @@
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Kontrak</label>
                                                     <div class="col-sm-9">
                                                         <div class="row">
-                                                            <div class="col-sm-2">
+                                                            <div class="col-sm-3">
                                                                 <select class="form-control form-control-sm flat warnahitam" name="kontrak" id="kontrak">
                                                                     <option value="1" <?php if($kontrak==1){ echo "selected"; } ?>>Ya</option>
                                                                     <option value="0" <?php if($kontrak==0){ echo "selected"; } ?>>Tidak</option>
@@ -173,6 +173,45 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <div class="form-group row" style="margin-bottom: 0px;">
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label-sm">NPWP</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control form-control-sm flat warnahitam" name="npwp" id="npwp" placeholder="No NPWP" value="<?= $npwp ?>"> 
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row" style="margin-bottom: 0px;">
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label-sm">e-Fin</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control form-control-sm flat warnahitam" name="efin" id="efin" placeholder="No Efin" value="<?= $efin ?>"> 
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row" style="margin-bottom: 0px;">
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label-sm">No Rek</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control form-control-sm flat warnahitam" name="norek" id="norek" placeholder="No Rekening" value="<?= $norek ?>"> 
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row" style="margin-bottom: 0px;">
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Nama Bank</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control form-control-sm flat warnahitam" name="bank" id="bank" placeholder="Mandiri, BNI, BCA, Etc" value="<?= $bank ?>"> 
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row" style="margin-bottom: 0px;">
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Atas Nama</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control form-control-sm flat warnahitam" name="rekname" id="rekname" placeholder="" value="<?= $rekname ?>"> 
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row" style="margin-bottom: 0px;">
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Alamat Bank</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control form-control-sm flat warnahitam" id="bankadr" name="bankadr" placeholder="Jl."><?= $bankadr ?></textarea>
+                                                        <div class="invalid-feedback">
+                                                            alamat harap di isi
+                                                        </div>
+                                                    </div>
+                                                </div> 
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Foto</label>
                                                     <div class="col-sm-9" style="text-align: center;">

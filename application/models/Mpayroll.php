@@ -12,7 +12,14 @@
 			return $hasil;
 		}
 		function getdatasatu($id){
-			$hasil = $this->db->query("select * from gaji where id_karyawan =".$id." and sampai is null ");
+			$bl = $this->session->flashdata('bulanperiode');
+			$th = $this->session->flashdata('tahunperiode');
+			$py = $this->session->flashdata('kodepayroll');
+			$hasil = $this->db->query("SELECT a.nama,a.noinduk,c.jabatan as jabatan,d.bagian as bagian,b.* FROM karyawan a
+										LEFT JOIN payroll b ON a.id = b.id_karyawan 
+										LEFT JOIN jabatan c ON a.jabatan = c.id
+										LEFT JOIN bagian d ON a.bagian = d.id
+										WHERE b.code = '".$py."' AND b.periode = '".$th.$bl."' and b.id = ".$id);
 			return $hasil;
 		}
 		function daftargajisatu($id){

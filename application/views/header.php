@@ -32,7 +32,7 @@
 
 <body id="page-top">
  <div class="modal fade" id="modalBox" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class='modal-dialog modal-lg'>
+    <div class='modal-dialog modal-xl'>
         <div class='modal-content'>
           <div class='modal-header bg-info'>
             <!-- <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button> -->

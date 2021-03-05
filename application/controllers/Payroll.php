@@ -110,4 +110,18 @@ class Payroll extends CI_Controller {
 		$data['listgaji'] = $this->mmastergaji->daftargajisatu($id)->result_array();
 		$this->load->view('page/viewgaji',$data);
 	}
+	function editview($id){
+		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+		$temp = $this->mpayroll->getdatasatu($id)->row_array();
+		$data['noinduk'] = $temp['noinduk'];
+		$data['nama'] = $temp['nama'];
+		$data['bagian'] = $temp['bagian'];
+		$data['jabatan'] = $temp['jabatan'];
+		$data['gaji'] = $temp['gaji'];
+		$data['tunjab'] = $temp['tunjab'];
+		$data['tunskill'] = $temp['tunskill'];
+		$this->load->view('page/editpayroll',$data);
+	}
 }
