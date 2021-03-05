@@ -129,20 +129,20 @@
                                                         <td class="kanan"><?= rupiah($data['tunjab'],0,',','.') ?></td>
                                                         <td class="kanan"><?= rupiah($data['tunskill'],0,',','.') ?></td>
                                                         <td class="kanan"><?= rupiah($data['gaji']+$data['tunjab']+$data['tunskill'],0,',','.') ?></td>
-                                                        <td class="kanan"><?= rupiah($data['other'],0,',','.') ?></td>
-                                                        <td class="kanan"><?= rupiah($data['other'],0,',','.') ?></td>
-                                                        <td class="kanan"><?= rupiah($data['astek'],0,',','.') ?></td>
-                                                        <td class="kanan"><?= rupiah($data['jp'],0,',','.') ?></td>
-                                                        <td class="kanan"><?= rupiah($data['meal'],0,',','.') ?></td>
-                                                        <td class="kanan"><?= rupiah($data['transport'],0,',','.') ?></td>
-                                                        <td class="kanan"><?= rupiah($data['koperasi'],0,',','.') ?></td>
-                                                        <td class="kanan"><?= rupiah($data['thp'],0,',','.') ?></td>
-                                                        <td class="kanan"><?= rupiah($data['loan'],0,',','.') ?></td>
-                                                        <td class="kanan"><?= rupiah($data['bpjs'],0,',','.') ?></td>
-                                                        <td class="kanan"><?= rupiah($data['realthp'],0,',','.') ?></td>
-                                                        <td class="kanan"><?= rupiah($data['biayabank'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolomother<?= $data['id'] ?>"><?= rupiah($data['other'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolomstat<?= $data['id'] ?>"><?= rupiah($data['other'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolomastek<?= $data['id'] ?>"><?= rupiah($data['astek'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolomjp<?= $data['id'] ?>"><?= rupiah($data['jp'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolommeal<?= $data['id'] ?>"><?= rupiah($data['meal'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolomtransport<?= $data['id'] ?>"><?= rupiah($data['transport'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolomkoperasi<?= $data['id'] ?>"><?= rupiah($data['koperasi'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolomthp<?= $data['id'] ?>"><?= rupiah($data['thp'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolomloan<?= $data['id'] ?>"><?= rupiah($data['loan'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolombpjs<?= $data['id'] ?>"><?= rupiah($data['bpjs'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolomrealthp<?= $data['id'] ?>"><?= rupiah($data['realthp'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolombiayabank<?= $data['id'] ?>"><?= rupiah($data['biayabank'],0,',','.') ?></td>
                                                         <td style="text-align: center;">
-                                                            <a href="<?= base_url().'payroll/editview/'.$data['id'] ?>" title="Edit payroll <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="Edit Payroll" data-target="#modalBox" ><img src="<?= base_url().'assets/images/pencil.png' ?>"></a>
+                                                            <a href="<?= base_url().'payroll/editview/'.$data['id'] ?>" title="Edit payroll <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="Edit Payroll" data-target="#modalBox" ><img id="gambar<?= $data['id'] ?>" src="<?= base_url().'assets/images/pencil.png' ?>"></a>
                                                             <a href="<?= base_url().'mastergaji/getview/'.$data['id_karyawan'] ?>" title="Send for Validation" data-remote="false" data-toggle="modal" data-title="Send for Validation" data-target="#modalBox" ><img src="<?= base_url().'assets/images/paper-plane.png' ?>"></a>
                                                             <a href="<?= base_url().'mastergaji/getview/'.$data['id_karyawan'] ?>" title="View PDF" data-remote="false" data-toggle="modal" data-title="Send for Validation" data-target="#modalBox" ><img src="<?= base_url().'assets/images/file-pdf-icon.png' ?>"></a>
                                                         </td>

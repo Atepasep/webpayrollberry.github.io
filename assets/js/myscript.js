@@ -85,6 +85,9 @@ function pesan(jenis,pesan){
 		});
 }
 function rupiah(amount, decimalSeparator, thousandsSeparator, nDecimalDigits){  
+	if (amount==0) {
+		return '';
+	}else{
       var num = parseFloat( amount ); //convert to float  
       //default values  
       decimalSeparator = decimalSeparator || '.';  
@@ -100,7 +103,7 @@ function rupiah(amount, decimalSeparator, thousandsSeparator, nDecimalDigits){
       }else{  
         return fixed.replace('.', decimalSeparator);  
       }  
-        
+       }
     }
   function toAngka(rp){
     return rp.replace(/,*|\D/g,'');

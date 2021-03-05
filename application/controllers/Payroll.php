@@ -114,7 +114,8 @@ class Payroll extends CI_Controller {
 		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
 		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
 		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
-		$temp = $this->mpayroll->getdatasatu($id)->row_array();
+ 		$temp = $this->mpayroll->getdatasatu($id)->row_array();
+		$data['id'] = $id;
 		$data['noinduk'] = $temp['noinduk'];
 		$data['nama'] = $temp['nama'];
 		$data['bagian'] = $temp['bagian'];
@@ -122,6 +123,46 @@ class Payroll extends CI_Controller {
 		$data['gaji'] = $temp['gaji'];
 		$data['tunjab'] = $temp['tunjab'];
 		$data['tunskill'] = $temp['tunskill'];
+		$data['astek'] = $temp['astek'];
+		$data['jp'] = $temp['jp'];
+		$data['other'] = $temp['other'];
+		$data['bijab'] = $temp['bijab'];
+		$data['ptkp'] = $temp['ptkp'];
+		$data['pkp'] = $temp['pkp'];
+		$data['pphyear'] = $temp['pphyear'];
+		$data['pphmonth'] = $temp['pphmonth'];
+		$data['pphgovmnt'] = $temp['pphgovmnt'];
+		$data['meal'] = $temp['meal'];
+		$data['transport'] = $temp['transport'];
+		$data['koperasi'] = $temp['koperasi'];
+		$data['thp'] = $temp['thp'];
+		$data['loan'] = $temp['loan'];
+		$data['bpjs'] = $temp['bpjs'];
+		$data['realthp'] = $temp['realthp'];
+		$data['biayabank'] = $temp['biayabank'];
+		$data['jamsostek'] = $temp['jamsostek'];
+		$data['total'] = $temp['total'];
 		$this->load->view('page/editpayroll',$data);
+	}
+	function simpaneditpayroll(){
+		$id = $_POST['id'];
+		$other = $_POST['other'];
+		$astek = $_POST['astek'];
+		$jp = $_POST['jp'];
+		$bijab = $_POST['bijab'];
+		$pkp = $_POST['pkp'];
+		$pphyear = $_POST['pphyear'];
+		$pphmonth = $_POST['pphmonth'];
+		$pphgovmnt = $_POST['pphgovmnt'];
+		$meal = $_POST['meal'];
+		$transport = $_POST['transport'];
+		$koperasi = $_POST['koperasi'];
+		$thp = $_POST['thp'];
+		$loan = $_POST['loan'];
+		$realthp = $_POST['realthp'];
+		$biayabank = $_POST['biayabank'];
+		$jamsostek = $_POST['jamsostek'];
+		$hasil = $this->mpayroll->simpaneditpayroll($id,$other,$astek,$jp,$bijab,$pkp,$pphyear,$pphmonth,$pphgovmnt,$meal,$transport,$koperasi,$thp,$loan,$realthp,$biayabank,$jamsostek)->result();
+		echo json_encode($hasil);
 	}
 }
