@@ -63,7 +63,7 @@
                     <div class="form-group row mb-0">
                         <label for="inputEmail3" class="col-sm-4 col-form-label-sm">Astek</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm flat warnahitam" style="text-align: right;" name="astek" id="astek" value="<?= rupiah($astek,0,',','.') ?>" >
+                            <input type="text" class="form-control form-control-sm flat warnahitam " style="text-align: right;" name="astek" id="astek" value="<?= rupiah($astek,0,',','.') ?>" disabled>
                         </div>
                     </div>
                     <div class="form-group row mb-0">
@@ -139,7 +139,7 @@
                     <div class="form-group row mb-0">
                         <label for="inputEmail3" class="col-sm-4 col-form-label-sm">THP</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm flat warnahitam" style="text-align: right;" name="thp" id="thp" value="<?= rupiah($thp,0,',','.') ?>" >
+                            <input type="text" class="form-control form-control-sm flat warnahitam" style="text-align: right;" name="thp" id="thp" value="<?= rupiah($thp,0,',','.') ?>" readonly >
                         </div>
                     </div>
                     <div class="form-group row mb-0">
@@ -155,12 +155,6 @@
                         </div>
                     </div>
                     <div class="form-group row mb-0">
-                        <label for="inputEmail3" class="col-sm-4 col-form-label-sm">Real THP</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm flat warnahitam" style="text-align: right;" name="realthp" id="realthp" value="<?= rupiah($realthp,0,',','.') ?>" >
-                        </div>
-                    </div>
-                    <div class="form-group row mb-0">
                         <label for="inputEmail3" class="col-sm-4 col-form-label-sm">Biaya BANK</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control form-control-sm flat warnahitam" style="text-align: right;" name="biayabank" id="biayabank" value="<?= rupiah($biayabank,0,',','.') ?>" >
@@ -172,6 +166,7 @@
                             <input type="text" class="form-control form-control-sm flat warnahitam" style="text-align: right;" name="jamsostek" id="jamsostek" value="<?= rupiah($jamsostek,0,',','.') ?>" >
                         </div>
                     </div>
+                    <input type="hidden" name="editke" id="editke" value="<?= $editke ?>">
                 </div>
             </div>
 	    </div>
@@ -181,14 +176,14 @@
         <input type="hidden" name="lokimage" id="lokimage" value="<?= LOK_FOTO ?>">
         <div class="col-sm-6">
             <div class="form-group row mb-0">
-                <label for="inputEmail3" class="col-sm-4 col-form-label-sm">TOTAL</label>
+                <label for="inputEmail3" class="col-sm-4 col-form-label-sm">Real THP</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control form-control-sm flat warnahitam" style="text-align: right;" name="total" id="total" value="<?= rupiah($total,0,',','.') ?>" readonly>
+                    <input type="text" class="form-control form-control-sm flat warnahitam font-tebal" style="text-align: right;" name="realthp" id="realthp" value="<?= rupiah($realthp,0,',','.') ?>" readonly>
                 </div>
             </div>
         </div>
     	<div class="col-sm-6" style="text-align: right;margin-bottom: 10px;">
-            <a class="hilang" id="spinloading"><i class="fas fa-circle-notch fa-spin"></i> Loading</a>
+            <a class="" id="spinloading"><i class="fas fa-circle-notch fa-spin"></i> Loading</a>
             <a href="#" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="simpaneditpayrol">
                 <span class="icon text-white-50">
                     <i class="fas fa-save"></i>
@@ -205,60 +200,75 @@
     </div>
 </div>
 <script type="text/javascript">
+    $(document).ready(function(){
+        $("#spinloading").addClass('hilang');
+        $("#astek").removeAttr('disabled');
+    })
     $('#other').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $('#astek').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $('#jp').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $('#bijab').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $('#pkp').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $('#pphyear').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $('#pphmonth').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $('#pphgovmnt').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $('#meal').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $('#transport').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $('#koperasi').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $('#thp').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
@@ -269,11 +279,13 @@
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $('#bpjs').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $('#realthp').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
@@ -284,11 +296,13 @@
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $('#jamsostek').on('change click keyup input paste',(function (event) {
         $(this).val(function (index, value) {
             return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
+        hitungthp();
     }));
     $("#simpaneditpayrol").on('click',function(){
         var x = $("#id").val();
@@ -298,7 +312,7 @@
             dataType : 'json',
             type : "POST",
             url : "payroll/simpaneditpayroll",
-            data : {id :x,other:$("#other").val(),astek:$("#astek").val(),jp:$("#jp").val(),bijab:$("#bijab").val(),pkp:$("#pkp").val(),pphyear:$("#pphyear").val(),pphmonth:$("#pphmonth").val(),pphgovmnt:$("#pphgovmnt").val(),meal:$("#meal").val(),transport:$("#transport").val(),koperasi:$("#koperasi").val(),thp:$("#thp").val(),loan:$("#loan").val(),bpjs:$("#bpjs").val(),realthp:$("#realthp").val(),biayabank:$("#biayabank").val(),jamsostek:$("#jamsostek").val()},
+            data : {id :x,other:$("#other").val(),astek:$("#astek").val(),jp:$("#jp").val(),bijab:$("#bijab").val(),pkp:$("#pkp").val(),pphyear:$("#pphyear").val(),pphmonth:$("#pphmonth").val(),pphgovmnt:$("#pphgovmnt").val(),meal:$("#meal").val(),transport:$("#transport").val(),koperasi:$("#koperasi").val(),thp:$("#thp").val(),loan:$("#loan").val(),bpjs:$("#bpjs").val(),realthp:$("#realthp").val(),biayabank:$("#biayabank").val(),jamsostek:$("#jamsostek").val(),editke:$("#editke").val()},
             success : function(data){
                 if(data.length > 0){
                     $("#gambar"+x).attr('src',img+'pencil-valid.png');
@@ -312,10 +326,81 @@
                     document.getElementById('kolomloan'+x).innerHTML = rupiah(data[0].loan,'.',',',0);    
                     document.getElementById('kolombpjs'+x).innerHTML = rupiah(data[0].bpjs,'.',',',0);    
                     document.getElementById('kolomrealthp'+x).innerHTML = rupiah(data[0].realthp,'.',',',0);    
-                    document.getElementById('kolombiayabank'+x).innerHTML = rupiah(data[0].biayabank,'.',',',0);    
+                    document.getElementById('kolompphmonth'+x).innerHTML = rupiah(data[0].pphmonth,'.',',',0);  
                     $("#tombolkembali").click();
                 }
             }
         })
     })
+    $("#tombolkembali").click(function(){
+        $("#spinloading").removeClass('hilang');
+    })
+    function hitungthp(){
+        // REPLACE s.Thp        WITH _Gross+s.Other - (s.Astek+s.Jp+s.PphMonth) + s.Meal + s.Transport - s.Koperasi
+        var gross;
+        if($("#gross").val()==''){
+            gross = 0;
+        }else{
+            gross = toAngka($("#gross").val());
+        }
+        var astek;
+        if($("#astek").val()==''){
+            astek = 0;
+        }else{
+            astek = toAngka($("#astek").val());
+        }
+        var other;
+        if($("#other").val()==''){
+            other = 0;
+        }else{
+            other = toAngka($("#other").val());
+        }
+        var jp;
+        if($("#jp").val()==''){
+            jp = 0;
+        }else{
+            jp = toAngka($("#jp").val());
+        }
+        var pphmonth;
+        if($("#pphmonth").val()==''){
+            pphmonth = 0;
+        }else{
+            pphmonth = toAngka($("#pphmonth").val());
+        }
+        var meal;
+        if($("#meal").val()==''){
+            meal = 0;
+        }else{
+            meal = toAngka($("#meal").val());
+        }
+        var transport;
+        if($("#transport").val()==''){
+            transport = 0;
+        }else{
+            transport = toAngka($("#transport").val());
+        }
+        var koperasi;
+        if($("#koperasi").val()==''){
+            koperasi = 0;
+        }else{
+            koperasi = toAngka($("#koperasi").val());
+        }
+        var loan;
+        if($("#loan").val()==''){
+            loan = 0;
+        }else{
+            loan = toAngka($("#loan").val());
+        }
+        var bpjs;
+        if($("#bpjs").val()==''){
+            bpjs = 0;
+        }else{
+            bpjs = toAngka($("#bpjs").val());
+        }
+        hitung = parseFloat(gross)+parseFloat(other)-(parseFloat(astek)+parseFloat(jp)+parseFloat(pphmonth))+parseFloat(meal)+parseFloat(transport)-parseFloat(koperasi);
+        $("#thp").val(rupiah(hitung,'.',',',0));
+        // Realthp=thp-loan-bpjs
+        hitungreal = hitung-parseFloat(loan)-parseFloat(bpjs);
+        $("#realthp").val(rupiah(hitungreal,'.',',',0));
+    }
 </script>

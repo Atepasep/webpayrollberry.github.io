@@ -56,7 +56,7 @@
 				$data['jp'] = $gross>$maxgaji ? round($maxgaji*0.01) : round($gross*0.01);
 				$data['bijab'] = ($gross*0.05)<500000 ? $gross*0.05 : 500000; 
 				$data['ptkp'] = $karyawan['ptkp'];
-				$pkp = ((($gross-($data['astek']+$data['jp']+$data['bijab']))/1000)*1000)*12;
+				$pkp = ((($gross-($data['astek']+$data['jp']+$data['bijab']+$karyawan['ptkp']))/1000)*1000)*12;
 				$pphyear = 0;
 				if($pkp > 500000000){
 					$pphyear = 95000000+(($pkp-500000000)*0.3);
@@ -78,6 +78,7 @@
 				$data['pkp'] = $pkp < 0 ? 0 : $pkp/12;
 				$data['pphyear'] = $pphyear;
 				$data['pphmonth'] = round($pphyear/12);
+				$data['thp'] = $gross-($data['astek']+$data['jp']+$data['pphmonth']);
 				$kondisi1 = array('202004','202005','202006','202007','202008','202009','202010','202011','202012');
 				if (in_array($data['periode'], $kondisi1)) {
 					if (($gross*12) < 200000000) {
@@ -87,14 +88,14 @@
 						$data['thp'] = $gross+$data['other']-($data['astek']+$data['jp']+$data['pphmonth'])+$data['meal']+$data['transport']-$data['koperasi'];
 					}
 				}
-				$data['realthp'] = 0;
+				$data['realthp'] = $data['thp']; //-$data['loan']-$data['bpjs'];
 				$data['biayabank'] = 0;
 				$data['total'] = 0;
 				$this->db->insert('payroll',$data);
 			}
 			return true;
 		}
-		function simpaneditpayroll($id,$other,$astek,$jp,$bijab,$pkp,$pphyear,$pphmonth,$pphgovmnt,$meal,$transport,$koperasi,$thp,$loan,$realthp,$biayabank,$jamsostek){
+		function simpaneditpayroll($id,$other,$astek,$jp,$bijab,$pkp,$pphyear,$pphmonth,$pphgovmnt,$meal,$transport,$koperasi,$thp,$loan,$realthp,$biayabank,$jamsostek,$editke){
 			$data['other'] = keangka($other);
 			$data['astek'] = keangka($astek);
 			$data['jp'] = keangka($jp);
@@ -111,6 +112,7 @@
 			$data['realthp'] = keangka($realthp);
 			$data['biayabank'] = keangka($biayabank);
 			$data['jamsostek'] = keangka($jamsostek);
+			$data['editke'] = $editke+1;
 			$this->db->where('id',$id);
 			$hasil = $this->db->update('payroll',$data);
 			if($hasil){

@@ -66,8 +66,8 @@
                                                 <tr>
                                                     <th data-priority="1">NIK</th>
                                                     <th data-priority="2">Nama</th>
-                                                    <th data-priority="3" style="width: 10px;">H G</th>
-                                                    <th data-priority="4" style="width: 10px;">M H</th>
+                                                    <th data-priority="3" style="width: 10px;">HG</th>
+                                                    <th data-priority="4" style="width: 10px;">MH</th>
                                                     <th data-priority="5">Loc</th>
                                                     <th data-priority="6">Position</th>
                                                     <th>Basic Salary</th>
@@ -75,35 +75,9 @@
                                                     <th>Skill Allowance</th>
                                                     <th data-priority="5">Gross Salary</th>
                                                     <th>Other</th>
+                                                    <th>Stat</th>
                                                     <th>Astek</th>
                                                     <th>Jp</th>
-                                                    <th>Pph Month</th>
-                                                    <th>Meal</th>
-                                                    <th>Transport</th>
-                                                    <th>Koperasi</th>
-                                                    <th>thp</th>
-                                                    <th>Loan</th>
-                                                    <th>BPJS</th>
-                                                    <th data-priority="8">Real Thp</th>
-                                                    <th data-priority="7">Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>NIK</th>
-                                                    <th>Nama</th>
-                                                    <th>H G</th>
-                                                    <th>M H</th>
-                                                    <th>Loc</th>
-                                                    <th>Position</th>
-                                                    <th>Basic Salary</th>
-                                                    <th>Pos Allowance</th>
-                                                    <th>Skill Allowance</th>
-                                                    <th>Gross Salary</th>
-                                                    <th>Other</th>
-                                                    <th>Astek</th>
-                                                    <th>Jp</th>
-                                                    <th>PPh Month</th>
                                                     <th>Meal</th>
                                                     <th>Transport</th>
                                                     <th>Koperasi</th>
@@ -111,6 +85,34 @@
                                                     <th>Loan</th>
                                                     <th>BPJS</th>
                                                     <th>Real Thp</th>
+                                                    <th>Biaya bank</th>
+                                                    <th data-priority="7">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>NIK</th>
+                                                    <th>Nama</th>
+                                                    <th>HG</th>
+                                                    <th>MH</th>
+                                                    <th>Loc</th>
+                                                    <th>Position</th>
+                                                    <th>Basic Salary</th>
+                                                    <th>Pos Allowance</th>
+                                                    <th>Skill Allowance</th>
+                                                    <th>Gross Salary</th>
+                                                    <th>Other</th>
+                                                    <th>Stat</th>
+                                                    <th>Astek</th>
+                                                    <th>Jp</th>
+                                                    <th>Meal</th>
+                                                    <th>Transport</th>
+                                                    <th>Koperasi</th>
+                                                    <th>thp</th>
+                                                    <th>Loan</th>
+                                                    <th>BPJS</th>
+                                                    <th>Real Thp</th>
+                                                    <th>Biaya bank</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </tfoot>
@@ -128,16 +130,17 @@
                                                         <td class="kanan"><?= rupiah($data['tunskill'],0,',','.') ?></td>
                                                         <td class="kanan"><?= rupiah($data['gaji']+$data['tunjab']+$data['tunskill'],0,',','.') ?></td>
                                                         <td class="kanan" id="kolomother<?= $data['id'] ?>"><?= rupiah($data['other'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolomstat<?= $data['id'] ?>"><?= rupiah($data['other'],0,',','.') ?></td>
                                                         <td class="kanan" id="kolomastek<?= $data['id'] ?>"><?= rupiah($data['astek'],0,',','.') ?></td>
                                                         <td class="kanan" id="kolomjp<?= $data['id'] ?>"><?= rupiah($data['jp'],0,',','.') ?></td>
-                                                        <td class="kanan" id="kolompphmonth<?= $data['id'] ?>"><?= rupiah($data['pphmonth'],0,',','.') ?></td>
                                                         <td class="kanan" id="kolommeal<?= $data['id'] ?>"><?= rupiah($data['meal'],0,',','.') ?></td>
                                                         <td class="kanan" id="kolomtransport<?= $data['id'] ?>"><?= rupiah($data['transport'],0,',','.') ?></td>
                                                         <td class="kanan" id="kolomkoperasi<?= $data['id'] ?>"><?= rupiah($data['koperasi'],0,',','.') ?></td>
-                                                        <td class="kanan font-tebal text-danger" id="kolomthp<?= $data['id'] ?>"><?= rupiah($data['thp'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolomthp<?= $data['id'] ?>"><?= rupiah($data['thp'],0,',','.') ?></td>
                                                         <td class="kanan" id="kolomloan<?= $data['id'] ?>"><?= rupiah($data['loan'],0,',','.') ?></td>
                                                         <td class="kanan" id="kolombpjs<?= $data['id'] ?>"><?= rupiah($data['bpjs'],0,',','.') ?></td>
-                                                        <td class="kanan font-tebal" id="kolomrealthp<?= $data['id'] ?>"><?= rupiah($data['realthp'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolomrealthp<?= $data['id'] ?>"><?= rupiah($data['realthp'],0,',','.') ?></td>
+                                                        <td class="kanan" id="kolombiayabank<?= $data['id'] ?>"><?= rupiah($data['biayabank'],0,',','.') ?></td>
                                                         <td style="text-align: center;">
                                                             <a href="<?= base_url().'payroll/editview/'.$data['id'] ?>" title="Edit payroll <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="Edit Payroll" data-target="#modalBox" ><img id="gambar<?= $data['id'] ?>" src="<?= base_url().'assets/images/pencil.png' ?>"></a>
                                                             <a href="<?= base_url().'mastergaji/getview/'.$data['id_karyawan'] ?>" title="Send for Validation" data-remote="false" data-toggle="modal" data-title="Send for Validation" data-target="#modalBox" ><img src="<?= base_url().'assets/images/paper-plane.png' ?>"></a>

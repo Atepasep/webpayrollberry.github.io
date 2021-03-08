@@ -130,6 +130,7 @@ $("#data-tabelku tr").on('click',function(){
 			$("#old_logo").val(data[0].profil);
 			$("#lokfile").val(lokfile+data[0].profil);
 			$("#foto-profil").attr('src',lokfile+data[0].profil);
+			$("#xvalidasi").val(data[0].validasi);
 			//$("#pass").val(data[0].pass);
 			//getpass(data[0].id);
 		}

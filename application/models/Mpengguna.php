@@ -33,10 +33,12 @@
 			}else{
 				$data['profil'] = 'nophoto.png';
 			}
+			$data['validasi'] = $this->input->post('xvalidasi');
 			unset($data['old_logo']);
 			unset($data['file_path']);
 			unset($data['lokfile']);
 			unset($data['id']);
+			unset($data['xvalidasi']);
 			$simpan = $this->db->insert('pengguna',$data);
 			//getdatabykode($data['kode']);
 			if($simpan){
@@ -75,9 +77,11 @@
 			}else{
 				$data['profil'] = $data['old_logo'];
 			}
+			$data['validasi'] = $this->input->post('xvalidasi');
 			unset($data['old_logo']);
 			unset($data['file_path']);
 			unset($data['lokfile']);
+			unset($data['xvalidasi']);
 			$this->db->where('id',$data['id']);
 			$simpan = $this->db->update('pengguna',$data);
 			//$this->session->set_userdata('modulpayroll',$data['modul']);

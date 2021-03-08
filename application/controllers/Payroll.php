@@ -142,9 +142,13 @@ class Payroll extends CI_Controller {
 		$data['biayabank'] = $temp['biayabank'];
 		$data['jamsostek'] = $temp['jamsostek'];
 		$data['total'] = $temp['total'];
+		$data['editke'] = $temp['editke'];
 		$this->load->view('page/editpayroll',$data);
 	}
 	function simpaneditpayroll(){
+		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
 		$id = $_POST['id'];
 		$other = $_POST['other'];
 		$astek = $_POST['astek'];
@@ -162,7 +166,8 @@ class Payroll extends CI_Controller {
 		$realthp = $_POST['realthp'];
 		$biayabank = $_POST['biayabank'];
 		$jamsostek = $_POST['jamsostek'];
-		$hasil = $this->mpayroll->simpaneditpayroll($id,$other,$astek,$jp,$bijab,$pkp,$pphyear,$pphmonth,$pphgovmnt,$meal,$transport,$koperasi,$thp,$loan,$realthp,$biayabank,$jamsostek)->result();
+		$editke = $_POST['editke'];
+		$hasil = $this->mpayroll->simpaneditpayroll($id,$other,$astek,$jp,$bijab,$pkp,$pphyear,$pphmonth,$pphgovmnt,$meal,$transport,$koperasi,$thp,$loan,$realthp,$biayabank,$jamsostek,$editke)->result();
 		echo json_encode($hasil);
 	}
 }
