@@ -34,7 +34,7 @@
 			$data['jabatan'] = $this->input->post('jabatan');
 			$data['kontrak'] = $this->input->post('kontrak');
 			if($data['kontrak']==1){
-				$data['kontrakuntil'] = tglmysql($this->input->post('tgllahir'));
+				$data['kontrakuntil'] = tglmysql($this->input->post('kontrakuntil'));
 			}
 			$foto = $this->input->post('file_path');
 			if(!empty($foto)){
@@ -71,6 +71,10 @@
 			$data['tglmasuk'] = tglmysql($this->input->post('tglmasuk'));
 			$data['bagian'] = $this->input->post('bagian');
 			$data['jabatan'] = $this->input->post('jabatan');
+			$data['kontrak'] = $this->input->post('kontrak');
+			if($data['kontrak']==1){
+				$data['kontrakuntil'] = tglmysql($this->input->post('kontrakuntil'));
+			}
 			$foto = $this->input->post('file_path');
 			if(!empty($foto)){
 				$data['profil'] = $this->uploadLogo();

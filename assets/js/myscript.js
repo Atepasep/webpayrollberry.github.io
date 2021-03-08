@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	modalBox();
 	modalBox2();
+	modalBox3();
 
 	$(".datatable").DataTable({
 		//paging : false,
@@ -43,7 +44,7 @@ $(document).ready(function(){
 		var string2 = document.getElementById("confirm-delete").innerHTML;
 		var hasil2 = string2.replace("Konfirmasi", "&nbspKonfirmasi");
 		document.getElementById("confirm-delete").innerHTML = hasil2;
-		document.getElementById("test").innerHTML = $(e.relatedTarget).data('news');
+		document.getElementById("test2").innerHTML = $(e.relatedTarget).data('news');
 		$(this).find('.btn-oke').attr('href', $(e.relatedTarget).data('href'));
 	});
 })
@@ -59,6 +60,16 @@ function modalBox(){
 }
 function modalBox2(){
 	$('#modalBox-lg').on('show.bs.modal', function(e){
+		var link = $(e.relatedTarget);
+		var title = link.data('title');
+		var modal = $(this)
+		modal.find('.modal-title2').text(title)
+		$(this).find('.fetched-data').load(link.attr('href'));
+	});
+	return false;
+}
+function modalBox3(){
+	$('#modalBox-task').on('show.bs.modal', function(e){
 		var link = $(e.relatedTarget);
 		var title = link.data('title');
 		var modal = $(this)

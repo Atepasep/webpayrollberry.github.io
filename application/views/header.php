@@ -47,6 +47,17 @@
         <div class='modal-content'>
           <div class='modal-header bg-info'>
             <!-- <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button> -->
+            <h4 class='modal-title2 text-white' id='myModalLabel2'> Pengaturan Pengguna</h4>
+          </div>
+          <div class="fetched-data"></div>
+      </div>
+    </div>
+ </div>
+  <div class="modal fade" id="modalBox-task" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+          <div class='modal-header bg-info'>
+            <!-- <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button> -->
             <h4 class='modal-title text-white' id='myModalLabel'> Pengaturan Pengguna</h4>
           </div>
           <div class="fetched-data"></div>
@@ -78,6 +89,37 @@
                     <i class="fas fa-sign-out-alt"></i>
                 </span>
                 <span class="text">Batal</span>
+            </a>
+          <!-- <button type="button" class="btn btn-social btn-flat btn-warning btn-sm" data-dismiss="modal"><i class='fa fa-sign-out'></i> Tutup</button> -->
+        </div>
+    </div>
+  </div>
+</div>
+<div class='modal fade' id='confirm-task' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+      <div class='modal-header btn-info'>
+        <!-- <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button> -->
+        <h4 class='modal-title' id='myModalLabel'><i class='fa fa-exclamation-triangle text-danger'></i> Konfirmasi</h4>
+        </div>
+        <div class='modal-body' id="test2">
+            Apakah Anda yakin ingin menghapus data ini?
+        </div>
+        <div class='modal-footer'>
+<!--           <a class='btn-ok'>
+            <button type="button" class="btn btn-social btn-flat btn-danger btn-sm" id="ok-delete"><i class='fa fa-trash-o'></i> Hapus</button>
+          </a> -->
+            <a href="#" class="btn-oke btn btn-danger btn-icon-split btn-sm flat font-kecil" id="ok-delete">
+                <span class="icon text-white-50">
+                    <i class="fas fa-trash-alt"></i>
+                </span>
+                <span class="text">Ya</span>
+            </a>
+            <a href="#" class="btn btn-warning btn-icon-split btn-sm flat font-kecil"data-dismiss="modal">
+                <span class="icon text-white-50">
+                    <i class="fas fa-sign-out-alt"></i>
+                </span>
+                <span class="text">Tidak</span>
             </a>
           <!-- <button type="button" class="btn btn-social btn-flat btn-warning btn-sm" data-dismiss="modal"><i class='fa fa-sign-out'></i> Tutup</button> -->
         </div>

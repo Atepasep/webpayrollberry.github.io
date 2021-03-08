@@ -15,7 +15,7 @@
 			$bl = $this->session->flashdata('bulanperiode');
 			$th = $this->session->flashdata('tahunperiode');
 			$py = $this->session->flashdata('kodepayroll');
-			$hasil = $this->db->query("SELECT a.nama,a.noinduk,c.jabatan as jabatan,d.bagian as bagian,b.* FROM karyawan a
+			$hasil = $this->db->query("SELECT a.nama,a.noinduk,c.jabatan as jabatan,d.bagian as bagian,a.bank,a.bankadr,a.rekname,a.norek,b.* FROM karyawan a
 										LEFT JOIN payroll b ON a.id = b.id_karyawan 
 										LEFT JOIN jabatan c ON a.jabatan = c.id
 										LEFT JOIN bagian d ON a.bagian = d.id
@@ -120,19 +120,28 @@
 			}
 			return $query;
 		}
-		function hapuspersonil($id){
-			$hasil = $this->db->query("select profil from karyawan where id ='".$id."' ")->row();
-			$foto_old = $hasil->profil;
-			if ($foto_old!='nophoto.png') {
-				$fotodulu = FCPATH."assets/images/user/".$foto_old;
-				unlink($fotodulu);
-			}
+		function senddataok($id){
 			$this->db->where('id',$id);
-			$this->db->delete('karyawan');
+			$data['send'] = 1;
+			$hasil = $this->db->update('payroll',$data);
+			if($hasil){
+				$query = $this->db->query("select send from payroll where id = ".$id);
+			}
+			return $query;
 		}
-		function getpass($id){
-			$hasil = $this->db->query("select pass from pengguna where id = '".$id."' ")->row();
-			return decrypto($hasil->pass);
+		function senddatang($id){
+			$hasil = $this->db->query("update payroll set send=0 where id = ".$id." and hg=0 and mh=0");
+			// if($hasil){
+				$query = $this->db->query("select * from payroll where id = ".$id);
+			// }
+			return $query;
+		}
+		function sendall(){
+			$bl = $this->session->flashdata('bulanperiode');
+			$th = $this->session->flashdata('tahunperiode');
+			$py = $this->session->flashdata('kodepayroll');
+			$hasil = $this->db->query("update payroll set send=1 where code = '".$py."' and periode = '".$th.$bl."' ");
+			return $hasil;
 		}
 	}
 ?>

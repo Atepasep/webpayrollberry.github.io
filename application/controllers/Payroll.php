@@ -134,6 +134,10 @@ class Payroll extends CI_Controller {
 		$data['jamsostek'] = $temp['jamsostek'];
 		$data['total'] = $temp['total'];
 		$data['editke'] = $temp['editke'];
+		$data['bank'] = $temp['bank'];
+		$data['bankadr'] = $temp['bankadr'];
+		$data['rekname'] = $temp['rekname'];
+		$data['norek'] = $temp['norek'];
 		$this->load->view('page/viewdetail',$data);
 	}
 	function editview($id){
@@ -195,5 +199,49 @@ class Payroll extends CI_Controller {
 		$editke = $_POST['editke'];
 		$hasil = $this->mpayroll->simpaneditpayroll($id,$other,$astek,$jp,$bijab,$pkp,$pphyear,$pphmonth,$pphgovmnt,$meal,$transport,$koperasi,$thp,$loan,$realthp,$biayabank,$jamsostek,$editke)->result();
 		echo json_encode($hasil);
+	}
+	function senddata($id){
+		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+		$temp = $this->mpayroll->getdatasatu($id)->row_array();
+		$data['id'] = $id;
+		$data['noinduk'] = $temp['noinduk'];
+		$data['nama'] = $temp['nama'];
+		$this->load->view('page/senddata',$data);
+	}
+	function senddataok(){
+		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+		$id = $_POST['id'];
+		$hasil = $this->mpayroll->senddataok($id)->result();
+		echo json_encode($hasil);
+	}
+	function unsenddata($id){
+		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+		$temp = $this->mpayroll->getdatasatu($id)->row_array();
+		$data['id'] = $id;
+		$data['noinduk'] = $temp['noinduk'];
+		$data['nama'] = $temp['nama'];
+		$this->load->view('page/unsenddata',$data);
+	}
+	function senddatang(){
+		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+		$id = $_POST['id'];
+		$hasil = $this->mpayroll->senddatang($id)->result();
+		echo json_encode($hasil);
+	}	
+	function sendall(){
+		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+		$this->mpayroll->sendall();	
+		$url = base_url().'payroll';
+		redirect($url);
 	}
 }

@@ -40,7 +40,7 @@
                                                 </span>
                                                 <span class="text kode">Reset</span>
                                             </a>
-                                            <a href="<?= base_url().'payroll/prosespayroll/2' ?>" class="btn btn-secondary btn-icon-split btn-sm flat font-kecil ml-1" id="resetpayroll">
+                                            <a class="btn btn-secondary btn-icon-split btn-sm flat font-kecil ml-1" data-toggle="modal" data-target="#confirm-task" data-href="<?= base_url().'payroll/sendall' ?>" title="Send semua data" data-news="Apakah Anda yakin akan kirim semua data periode ini ?" style="cursor: pointer;">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-paper-plane"></i>
                                                 </span>
@@ -139,9 +139,10 @@
                                                         <td class="kanan" id="kolombpjs<?= $data['id'] ?>"><?= rupiah($data['bpjs'],0,',','.') ?></td>
                                                         <td class="kanan font-tebal" id="kolomrealthp<?= $data['id'] ?>"><?= rupiah($data['realthp'],0,',','.') ?></td>
                                                         <td style="text-align: center;">
-                                                            <a href="<?= base_url().'payroll/editview/'.$data['id'] ?>" title="Edit payroll <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="Edit Payroll" data-target="#modalBox" ><img id="gambar<?= $data['id'] ?>" src="<?= base_url().'assets/images/pencil.png' ?>"></a>
-                                                            <a href="<?= base_url().'mastergaji/getview/'.$data['id_karyawan'] ?>" title="Send for Validation" data-remote="false" data-toggle="modal" data-title="Send for Validation" data-target="#modalBox" ><img src="<?= base_url().'assets/images/paper-plane.png' ?>"></a>
+                                                            <a class="<?php if($data['send']==1){ echo "hilang"; }  ?>" id="tb1gambar<?= $data['id'] ?>" href="<?= base_url().'payroll/editview/'.$data['id'] ?>" title="Edit payroll <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="Edit Payroll" data-target="#modalBox" ><img id="gambar<?= $data['id'] ?>" src="<?php if($data['editke']>=1){ echo base_url().'assets/images/pencil-valid.png'; }else{ echo base_url().'assets/images/pencil.png'; } ?>"></a>
+                                                            <a class="<?php if($data['send']==1){ echo "hilang"; }  ?>" id="tb2gambar<?= $data['id'] ?>" data-toggle="modal" data-target="#modalBox-task" href="<?= base_url().'payroll/senddata/'.$data['id'] ?>" title="Kirim data" id="senddata" data-news="Apakah Anda yakin akan mengirim data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer;"><img src="<?= LOK_FOTO.'paper-plane.png' ?>"></a>
                                                             <a href="<?= base_url().'payroll/getview/'.$data['id'] ?>" title="View Detail" data-remote="false" data-toggle="modal" data-title="View Detail" data-target="#modalBox-lg" ><img src="<?= base_url().'assets/images/file-pdf-icon.png' ?>"></a>
+                                                            <a class="<?php if($data['send']==0 || ($data['hg']==1 || $data['mh']==1)){ echo "hilang"; }  ?>" id="tb3gambar<?= $data['id'] ?>" data-toggle="modal" data-target="#modalBox-task" href="<?= base_url().'payroll/unsenddata/'.$data['id'] ?>" title="Tarik data" id="unsenddata" data-news="Apakah Anda yakin akan menarik data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer;"><img src="<?= LOK_FOTO.'sync.png' ?>"></a>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
