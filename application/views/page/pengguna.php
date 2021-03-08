@@ -6,7 +6,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-3">
-                                Data Pengguna Aplikasi <?php echo LOK_FOTO_USER ?>
+                                Data Pengguna Aplikasi
                             </div>
                             <div class="row">
                                 <div class="col-sm-4">
@@ -135,9 +135,9 @@
                                             </div>
                                             <div class="card-footer kartuku">
                                                 <div class="form-group row font-kecil" style="margin-bottom: 0px;">
-                                                    <label for="inputEmail3" class="col-sm-2 col-form-label-sm">Validasi Payroll</label>
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Validasi Payroll</label>
                                                     <div class="col-sm-4">
-                                                        <select class="form-control form-control flat warnahitam" id="xvalidasi" name="xvalidasi">
+                                                        <select class="form-control form-control flat warnahitam" id="validasi" name="validasi" style="padding: : 0px;">
                                                             <option value='0'>-- No Validasi --</option>
                                                             <option value='1'>HG</option>
                                                             <option value='2'>MH</option>

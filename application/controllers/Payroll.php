@@ -102,13 +102,39 @@ class Payroll extends CI_Controller {
 		}
 	}
 	function getview($id){
-		$temp = $this->mpersonil->getdatasatu($id)->row_array();
-		$data['nama'] = $temp['nama'];
+		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+ 		$temp = $this->mpayroll->getdatasatu($id)->row_array();
+		$data['id'] = $id;
 		$data['noinduk'] = $temp['noinduk'];
-		$data['xbagian'] = $temp['xbagian'];
-		$data['xjabatan'] = $temp['xjabatan'];
-		$data['listgaji'] = $this->mmastergaji->daftargajisatu($id)->result_array();
-		$this->load->view('page/viewgaji',$data);
+		$data['nama'] = $temp['nama'];
+		$data['bagian'] = $temp['bagian'];
+		$data['jabatan'] = $temp['jabatan'];
+		$data['gaji'] = $temp['gaji'];
+		$data['tunjab'] = $temp['tunjab'];
+		$data['tunskill'] = $temp['tunskill'];
+		$data['astek'] = $temp['astek'];
+		$data['jp'] = $temp['jp'];
+		$data['other'] = $temp['other'];
+		$data['bijab'] = $temp['bijab'];
+		$data['ptkp'] = $temp['ptkp'];
+		$data['pkp'] = $temp['pkp'];
+		$data['pphyear'] = $temp['pphyear'];
+		$data['pphmonth'] = $temp['pphmonth'];
+		$data['pphgovmnt'] = $temp['pphgovmnt'];
+		$data['meal'] = $temp['meal'];
+		$data['transport'] = $temp['transport'];
+		$data['koperasi'] = $temp['koperasi'];
+		$data['thp'] = $temp['thp'];
+		$data['loan'] = $temp['loan'];
+		$data['bpjs'] = $temp['bpjs'];
+		$data['realthp'] = $temp['realthp'];
+		$data['biayabank'] = $temp['biayabank'];
+		$data['jamsostek'] = $temp['jamsostek'];
+		$data['total'] = $temp['total'];
+		$data['editke'] = $temp['editke'];
+		$this->load->view('page/viewdetail',$data);
 	}
 	function editview($id){
 		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));

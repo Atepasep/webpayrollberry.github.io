@@ -68,7 +68,7 @@
                                                     <th data-priority="2">Nama</th>
                                                     <th data-priority="3" style="width: 10px;">H G</th>
                                                     <th data-priority="4" style="width: 10px;">M H</th>
-                                                    <th data-priority="5">Loc</th>
+                                                    <th data-priority="9">Loc</th>
                                                     <th data-priority="6">Position</th>
                                                     <th>Basic Salary</th>
                                                     <th>Pos Allowance</th>
@@ -81,7 +81,7 @@
                                                     <th>Meal</th>
                                                     <th>Transport</th>
                                                     <th>Koperasi</th>
-                                                    <th>thp</th>
+                                                    <th data-priority="5">thp</th>
                                                     <th>Loan</th>
                                                     <th>BPJS</th>
                                                     <th data-priority="8">Real Thp</th>
@@ -141,7 +141,7 @@
                                                         <td style="text-align: center;">
                                                             <a href="<?= base_url().'payroll/editview/'.$data['id'] ?>" title="Edit payroll <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="Edit Payroll" data-target="#modalBox" ><img id="gambar<?= $data['id'] ?>" src="<?= base_url().'assets/images/pencil.png' ?>"></a>
                                                             <a href="<?= base_url().'mastergaji/getview/'.$data['id_karyawan'] ?>" title="Send for Validation" data-remote="false" data-toggle="modal" data-title="Send for Validation" data-target="#modalBox" ><img src="<?= base_url().'assets/images/paper-plane.png' ?>"></a>
-                                                            <a href="<?= base_url().'mastergaji/getview/'.$data['id_karyawan'] ?>" title="View PDF" data-remote="false" data-toggle="modal" data-title="Send for Validation" data-target="#modalBox" ><img src="<?= base_url().'assets/images/file-pdf-icon.png' ?>"></a>
+                                                            <a href="<?= base_url().'payroll/getview/'.$data['id'] ?>" title="View Detail" data-remote="false" data-toggle="modal" data-title="View Detail" data-target="#modalBox-lg" ><img src="<?= base_url().'assets/images/file-pdf-icon.png' ?>"></a>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>

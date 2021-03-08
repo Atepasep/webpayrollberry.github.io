@@ -33,7 +33,7 @@
 			}else{
 				$data['profil'] = 'nophoto.png';
 			}
-			$data['validasi'] = $this->input->post('xvalidasi');
+			$data['validasi'] = $this->input->post('validasi');
 			unset($data['old_logo']);
 			unset($data['file_path']);
 			unset($data['lokfile']);
@@ -77,7 +77,7 @@
 			}else{
 				$data['profil'] = $data['old_logo'];
 			}
-			$data['validasi'] = $this->input->post('xvalidasi');
+			$data['validasi'] = $this->input->post('validasi');
 			unset($data['old_logo']);
 			unset($data['file_path']);
 			unset($data['lokfile']);
