@@ -111,6 +111,10 @@
             <script src="<?= base_url().'assets/js/jspayroll.js' ?>"></script>
     <?php
             break;
+        case 'validasi' : ?>
+            <script src="<?= base_url().'assets/js/jsvalidasi.js' ?>"></script>
+    <?php
+            break;
         default:
             # code...
             break;

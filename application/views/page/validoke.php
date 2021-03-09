@@ -1,9 +1,9 @@
 <div class='modal-body' id="test">
 	<input type="hidden" name="idkirim" id="idkirim" value="<?= $id ?>">
-	Apakah Anda yakin akan membatalkan kirim data <strong>'<?= $nama ?>'</strong> ?
+	Apakah Anda yakin akan memvalidasi data <strong>'<?= $nama ?>'</strong> ?
 </div>
 <div class='modal-footer'>
-    <a href="#" class="btn-ok btn btn-success btn-icon-split btn-sm flat font-kecil" id="yaxkirim">
+    <a href="#" class="btn-ok btn btn-success btn-icon-split btn-sm flat font-kecil" id="yakirim">
         <span class="icon text-white-50">
             <i class="fas fa-check"></i>
         </span>
@@ -17,18 +17,17 @@
     </a>
 </div>
 <script type="text/javascript">
-	$("#yaxkirim").on('click',function(){
+	$("#yakirim").on('click',function(){
 		var xid = $("#idkirim").val();
 		$.ajax({
             dataType : 'json',
             type : "POST",
-            url : "payroll/senddatang",
+            url : "Validasi/valid",
             data : {id :xid},
             success : function(data){
                 if(data.length > 0){
-                    $("#tb1gambar"+xid).removeClass('hilang');
-                    $("#tb2gambar"+xid).removeClass('hilang');
-                    $("#tb3gambar"+xid).addClass('hilang');
+                    $("#tbvalid"+xid).removeClass('bg-warning');
+                    $("#tbvalid"+xid).addClass('bg-success');
                     $("#tombolkembali").click();
                 }
             }

@@ -148,7 +148,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <?php
-                $tif1 = "";$tif2 = ""; $tif3 = ""; $tif4 = "";
+                $tif1 = "";$tif2 = ""; $tif3 = ""; $tif4 = "";$tif5 = "";
                 switch ($submodul) {
                     case 1:
                         $tif1 = "active";
@@ -161,6 +161,9 @@
                         break;
                     case 4:
                         $tif4 = "active";
+                        break;
+                    case 5:
+                        $tif5 = "active";
                         break;
                     default:
                         $tif1 = "active";
@@ -233,8 +236,8 @@
                     <span>Payroll</span></a>
             </li>
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+            <li class="nav-item <?= $tif5 ?>">
+                <a class="nav-link" href="<?= base_url().'validasi' ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Validasi</span></a>
             </li>

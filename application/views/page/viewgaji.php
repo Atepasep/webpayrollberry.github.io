@@ -1,5 +1,5 @@
 <div class="container-fluid" style="margin-top: 10px;">
-	<div class="row">
+	<div class="row font-kecil">
 	    <div class="col-sm-12">
 	    	<div class="form-group row mb-0">
 	            <label for="inputEmail3" class="col-sm-2 col-form-label-sm">Noinduk</label>
