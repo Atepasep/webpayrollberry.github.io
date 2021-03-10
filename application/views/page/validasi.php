@@ -33,16 +33,17 @@
                                             <option <?php if($l==10){ echo "selected";} ?> value="12">Desember</option>
                                         </select>
                                         <input type="text" class="form-control small flat kecil font-kecil" style="width: 60px;" name="tahunperiode" id="tahunperiode" value="<?= $this->session->flashdata('tahunperiode') ?>"> | <span class="font-kecil ml-2">Valid : </span> 
-                                        <select class="form-control small flat kecil mr-1 font-kecil hitam bg-warning" id="validby" name="validby">
-                                            <option value="hg">Hg</option>
-                                            <option value="mh">Mh</option>
+                                        <select class="form-control small flat kecil mr-1 font-kecil hitam bg-warning" id="validby" name="validby" <?php if($this->session->userdata('valid')!=0){echo 'disabled';} ?>>
+                                            <?= $m = $this->session->flashdata('kodevalid'); ?>
+                                            <option <?php if($m=='hg'){ echo "selected";} ?> value="hg">V-1</option>
+                                            <option <?php if($m=='mh'){ echo "selected";} ?> value="mh">V-2</option>
                                         </select>
-                                        <a href="<?= base_url().'payroll/prosespayroll' ?>" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="xprosespayroll">
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-check"></i>
-                                            </span>
-                                            <span class="text kode">Validasi All</span>
-                                        </a>
+                                        <a class="btn btn-success btn-icon-split btn-sm flat font-kecil ml-1" data-toggle="modal" data-target="#confirm-task" data-href="<?= base_url().'validasi/validall' ?>" title="Validasi semua data" data-news="Apakah Anda yakin akan validasi semua data periode ini ?" style="cursor: pointer;">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-check"></i>
+                                                </span>
+                                                <span class="text kode">Validasi All</span>
+                                            </a>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +83,11 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody id="data-tabelku">
-                                                <?php foreach($datavalidasi as $data){ ?>
+                                                <?php foreach($datavalidasi as $data){
+                                                    $kde = $this->session->flashdata('kodevalid'); 
+                                                    $by = $data[$kde]==1 ? 'bg-success' : 'bg-warning';
+                                                    $urrl= $data[$kde]==0 ? base_url().'validasi/validoke/'.$data['id'] : base_url().'validasi/unvalid/'.$data['id'];
+                                                 ?>
                                                     <tr>
                                                         <td class="font-kecil"><?= $data['noinduk'] ?></td>
                                                         <td class="font-kecil"><?= $data['nama'] ?></td>
@@ -95,7 +100,7 @@
                                                         <td class="kanan font-tebal text-danger font-kecil" id="kolomthp<?= $data['id'] ?>"><?= rupiah($data['thp'],0,',','.') ?></td>
                                                         <td class="kanan font-tebal font-kecil" id="kolomrealthp<?= $data['id'] ?>"><?= rupiah($data['realthp'],0,',','.') ?></td>
                                                         <td style="text-align: center;">
-                                                            <a id="tbvalid<?= $data['id'] ?>" data-toggle="modal" data-target="#modalBox-task" href="<?= base_url().'validasi/validoke/'.$data['id'] ?>" title="Tarik data" id="unsenddata" data-news="Apakah Anda yakin akan menarik data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer; text-decoration: none;" class="bg-warning warnahitam">validasi</a>
+                                                            <a id="tbvalid<?= $data['id'] ?>" data-toggle="modal" data-target="#modalBox-task" href="<?= $urrl ?>" title="Tarik data" id="unsenddata" data-news="Apakah Anda yakin akan menarik data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer; text-decoration: none;" class="<?= $by ?> warnahitam">validasi</a>
                                                             <a href="<?= base_url().'payroll/getview/'.$data['id'] ?>" title="View Detail" data-remote="false" data-toggle="modal" data-title="View Detail" data-target="#modalBox-lg" ><img src="<?= base_url().'assets/images/file-pdf-icon.png' ?>"></a>
                                                         </td>
                                                     </tr>

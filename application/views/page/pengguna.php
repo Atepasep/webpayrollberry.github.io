@@ -139,8 +139,8 @@
                                                     <div class="col-sm-4">
                                                         <select class="form-control form-control flat warnahitam" id="validasi" name="validasi" style="padding: : 0px;">
                                                             <option value='0'>-- No Validasi --</option>
-                                                            <option value='1'>HG</option>
-                                                            <option value='2'>MH</option>
+                                                            <option value='1'>V-1</option>
+                                                            <option value='2'>V-2</option>
                                                         </select>
                                                     </div>
                                                 </div>

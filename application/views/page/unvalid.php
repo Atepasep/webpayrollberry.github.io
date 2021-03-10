@@ -1,9 +1,9 @@
 <div class='modal-body' id="test">
 	<input type="hidden" name="idkirim" id="idkirim" value="<?= $id ?>">
-	Apakah Anda yakin akan memvalidasi data <strong>'<?= $nama ?>'</strong> ?
+	Apakah Anda yakin akan membatalkan validasi data <strong>'<?= $nama ?>'</strong> ?
 </div>
 <div class='modal-footer'>
-    <a href="#" class="btn-ok btn btn-success btn-icon-split btn-sm flat font-kecil" id="yakirim">
+    <a href="#" class="btn-ok btn btn-success btn-icon-split btn-sm flat font-kecil" id="yaxkirim">
         <span class="icon text-white-50">
             <i class="fas fa-check"></i>
         </span>
@@ -17,18 +17,18 @@
     </a>
 </div>
 <script type="text/javascript">
-	$("#yakirim").on('click',function(){
+	$("#yaxkirim").on('click',function(){
 		var xid = $("#idkirim").val();
 		$.ajax({
             dataType : 'json',
             type : "POST",
-            url : "Validasi/valid",
+            url : "validasi/unvalidoke",
             data : {id :xid},
             success : function(data){
                 if(data.length > 0){
-                    $("#tbvalid"+xid).removeClass('bg-warning');
-                    $("#tbvalid"+xid).addClass('bg-success');
-                    $("#tbvalid"+xid).attr('href','validasi/unvalid/'+xid);
+                    $("#tbvalid"+xid).removeClass('bg-success');
+                    $("#tbvalid"+xid).addClass('bg-warning');
+                    $("#tbvalid"+xid).attr('href','validasi/validoke/'+xid);
                     $("#tombolkembali").click();
                 }
             }

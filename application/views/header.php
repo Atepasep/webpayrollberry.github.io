@@ -58,7 +58,7 @@
         <div class='modal-content'>
           <div class='modal-header bg-info'>
             <!-- <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button> -->
-            <h4 class='modal-title text-white' id='myModalLabel'> Pengaturan Pengguna</h4>
+            <h4 class='modal-title text-white' id='myModalLabel3'> Pengaturan Pengguna</h4>
           </div>
           <div class="fetched-data"></div>
       </div>
@@ -148,7 +148,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <?php
-                $tif1 = "";$tif2 = ""; $tif3 = ""; $tif4 = "";$tif5 = "";
+                $tif1 = "";$tif2 = ""; $tif3 = ""; $tif4 = "";$tif5 = "";$tif6 = "";
                 switch ($submodul) {
                     case 1:
                         $tif1 = "active";
@@ -164,6 +164,9 @@
                         break;
                     case 5:
                         $tif5 = "active";
+                        break;
+                    case 6:
+                        $tif6 = "active";
                         break;
                     default:
                         $tif1 = "active";
@@ -199,7 +202,6 @@
                         <a class="collapse-item" href="<?= base_url().'didik' ?>">Pendidikan</a>
                         <a class="collapse-item" href="<?= base_url().'bagian' ?>">Bagian</a>
                         <a class="collapse-item" href="<?= base_url().'jabatan' ?>">Jabatan</a>
-                        <a class="collapse-item" href="<?= base_url().'pengguna' ?>">User Aplikasi</a>
                     </div>
                 </div>
             </li>
@@ -221,6 +223,18 @@
                 </div>
             </li>
 
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                User
+            </div>
+
+            <li class="nav-item <?= $tif6 ?>">
+                <a class="nav-link" href="<?= base_url().'pengguna' ?>">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>User Aplikasi</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -231,22 +245,15 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item <?= $tif4 ?>">
-                <a class="nav-link" href="<?= base_url().'payroll' ?>">
+                <a class="nav-link" href="<?= base_url().'payroll/clear' ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Payroll</span></a>
             </li>
             <!-- Nav Item - Charts -->
             <li class="nav-item <?= $tif5 ?>">
-                <a class="nav-link" href="<?= base_url().'validasi' ?>">
+                <a class="nav-link" href="<?= base_url().'validasi/clear' ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Validasi</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url().'login/logout' ?>">
-                    <i class="fas fa-fw fa-door-open"></i>
-                    <span>Tables</span></a>
             </li>
 
             <!-- Divider -->

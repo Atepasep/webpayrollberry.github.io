@@ -19,16 +19,18 @@ class Validasi extends CI_Controller {
 	function index(){
 		$header['submodul'] = 5;
 		$header['namalogpayroll']=$this->session->userdata('namalogpayroll');
-		if(!$this->session->flashdata('kodepayroll')){
+		if(!$this->session->flashdata('kodevalid')){
 			//$data['bulanperiode'] = date('m');
 			//$data['tahunperiode'] = date('Y');
 			$this->session->set_flashdata('bulanperiode',date('m'));
 			$this->session->set_flashdata('tahunperiode',date('Y'));
 			$this->session->set_flashdata('kodepayroll','SALARY');
+			$this->session->set_flashdata('kodevalid','hg');
 		}else{
 			$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
 			$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
 			$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+			$this->session->set_flashdata('kodevalid',$this->session->flashdata('kodevalid'));
 		}
 		$data['datavalidasi'] = $this->mvalidasi->getdata()->result_array();
 		$data['count'] = count($data['datavalidasi']);
@@ -41,45 +43,19 @@ class Validasi extends CI_Controller {
 		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
 		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
 		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
-		$url = base_url().'payroll';
-		redirect($url);
-	}
-	function prosespayroll($id=0){
-		$header['submodul'] = 4;
-		$header['namalogpayroll']=$this->session->userdata('namalogpayroll');
-		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
-		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
-		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
-		$data['kodepayroll'] = $this->session->flashdata('kodepayroll');
-		$data['bulanperiode'] = $this->session->flashdata('bulanperiode');
-		$data['tahunperiode'] = $this->session->flashdata('tahunperiode');
-		if($id==1){
-			$data['urlnya'] = base_url().'payroll/simpanpayroll/1';
-			$data['tombol'] = "Reset dan Update";
-		}else{
-			$data['urlnya'] = base_url().'payroll/simpanpayroll';
-			$data['tombol'] = "Proses";
-		}
-		$footer['modul'] = 'payroll';
-		$this->load->view('header',$header);
-		$this->load->view('page/prosespayroll',$data);
-		$this->load->view('footer',$footer);		
-	}
-	function simpanpayroll($id=0){
-		$hasil = $this->mpayroll->simpanpayroll($id);
-		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
-		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
-		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
-		$url = base_url().'payroll';
+		$this->session->set_flashdata('kodevalid',$this->session->flashdata('kodevalid'));
+		$url = base_url().'validasi';
 		redirect($url);
 	}
 	function ubahperiode(){
 		$kode = $_POST['kode'];
 		$bulan = $_POST['bulan'];
 		$tahun = $_POST['tahun'];
+		$valid = $_POST['valid'];
 		$this->session->set_flashdata('kodepayroll',$kode);
 		$this->session->set_flashdata('bulanperiode',$bulan);
 		$this->session->set_flashdata('tahunperiode',$tahun);
+		$this->session->set_flashdata('kodevalid',$valid);
 		echo true;
 	}
 	function getdatasatu(){
@@ -87,20 +63,11 @@ class Validasi extends CI_Controller {
 		$hasil = $this->mpengguna->getdatasatu($id)->result();
 		echo json_encode($hasil);
 	}
-	function simpangaji(){
-		$hasil = $this->mmastergaji->simpangaji();
-		if($hasil->num_rows() > 0){
-			$jadi = $hasil->row(); //$this->mpengguna->getdatabykode($kode)->row();
-			$this->session->set_flashdata('kodeid',$jadi->id);
-			$url = base_url().'mastergaji';
-			redirect($url);
-		}
-	}
 	function getview($id){
 		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
 		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
 		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
- 		$temp = $this->mpayroll->getdatasatu($id)->row_array();
+ 		$temp = $this->mvalidasi->getdatasatu($id)->row_array();
 		$data['id'] = $id;
 		$data['noinduk'] = $temp['noinduk'];
 		$data['nama'] = $temp['nama'];
@@ -135,70 +102,11 @@ class Validasi extends CI_Controller {
 		$data['norek'] = $temp['norek'];
 		$this->load->view('page/viewdetail',$data);
 	}
-	function editview($id){
-		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
-		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
-		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
- 		$temp = $this->mpayroll->getdatasatu($id)->row_array();
-		$data['id'] = $id;
-		$data['noinduk'] = $temp['noinduk'];
-		$data['nama'] = $temp['nama'];
-		$data['bagian'] = $temp['bagian'];
-		$data['jabatan'] = $temp['jabatan'];
-		$data['gaji'] = $temp['gaji'];
-		$data['tunjab'] = $temp['tunjab'];
-		$data['tunskill'] = $temp['tunskill'];
-		$data['astek'] = $temp['astek'];
-		$data['jp'] = $temp['jp'];
-		$data['other'] = $temp['other'];
-		$data['bijab'] = $temp['bijab'];
-		$data['ptkp'] = $temp['ptkp'];
-		$data['pkp'] = $temp['pkp'];
-		$data['pphyear'] = $temp['pphyear'];
-		$data['pphmonth'] = $temp['pphmonth'];
-		$data['pphgovmnt'] = $temp['pphgovmnt'];
-		$data['meal'] = $temp['meal'];
-		$data['transport'] = $temp['transport'];
-		$data['koperasi'] = $temp['koperasi'];
-		$data['thp'] = $temp['thp'];
-		$data['loan'] = $temp['loan'];
-		$data['bpjs'] = $temp['bpjs'];
-		$data['realthp'] = $temp['realthp'];
-		$data['biayabank'] = $temp['biayabank'];
-		$data['jamsostek'] = $temp['jamsostek'];
-		$data['total'] = $temp['total'];
-		$data['editke'] = $temp['editke'];
-		$this->load->view('page/editpayroll',$data);
-	}
-	function simpaneditpayroll(){
-		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
-		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
-		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
-		$id = $_POST['id'];
-		$other = $_POST['other'];
-		$astek = $_POST['astek'];
-		$jp = $_POST['jp'];
-		$bijab = $_POST['bijab'];
-		$pkp = $_POST['pkp'];
-		$pphyear = $_POST['pphyear'];
-		$pphmonth = $_POST['pphmonth'];
-		$pphgovmnt = $_POST['pphgovmnt'];
-		$meal = $_POST['meal'];
-		$transport = $_POST['transport'];
-		$koperasi = $_POST['koperasi'];
-		$thp = $_POST['thp'];
-		$loan = $_POST['loan'];
-		$realthp = $_POST['realthp'];
-		$biayabank = $_POST['biayabank'];
-		$jamsostek = $_POST['jamsostek'];
-		$editke = $_POST['editke'];
-		$hasil = $this->mpayroll->simpaneditpayroll($id,$other,$astek,$jp,$bijab,$pkp,$pphyear,$pphmonth,$pphgovmnt,$meal,$transport,$koperasi,$thp,$loan,$realthp,$biayabank,$jamsostek,$editke)->result();
-		echo json_encode($hasil);
-	}
 	function validoke($id){
 		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
 		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
 		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+		$this->session->set_flashdata('kodevalid',$this->session->flashdata('kodevalid'));
 		$temp = $this->mvalidasi->getdatasatu($id)->row_array();
 		$data['id'] = $id;
 		$data['noinduk'] = $temp['noinduk'];
@@ -209,34 +117,38 @@ class Validasi extends CI_Controller {
 		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
 		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
 		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+		$this->session->set_flashdata('kodevalid',$this->session->flashdata('kodevalid'));
 		$id = $_POST['id'];
 		$hasil = $this->mvalidasi->valid($id)->result();
 		echo json_encode($hasil);
 	}
-	function unsenddata($id){
+	function unvalid($id){
 		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
 		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
 		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
-		$temp = $this->mpayroll->getdatasatu($id)->row_array();
+		$this->session->set_flashdata('kodevalid',$this->session->flashdata('kodevalid'));
+		$temp = $this->mvalidasi->getdatasatu($id)->row_array();
 		$data['id'] = $id;
 		$data['noinduk'] = $temp['noinduk'];
 		$data['nama'] = $temp['nama'];
-		$this->load->view('page/unsenddata',$data);
+		$this->load->view('page/unvalid',$data);
 	}
-	function senddatang(){
+	function unvalidoke(){
 		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
 		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
 		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+		$this->session->set_flashdata('kodevalid',$this->session->flashdata('kodevalid'));
 		$id = $_POST['id'];
-		$hasil = $this->mpayroll->senddatang($id)->result();
+		$hasil = $this->mvalidasi->unvalidoke($id)->result();
 		echo json_encode($hasil);
 	}	
-	function sendall(){
+	function validall(){
 		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
 		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
 		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
-		$this->mpayroll->sendall();	
-		$url = base_url().'payroll';
+		$this->session->set_flashdata('kodevalid',$this->session->flashdata('kodevalid'));
+		$this->mvalidasi->validall();	
+		$url = base_url().'validasi';
 		redirect($url);
 	}
 }

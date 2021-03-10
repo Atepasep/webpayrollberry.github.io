@@ -17,7 +17,7 @@ class Pengguna extends CI_Controller {
 		$this->load->model('mpengguna');
 	}
 	function index(){
-		$header['submodul'] = 2;
+		$header['submodul'] = 6;
 		$header['namalogpayroll']=$this->session->userdata('namalogpayroll');
 		$data['datapengguna'] = $this->mpengguna->getdata()->result_array();
 		$data['urlsimpan'] = base_url().'pengguna/simpanpengguna';
