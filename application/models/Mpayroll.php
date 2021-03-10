@@ -41,7 +41,7 @@
 			if($id=1){
 				$this->db->query("delete from payroll where periode = '".$data['periode']."' ");
 			}
-			$datakaryawan = $this->db->query("SELECT a.id AS xid_karyawan,a.nama,a.ptkp as kodeptkp,c.ptkp,b.* FROM karyawan a
+			$datakaryawan = $this->db->query("SELECT a.id AS xid_karyawan,a.nama,a.ptkp as kodeptkp,a.kontrak,c.ptkp,b.* FROM karyawan a
 												LEFT JOIN gaji b on a.id = b.id_karyawan
 												LEFT JOIN ptkp c ON a.ptkp = c.kodeptkp
 												WHERE b.sampai IS null ")->result_array();
@@ -51,9 +51,13 @@
 				$data['tunjab'] = $karyawan['tunjab'];
 				$data['tunskill'] = $karyawan['tunskill'];
 				$gross = $data['gaji']+$data['tunjab']+$data['tunskill'];
-				$data['astek'] = round($gross*0.02);
+				$data['astek'] = $karyawan['kontrak']==1 ? 0 : round($gross*0.02);
 				$maxgaji = $data['periode'] == '202003' ? 8939700 : 8512400;
-				$data['jp'] = $gross>$maxgaji ? round($maxgaji*0.01) : round($gross*0.01);
+				if($karyawan['kontrak']==1){
+					$data['jp']=0;
+				}else{
+					$data['jp'] = $gross>$maxgaji ? round($maxgaji*0.01) : round($gross*0.01);
+				}
 				$data['bijab'] = ($gross*0.05)<500000 ? $gross*0.05 : 500000; 
 				$data['ptkp'] = $karyawan['ptkp'];
 				$pkp = ((($gross-($data['astek']+$data['jp']+$data['bijab']+$karyawan['ptkp']))/1000)*1000)*12;

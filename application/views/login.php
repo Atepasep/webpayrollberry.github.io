@@ -26,7 +26,7 @@
 
               <div class="success-msg">
                  <p style="font-size: 18px;">Selamat, anda berhasil login !</p>
-                 <a href="<?php if($this->session->userdata('valid')!=0){ base_url().'validasi/clear'}else{ base_url().'main' } ?>" class="btn btn-sm font-tebal" style="background-color: #5D3F32; color: white; border-radius: 0px;">Lanjutkan</a>
+                 <a href="<?php if($this->session->userdata('valid')!=0){ echo base_url().'validasi/clear';}else{ echo base_url().'main'; } ?>" class="btn btn-sm font-tebal" style="background-color: #5D3F32; color: white; border-radius: 0px;">Lanjutkan</a>
                  <a href="<?= base_url().'login/logout' ?>" class="btn btn-sm font-tebal" style="background-color: #e0d7d7; color: black; border-radius: 0px;">Kembali</a>
               </div>
            </div>

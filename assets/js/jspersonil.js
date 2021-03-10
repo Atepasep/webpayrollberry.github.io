@@ -79,6 +79,10 @@ $("#savepersonil").click(function(){
 		$("#alamat").addClass('is-invalid');
 		jadi = false;
 	}
+	if($("#ptkp").val()==''){
+		$("#ptkp").addClass('is-invalid');
+		jadi = false;
+	}
 	if($("#email").val()==''){
 		$("#email").addClass('is-invalid');
 		jadi = false;
@@ -91,6 +95,8 @@ $("#savepersonil").click(function(){
 	}
 	if(jadi){
 		document.formpersonil.submit();
+	}else{
+		pesan('warning','Semua data harus diisi');
 	}
 })
 // $("#aktiv").on('click',function(){

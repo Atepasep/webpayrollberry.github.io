@@ -28,6 +28,8 @@
                 if(data.length > 0){
                     $("#tbvalid"+xid).removeClass('bg-warning');
                     $("#tbvalid"+xid).addClass('bg-success');
+                    $("#tbvalid"+xid).attr('data-title','Batalkan Validasi');
+                    $("#tbvalid"+xid).attr('title','Batalkan Validasi');
                     $("#tbvalid"+xid).attr('href','validasi/unvalid/'+xid);
                     $("#tombolkembali").click();
                 }

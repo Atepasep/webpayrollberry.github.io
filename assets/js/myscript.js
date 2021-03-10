@@ -73,7 +73,7 @@ function modalBox3(){
 		var link = $(e.relatedTarget);
 		var title = link.data('title');
 		var modal = $(this)
-		modal.find('.modal-title').text(title)
+		modal.find('.modal-title3').text(title)
 		$(this).find('.fetched-data').load(link.attr('href'));
 	});
 	return false;
@@ -84,8 +84,8 @@ function pesan(jenis,pesan){
 		var head = "Information";
 	}else{
 		if(jenis == 'warning'){
-			//var warna = "#F6C23E";
-			var warna = "#17A2B8";
+			var warna = "#F6C23E";
+			//var warna = "#17A2B8";
 			var head = "Warning";
 		}else{
 			if(jenis == 'error'){
