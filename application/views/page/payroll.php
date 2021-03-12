@@ -7,7 +7,7 @@
                         <div class="col mr-2">
                             <div>
                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-3" style="float: left;">
-                                    Payroll Management <?= namabulan($this->session->flashdata('bulanperiode')),' '.$this->session->flashdata('tahunperiode') ?>
+                                    Payroll Management <?= namabulan($this->session->flashdata('bulanperiode')),' '.$this->session->flashdata('tahunperiode').$this->session->flashdata('kodepayroll') ?>
                                 </div>
                                 <div style="float: right;">
                                     <div class="form-inline">
