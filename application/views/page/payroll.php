@@ -7,7 +7,7 @@
                         <div class="col mr-2">
                             <div>
                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-3" style="float: left;">
-                                    Payroll Management <?= namabulan($this->session->flashdata('bulanperiode')),' '.$this->session->flashdata('tahunperiode').$this->session->flashdata('kodepayroll') ?>
+                                    Payroll Management <?= namabulan($this->session->flashdata('bulanperiode')),' '.$this->session->flashdata('tahunperiode').APPPATH ?>
                                 </div>
                                 <div style="float: right;">
                                     <div class="form-inline">
@@ -140,9 +140,10 @@
                                                         <td class="kanan font-kecil font-tebal" id="kolomrealthp<?= $data['id'] ?>"><?= rupiah($data['realthp'],0,',','.') ?></td>
                                                         <td style="text-align: center;">
                                                             <a class="<?php if($data['send']==1){ echo "hilang"; }  ?>" id="tb1gambar<?= $data['id'] ?>" href="<?= base_url().'payroll/editview/'.$data['id'] ?>" title="Edit payroll <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="Edit Payroll" data-target="#modalBox" ><img id="gambar<?= $data['id'] ?>" src="<?php if($data['editke']>=1){ echo base_url().'assets/images/pencil-valid.png'; }else{ echo base_url().'assets/images/pencil.png'; } ?>"></a>
-                                                            <a class="<?php if($data['send']==1){ echo "hilang"; }  ?>" id="tb2gambar<?= $data['id'] ?>" data-toggle="modal" data-target="#modalBox-task" href="<?= base_url().'payroll/senddata/'.$data['id'] ?>" title="Kirim data" data-title="Kirim data" id="senddata" data-news="Apakah Anda yakin akan mengirim data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer;"><img src="<?= LOK_FOTO.'paper-plane.png' ?>"></a>
+                                                            <a class="<?php if($data['send']==1){ echo "hilang"; }  ?>" id="tb2gambar<?= $data['id'] ?>" data-toggle="modal" data-target="#modalBox-task" href="<?= base_url().'payroll/senddata/'.$data['id'] ?>" title="Kirim data" data-title="Kirim data" data-news="Apakah Anda yakin akan mengirim data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer;"><img src="<?= LOK_FOTO.'paper-plane.png' ?>"></a>
                                                             <a href="<?= base_url().'payroll/getview/'.$data['id'] ?>" title="View Detail" data-remote="false" data-toggle="modal" data-title="View Detail" data-target="#modalBox-lg" ><img src="<?= base_url().'assets/images/file-pdf-icon.png' ?>"></a>
-                                                            <a class="<?php if($data['send']==0 || ($data['hg']==1 || $data['mh']==1)){ echo "hilang"; }  ?>" id="tb3gambar<?= $data['id'] ?>" data-toggle="modal" data-target="#modalBox-task" href="<?= base_url().'payroll/unsenddata/'.$data['id'] ?>" title="Tarik data" id="unsenddata" data-news="Apakah Anda yakin akan menarik data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer;"><img src="<?= LOK_FOTO.'sync.png' ?>"></a>
+                                                            <a class="<?php if($data['send']==0 || ($data['hg']==1 || $data['mh']==1)){ echo "hilang"; }  ?>" id="tb3gambar<?= $data['id'] ?>" data-toggle="modal" data-target="#modalBox-task" href="<?= base_url().'payroll/unsenddata/'.$data['id'] ?>" title="Tarik data" data-news="Apakah Anda yakin akan menarik data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer;"><img src="<?= LOK_FOTO.'sync.png' ?>"></a>
+                                                            <a class="<?php if($data['hg']==0 || $data['mh']==0){ echo "hilang"; }  ?>" rel="<?= $data['noinduk'] ?>" id="membuatpdf" href="#" style="cursor: pointer;"><img src="<?= LOK_FOTO.'mail-icon.png' ?>"></a>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>

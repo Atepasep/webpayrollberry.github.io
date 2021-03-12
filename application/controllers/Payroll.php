@@ -20,6 +20,7 @@ class Payroll extends CI_Controller {
 		$this->load->model('mbagian');
 		$this->load->model('mjabatan');
 		$this->load->model('mpayroll');
+		$this->load->library('pdf');
 	}
 	function index(){
 		$header['submodul'] = 4;
@@ -243,5 +244,79 @@ class Payroll extends CI_Controller {
 		$this->mpayroll->sendall();	
 		$url = base_url().'payroll';
 		redirect($url);
+	}
+ 	function kirimemail(){
+	    //pengaturan email
+	    $this->load->library('email');//panggil library email codeigniter
+	    $config = array(
+	        'protocol' => 'smtp',
+	        'smtp_host' => 'smtp.gmail.com',
+	        'smtp_port' => 587,
+	        'smtp_user' => 'informasi.ifn@gmail.com',//alamat email gmail
+	        'smtp_pass' => 'akuanakbaik',//password email 
+	        'mailtype' => 'html',
+	        'charset' => 'iso-8859-1',
+	        'wordwrap' => TRUE
+	    );
+	    $message = "Hello World, this is test email by codeigniter";//ini adalah isi/body email
+	    $email = 'atep.saprudin86@gmail.com';//email penerima
+
+	    $this->email->initialize($config);
+	    $this->email->set_newline("\r\n");
+	    $this->email->from($config['smtp_user']);
+	    $this->email->to($email);
+	    $this->email->subject('Email verifikasi');//subjek email
+	    $this->email->message($message);
+	    
+	    //proses kirim email
+	    if($this->email->send()){
+	        $this->session->set_flashdata('message','Sukses kirim email');
+	        ?>
+	        <script type="text/javascript">alert('Kirim email berhasil');</script>
+	        <?php
+	    }else{ 
+	        $this->session->set_flashdata('message', $this->email->print_debugger());
+	        ?>
+	        <script type="text/javascript">Alert(<?php echo $this->session->flashdata('message'); ?>);</script>
+	        <?php 
+	    }
+	}
+	function buatpdf(){
+		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+		$id = $_POST['id'];
+		$namafile = $this->session->flashdata('kodepayroll').'_'.namabulan($this->session->flashdata('bulanperiode')).'_'.$this->session->flashdata('tahunperiode');
+		$file = LOK_FILE.$namafile.'_'.$id.'.pdf';
+        $pdf = new FPDF('p','mm','A5');
+        // membuat halaman baru
+        $pdf->AddPage();
+        // setting jenis font yang akan digunakan
+        $pdf->SetFont('Arial','B',14);
+        $pdf->Image(base_url().'assets/images/gambar.jpeg',10,10,-300);
+        // mencetak string 
+        $pdf->Cell(10,4,'',0,1);
+        $pdf->Cell(160,7,'PT. INDONEPTUNE NET MANUFACTURING',0,1,'L');
+        $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(190,7,'DAFTAR SISWA KELAS IX JURUSAN REKAYASA PERANGKAT LUNAK',0,1,'C');
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Arial','B',10);
+        $pdf->Cell(20,6,'NIM',1,0);
+        $pdf->Cell(85,6,'NAMA MAHASISWA',1,0);
+        $pdf->Cell(27,6,'NO HP',1,0);
+        $pdf->Cell(25,6,'TANGGAL LHR',1,1);
+        $pdf->SetFont('Arial','',10);
+        $mahasiswa = $this->db->get('karyawan')->result();
+        foreach ($mahasiswa as $row){
+            $pdf->Cell(20,6,$row->noinduk,1,0);
+            $pdf->Cell(85,6,$row->nama,1,0);
+            $pdf->Cell(27,6,$row->ptkp,1,0);
+            $pdf->Cell(25,6,$row->tgllahir,1,1); 
+        }
+        $pdf->Output($file,'F');
+        if(file_exists($file)){
+        	echo true;
+    	}
 	}
 }

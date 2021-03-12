@@ -49,3 +49,17 @@ $("#bulanperiode").on('change',function(){
 $("#tahunperiode").on('change',function(){
 	$("#kodepayroll").change();
 })
+$(document).on('click','#membuatpdf',function(){
+	var rel = $(this).attr('rel');
+	$.ajax({
+		dataType : 'json',
+		type : "POST",
+		url : "payroll/buatpdf",
+		data : {id : rel},
+		success : function(data){
+			if(data==1){
+				alert('Data berhasil dibuat pdf');
+			}
+		}
+	})
+})

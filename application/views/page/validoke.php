@@ -30,6 +30,7 @@
                     $("#tbvalid"+xid).addClass('bg-success');
                     $("#tbvalid"+xid).attr('data-title','Batalkan Validasi');
                     $("#tbvalid"+xid).attr('title','Batalkan Validasi');
+                    document.getElementById('tbvalid'+xid).innerHTML = "batal";
                     $("#tbvalid"+xid).attr('href','validasi/unvalid/'+xid);
                     $("#tombolkembali").click();
                 }

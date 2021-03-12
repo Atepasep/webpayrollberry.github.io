@@ -4,6 +4,7 @@
 	define('LOK_FOTO_USER',base_url().'assets/images/user/');
 	define('LOK_FOTO',base_url().'assets/images/');
 	define('LOK_UPLOAD_MESIN',"./assets/images/user/FOTO/");
+	define('LOK_FILE',"./assets/FILE/");
 
 	function max_upload(){
 		$max_filesize = (int) (ini_get('upload_max_filesize'));
