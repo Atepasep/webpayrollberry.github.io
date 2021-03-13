@@ -1,9 +1,9 @@
 <?php
 	class Mpayroll extends CI_Model {
 		function getdata(){
-			$bl = $this->session->flashdata('bulanperiode');
-			$th = $this->session->flashdata('tahunperiode');
 			$py = $this->session->flashdata('kodepayroll');
+			$bl = $this->session->flashdata('kodepayroll')=='SALARY' ? $this->session->flashdata('bulanperiode') : '00';
+			$th = $this->session->flashdata('tahunperiode');
 			$hasil = $this->db->query("SELECT a.nama,a.noinduk,c.jabatan as jabatan,d.bagian as bagian,b.* FROM karyawan a
 										LEFT JOIN payroll b ON a.id = b.id_karyawan 
 										LEFT JOIN jabatan c ON a.jabatan = c.id
@@ -12,9 +12,9 @@
 			return $hasil;
 		}
 		function getdatasatu($id){
-			$bl = $this->session->flashdata('bulanperiode');
-			$th = $this->session->flashdata('tahunperiode');
 			$py = $this->session->flashdata('kodepayroll');
+			$bl = $this->session->flashdata('kodepayroll')=='SALARY' ? $this->session->flashdata('bulanperiode') : '00';
+			$th = $this->session->flashdata('tahunperiode');
 			$hasil = $this->db->query("SELECT a.nama,a.noinduk,c.jabatan as jabatan,d.bagian as bagian,a.bank,a.bankadr,a.rekname,a.norek,b.* FROM karyawan a
 										LEFT JOIN payroll b ON a.id = b.id_karyawan 
 										LEFT JOIN jabatan c ON a.jabatan = c.id
@@ -29,6 +29,10 @@
 		function simpanpayroll($id){
 			$data = $_POST;
 			$data['periode'] = $data['tahunperiode'].$data['bulanperiode'];
+			if($data['code']!='SALARY'){
+				$data['periode'] = $data['tahunperiode'].'00';
+				$data['prc_bonus'] = $data['persenthrbonus'];
+			}
 			unset($data['bulanperiode']);
 			unset($data['tahunperiode']);
 			unset($data['xcode']);
@@ -38,10 +42,11 @@
 			unset($data['filepathkoperasi']);
 			unset($data['filetransport']);
 			unset($data['filepathtransport']);
+			unset($data['persenthrbonus']);
 			if($id=1){
 				$this->db->query("delete from payroll where periode = '".$data['periode']."' ");
 			}
-			$datakaryawan = $this->db->query("SELECT a.id AS xid_karyawan,a.nama,a.ptkp as kodeptkp,c.ptkp,b.* FROM karyawan a
+			$datakaryawan = $this->db->query("SELECT a.id AS xid_karyawan,a.nama,a.ptkp as kodeptkp,a.kontrak,c.ptkp,b.* FROM karyawan a
 												LEFT JOIN gaji b on a.id = b.id_karyawan
 												LEFT JOIN ptkp c ON a.ptkp = c.kodeptkp
 												WHERE b.sampai IS null ")->result_array();
@@ -50,10 +55,18 @@
 				$data['gaji'] = $karyawan['gaji'];
 				$data['tunjab'] = $karyawan['tunjab'];
 				$data['tunskill'] = $karyawan['tunskill'];
+				$data['other'] = 0;
+				$data['meal'] = 0;
+				$data['transport'] = 0;
+				$data['koperasi'] = 0;
 				$gross = $data['gaji']+$data['tunjab']+$data['tunskill'];
-				$data['astek'] = round($gross*0.02);
+				$data['astek'] = $karyawan['kontrak']==1 ? 0 : round($gross*0.02);
 				$maxgaji = $data['periode'] == '202003' ? 8939700 : 8512400;
-				$data['jp'] = $gross>$maxgaji ? round($maxgaji*0.01) : round($gross*0.01);
+				if($karyawan['kontrak']==1){
+					$data['jp']=0;
+				}else{
+					$data['jp'] = $gross>$maxgaji ? round($maxgaji*0.01) : round($gross*0.01);
+				}
 				$data['bijab'] = ($gross*0.05)<500000 ? $gross*0.05 : 500000; 
 				$data['ptkp'] = $karyawan['ptkp'];
 				$pkp = ((($gross-($data['astek']+$data['jp']+$data['bijab']+$karyawan['ptkp']))/1000)*1000)*12;
@@ -78,19 +91,19 @@
 				$data['pkp'] = $pkp < 0 ? 0 : $pkp/12;
 				$data['pphyear'] = $pphyear;
 				$data['pphmonth'] = round($pphyear/12);
-				$data['thp'] = $gross-($data['astek']+$data['jp']+$data['pphmonth']);
+				$data['thp'] = $gross+$data['other']-($data['astek']+$data['jp']+$data['pphmonth'])+$data['meal']+$data['transport']-$data['koperasi'];
 				$kondisi1 = array('202004','202005','202006','202007','202008','202009','202010','202011','202012');
 				if (in_array($data['periode'], $kondisi1)) {
 					if (($gross*12) < 200000000) {
 						$data['pphgovmnt'] = $data['pphmonth'];
 						$data['thp'] = $gross+$data['other']-($data['astek']+$data['jp']+$data['pphmonth'])+$data['meal']+$data['transport']-$data['koperasi']+$data['pphgovmnt'];
-					}else{
-						$data['thp'] = $gross+$data['other']-($data['astek']+$data['jp']+$data['pphmonth'])+$data['meal']+$data['transport']-$data['koperasi'];
-					}
+					} //else{
+					// 	$data['thp'] = $gross+$data['other']-($data['astek']+$data['jp']+$data['pphmonth'])+$data['meal']+$data['transport']-$data['koperasi'];
+					// }
 				}
 				$data['realthp'] = $data['thp']; //-$data['loan']-$data['bpjs'];
 				$data['biayabank'] = 0;
-				$data['total'] = 0;
+				$data['total'] = $data['realthp']+$data['biayabank'];
 				$this->db->insert('payroll',$data);
 			}
 			return true;

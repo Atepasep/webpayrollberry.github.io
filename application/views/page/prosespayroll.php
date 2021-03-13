@@ -27,7 +27,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group row" style="margin-bottom: 0px;">
+                                    <div class="form-group row <?php if($kodepayroll!='SALARY'){ echo 'hilang'; } ?>" style="margin-bottom: 0px;">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Periode Bulan</label>
                                         <div class="col-sm-9">
                                             <input type="hidden" name="bulanperiode" id="bulanperiode" value="<?= $bulanperiode ?>">
@@ -44,6 +44,15 @@
                                             <input type="text" class="form-control form-control-sm flat warnahitam" name="tahunperiode" id="tahunperiode" placeholder="bulanpayroll" value="<?= $tahunperiode ?>">
                                             <div class="invalid-feedback">
                                                 Kode Payroll Harap Di Isi
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row <?php if($kodepayroll=='SALARY'){ echo 'hilang'; } ?>" style="margin-bottom: 0px;">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Persentase</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control form-control-sm flat warnahitam" name="persenthrbonus" id="persenthrbonus" placeholder="% THR/Bonus" value="">
+                                            <div class="invalid-feedback">
+                                                Persen Harap Di Isi
                                             </div>
                                         </div>
                                     </div>

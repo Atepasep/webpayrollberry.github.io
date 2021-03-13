@@ -28,6 +28,9 @@
                 if(data.length > 0){
                     $("#tbvalid"+xid).removeClass('bg-success');
                     $("#tbvalid"+xid).addClass('bg-warning');
+                    $("#tbvalid"+xid).attr('data-title','Validasi data');
+                    $("#tbvalid"+xid).attr('title','Validasi data');
+                    document.getElementById('tbvalid'+xid).innerHTML = "validasi";
                     $("#tbvalid"+xid).attr('href','validasi/validoke/'+xid);
                     $("#tombolkembali").click();
                 }

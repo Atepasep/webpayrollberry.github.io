@@ -86,6 +86,8 @@
                                                 <?php foreach($datavalidasi as $data){
                                                     $kde = $this->session->flashdata('kodevalid'); 
                                                     $by = $data[$kde]==1 ? 'bg-success' : 'bg-warning';
+                                                    $ttl = $data[$kde]==1 ? 'Batal Validasi' : 'Validasi Data';
+                                                    $cpt = $data[$kde]==1 ? 'batal' : 'validasi';
                                                     $urrl= $data[$kde]==0 ? base_url().'validasi/validoke/'.$data['id'] : base_url().'validasi/unvalid/'.$data['id'];
                                                  ?>
                                                     <tr>
@@ -100,7 +102,7 @@
                                                         <td class="kanan font-tebal text-danger font-kecil" id="kolomthp<?= $data['id'] ?>"><?= rupiah($data['thp'],0,',','.') ?></td>
                                                         <td class="kanan font-tebal font-kecil" id="kolomrealthp<?= $data['id'] ?>"><?= rupiah($data['realthp'],0,',','.') ?></td>
                                                         <td style="text-align: center;">
-                                                            <a id="tbvalid<?= $data['id'] ?>" data-toggle="modal" data-target="#modalBox-task" href="<?= $urrl ?>" title="Tarik data" id="unsenddata" data-news="Apakah Anda yakin akan menarik data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer; text-decoration: none;" class="<?= $by ?> warnahitam">validasi</a>
+                                                            <a id="tbvalid<?= $data['id'] ?>" data-toggle="modal" data-target="#modalBox-task" href="<?= $urrl ?>" title="<?= $ttl ?>" data-title="Peringatan" id="unsenddata" data-news="Apakah Anda yakin akan menarik data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer; text-decoration: none;" class="<?= $by ?> warnahitam"><?= $cpt ?></a>
                                                             <a href="<?= base_url().'payroll/getview/'.$data['id'] ?>" title="View Detail" data-remote="false" data-toggle="modal" data-title="View Detail" data-target="#modalBox-lg" ><img src="<?= base_url().'assets/images/file-pdf-icon.png' ?>"></a>
                                                         </td>
                                                     </tr>
