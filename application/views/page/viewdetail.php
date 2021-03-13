@@ -116,7 +116,7 @@
                 <label for="inputEmail3" class="col-sm-5 col-form-label-sm">Gaji Kotor</label>
                 <div class="col-sm-1">Rp.</div>
                 <div class="col-sm-4" style="text-align: right;">
-                    <span>-</span>
+                    <span><?= rupiah($gaji+$tunjab+$tunskill,0) ?></span>
                 </div>
             </div>
             <div class="form-group row mb-0 warnahitam" style="height: 20px;">

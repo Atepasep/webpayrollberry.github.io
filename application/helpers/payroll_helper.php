@@ -79,4 +79,59 @@
 		}
 		return $hasil;
 	}
+	function simulasipajak($gaji,$tunjab,$tunskill,$thrbonus,$ptkp){
+			$xGross = ($gaji+$tunjab+$tunskill)*12;
+			$xAstek = $xGross*0.02;
+			$docek = $xGross>(8094000*12) ? (8094000*12) : $xGross;
+			$xJp = $docek * 0.01;
+			$xbijab = ($xGross*0.05)<6000000 ? $xGross*0.05 : 6000000;
+			$xptkp = $ptkp;  
+			$xpkp = (($xGross-($xAstek+$xJp+$xbijab+$xptkp))/1000)*1000;
+			$xpphyear = 0;
+			if($xpkp > 500000000){
+				$xpphyear = 95000000+(($xpkp-500000000)*0.3);
+			}else{
+				if ($xpkp > 250000000) {
+					$xpphyear = 32500000+(($xpkp-250000000)*0.25);
+				}else{
+					if ($xpkp > 50000000) {
+						$xpphyear = 2500000+(($xpkp-50000000)*0.15);
+					}else{
+						if ($xpkp > 0) {
+							$xpphyear = $xpkp*0.05;
+						}else{
+							$xpphyear = 0;
+						}
+					}
+				}
+			}
+
+			$yGross = (($gaji+$tunjab+$tunskill)*12)+$thrbonus;
+			$yAstek = $yGross*0.02;
+			$docik = $yGross>(8094000*12) ? (8094000*12) : $yGross;
+			$yJp = $dicek * 0.01;
+			$ybijab = ($yGross*0.05)<6000000 ? $yGross*0.05 : 6000000;
+			$yptkp = $ptkp;  
+			$ypkp = (($yGross-($yAstek+$yJp+$ybijab+$yptkp))/1000)*1000;
+			$ypphyear = 0;
+			if($ypkp > 500000000){
+				$ypphyear = 95000000+(($ypkp-500000000)*0.3);
+			}else{
+				if ($ypkp > 250000000) {
+					$ypphyear = 32500000+(($ypkp-250000000)*0.25);
+				}else{
+					if ($ypkp > 50000000) {
+						$ypphyear = 2500000+(($ypkp-50000000)*0.15);
+					}else{
+						if ($ypkp > 0) {
+							$ypphyear = $ypkp*0.05;
+						}else{
+							$ypphyear = 0;
+						}
+					}
+				}
+			}
+
+			return $ypphyear-$xpphyear;	
+		}
 ?>

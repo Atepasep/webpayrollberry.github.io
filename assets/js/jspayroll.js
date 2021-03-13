@@ -1,6 +1,11 @@
 $(document).ready(function(){
 
 })
+$('#persenthrbonus').on('change click keyup input paste',(function (event) {
+    $(this).val(function (index, value) {
+        return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    });
+}));
 $("#carifiletransport").on('click',function(){
 	$("#filetransport").click();
 })
@@ -20,7 +25,18 @@ $("#filepathkoperasi").on('click',function(){
 	$("#carifilekoperasi").click();
 })
 $("#prosespayroll").on('click',function(){
-	document.formprosespayroll.submit();
+	var jadi = true;
+	if($("#code").val()!='SALARY'){
+		if($("#persenthrbonus").val()==''){
+			$("#persenthrbonus").addClass('is-invalid');
+			jadi = false;
+		}
+	}
+	if(jadi){
+		document.formprosespayroll.submit();
+	}else{
+		pesan('warning','Persen harus diisi');
+	}
 })
 $("#kodepayroll").on('change',function(){
 	var kodepayroll = $(this).val();

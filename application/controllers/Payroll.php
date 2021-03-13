@@ -314,7 +314,7 @@ class Payroll extends CI_Controller {
             $pdf->Cell(27,6,$row->ptkp,1,0);
             $pdf->Cell(25,6,$row->tgllahir,1,1); 
         }
-        $pdf->Output($file,'F');
+        $pdf->Output();
         if(file_exists($file)){
         	echo true;
     	}

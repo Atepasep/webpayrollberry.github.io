@@ -50,7 +50,7 @@
                                     <div class="form-group row <?php if($kodepayroll=='SALARY'){ echo 'hilang'; } ?>" style="margin-bottom: 0px;">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Persentase</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control form-control-sm flat warnahitam" name="persenthrbonus" id="persenthrbonus" placeholder="% THR/Bonus" value="">
+                                            <input type="text" class="form-control form-control-sm flat warnahitam" name="persenthrbonus" id="persenthrbonus" placeholder="% - Persentase" value="">
                                             <div class="invalid-feedback">
                                                 Persen Harap Di Isi
                                             </div>
