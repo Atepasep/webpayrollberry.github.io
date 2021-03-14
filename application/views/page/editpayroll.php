@@ -1,5 +1,6 @@
 <div class="container-fluid" style="margin-top: 10px;">
 	<div class="row">
+        <input type="hidden" name="code" id="code" value="<?= $code ?>">
 	    <div class="col-sm-12">
 	    	<div class="form-group row mb-0">
 	            <label for="inputEmail3" class="col-sm-2 col-form-label-sm">Noinduk</label>
@@ -82,6 +83,20 @@
                         <label for="inputEmail3" class="col-sm-4 col-form-label-sm">Bijab</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control form-control-sm flat warnahitam" style="text-align: right;" name="bijab" id="bijab" value="<?= rupiah($bijab,0,',','.') ?>" >
+                        </div>
+                    </div>
+                    <div class="form-group row mb-6"></div>
+                    <div class="form-group row mb-6"></div>
+                    <div class="form-group row mb-0 <?php if($code=='SALARY'){ echo "hilang"; } ?>">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label-sm">% <?= $code ?></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm flat warnahitam bg-warning" style="text-align: right;" name="prc_bonus" id="prc_bonus" value="<?= rupiah($prc_bonus,0,',','.') ?>" >
+                        </div>
+                    </div>
+                    <div class="form-group row mb-0 <?php if($code=='SALARY'){ echo "hilang"; } ?>">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label-sm">Jumlah <?= $code ?></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm flat warnahitam" style="text-align: right;" name="thr_bonus" id="thr_bonus" value="<?= rupiah($thr_bonus,0,',','.') ?>" readonly >
                         </div>
                     </div>
                 </div>
@@ -304,6 +319,12 @@
         });
         hitungthp();
     }));
+    $('#prc_bonus').on('change click keyup input paste',(function (event) {
+        $(this).val(function (index, value) {
+            return value.replace(/(?!\.)\D/g, "").replace(/(?<=\..*)\./g, "").replace(/(?<=\.\d\d).*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        });
+        hitungthp();
+    }));
     $("#simpaneditpayrol").on('click',function(){
         var x = $("#id").val();
         var img = $("#lokimage").val();
@@ -349,6 +370,12 @@
         }else{
             astek = toAngka($("#astek").val());
         }
+        var bijab;
+        if($("#bijab").val()==''){
+            bijab = 0;
+        }else{
+            bijab = toAngka($("#bijab").val());
+        }
         var other;
         if($("#other").val()==''){
             other = 0;
@@ -360,6 +387,12 @@
             jp = 0;
         }else{
             jp = toAngka($("#jp").val());
+        }
+        var ptkp;
+        if($("#ptkp").val()==''){
+            ptkp = 0;
+        }else{
+            ptkp = toAngka($("#ptkp").val());
         }
         var pphmonth;
         if($("#pphmonth").val()==''){
@@ -397,10 +430,151 @@
         }else{
             bpjs = toAngka($("#bpjs").val());
         }
-        hitung = parseFloat(gross)+parseFloat(other)-(parseFloat(astek)+parseFloat(jp)+parseFloat(pphmonth))+parseFloat(meal)+parseFloat(transport)-parseFloat(koperasi);
-        $("#thp").val(rupiah(hitung,'.',',',0));
-        // Realthp=thp-loan-bpjs
-        hitungreal = hitung-parseFloat(loan)-parseFloat(bpjs);
-        $("#realthp").val(rupiah(hitungreal,'.',',',0));
+        var prc_bonus;
+        if($("#prc_bonus").val()==''){
+            prc_bonus = 0;
+        }else{
+            prc_bonus = toAngka($("#prc_bonus").val());
+        }
+        if($("#code").val()=='SALARY'){
+            //alert('Ini Salary');
+            hitungpajak();
+            hitung = parseFloat(gross)+parseFloat(other)-(parseFloat(astek)+parseFloat(jp)+parseFloat(pphmonth))+parseFloat(meal)+parseFloat(transport)-parseFloat(koperasi);
+            $("#thp").val(rupiah(hitung,'.',',',0));
+            // Realthp=thp-loan-bpjs
+            hitungreal = hitung-parseFloat(loan)-parseFloat(bpjs);
+            $("#realthp").val(rupiah(hitungreal,'.',',',0));
+        }else{
+            var thr_bonus = parseFloat(gross)*(parseFloat(prc_bonus)/100);
+            $("#thr_bonus").val(rupiah(thr_bonus,'.',',',0));
+
+            var sim = simpajak(gross,thr_bonus,ptkp);
+            $("#pphyear").val(rupiah(sim,'.',',',0));
+            $("#pphmonth").val(rupiah(sim,'.',',',0));
+            $("#thp").val(rupiah(thr_bonus-sim,'.',',',0));
+            $("#realthp").val(rupiah(thr_bonus-sim,'',',',0));
+        }
+    }
+    function hitungpajak(){
+        var gross;
+        if($("#gross").val()==''){
+            gross = 0;
+        }else{
+            gross = toAngka($("#gross").val());
+        }
+        var astek;
+        if($("#astek").val()==''){
+            astek = 0;
+        }else{
+            astek = toAngka($("#astek").val());
+        }
+        var bijab;
+        if($("#bijab").val()==''){
+            bijab = 0;
+        }else{
+            bijab = toAngka($("#bijab").val());
+        }
+        var other;
+        if($("#other").val()==''){
+            other = 0;
+        }else{
+            other = toAngka($("#other").val());
+        }
+        var jp;
+        if($("#jp").val()==''){
+            jp = 0;
+        }else{
+            jp = toAngka($("#jp").val());
+        }
+        var pphmonth;
+        if($("#pphmonth").val()==''){
+            pphmonth = 0;
+        }else{
+            pphmonth = toAngka($("#pphmonth").val());
+        }
+        var ptkp;
+        if($("#ptkp").val()==''){
+            ptkp = 0;
+        }else{
+            ptkp = toAngka($("#ptkp").val());
+        }
+        var pkp = (((parseFloat(gross)-(parseFloat(astek)+parseFloat(jp)+parseFloat(bijab)+parseFloat(ptkp)))/1000)*1000)*12;
+        var pphyear = 0;
+        if(pkp > 500000000){
+            pphyear = 95000000+((pkp-500000000)*0.3);
+        }else{
+            if (pkp > 250000000) {
+                pphyear = 32500000+((pkp-250000000)*0.25);
+            }else{
+                if (pkp > 50000000) {
+                    pphyear = 2500000+((pkp-50000000)*0.15);
+                }else{
+                    if (pkp > 0) {
+                        pphyear = pkp*0.05;
+                    }else{
+                        pphyear = 0;
+                    }
+                }
+            }
+        }
+        var xpkp = pkp < 0 ? 0 : pkp/12;
+        $("#pkp").val(rupiah(xpkp,'.',',',0));
+        $("#pphyear").val(rupiah(pphyear,'.',',',0));
+        $("#pphmonth").val(rupiah(pphyear/12,'.',',',0));
+    }
+    function simpajak(gross,thrbonus,ptkp){
+        var xGross = gross*12;
+        var xAstek = xGross*0.02;
+        var docek =  xGross>(8094000*12) ? (8094000*12) : xGross;
+        var xJp = docek * 0.01;
+        var xbijab = (xGross*0.05)<6000000 ? xGross*0.05 : 6000000;
+        var xptkp = ptkp;  
+        var xpkp = ((xGross-(xAstek+xJp+xbijab+xptkp))/1000)*1000;
+        var xpphyear = 0;
+        if(xpkp > 500000000){
+            xpphyear = 95000000+((xpkp-500000000)*0.3);
+        }else{
+            if (xpkp > 250000000) {
+                xpphyear = 32500000+((xpkp-250000000)*0.25);
+            }else{
+                if (xpkp > 50000000) {
+                    xpphyear = 2500000+((xpkp-50000000)*0.15);
+                }else{
+                    if (xpkp > 0) {
+                        xpphyear = xpkp*0.05;
+                    }else{
+                        xpphyear = 0;
+                    }
+                }
+            }
+        }
+
+        var yGross = (gross*12)+thrbonus;
+        var yAstek = yGross*0.02;
+        var docik = yGross>(8094000*12) ? (8094000*12) : yGross;
+        var yJp = docik * 0.01;
+        var ybijab = (yGross*0.05)<6000000 ? yGross*0.05 : 6000000;
+        var yptkp = ptkp;  
+        var ypkp = ((yGross-(yAstek+yJp+ybijab+yptkp))/1000)*1000;
+        var ypphyear = 0;
+        if(ypkp > 500000000){
+            ypphyear = 95000000+((ypkp-500000000)*0.3);
+        }else{
+            if (ypkp > 250000000) {
+                ypphyear = 32500000+((ypkp-250000000)*0.25);
+            }else{
+                if (ypkp > 50000000) {
+                    ypphyear = 2500000+((ypkp-50000000)*0.15);
+                }else{
+                    if (ypkp > 0) {
+                        ypphyear = ypkp*0.05;
+                    }else{
+                        ypphyear = 0;
+                    }
+                }
+            }
+        }
+
+        return (ypphyear-xpphyear); 
     }
 </script>

@@ -109,7 +109,7 @@
 			$yGross = (($gaji+$tunjab+$tunskill)*12)+$thrbonus;
 			$yAstek = $yGross*0.02;
 			$docik = $yGross>(8094000*12) ? (8094000*12) : $yGross;
-			$yJp = $dicek * 0.01;
+			$yJp = $docik * 0.01;
 			$ybijab = ($yGross*0.05)<6000000 ? $yGross*0.05 : 6000000;
 			$yptkp = $ptkp;  
 			$ypkp = (($yGross-($yAstek+$yJp+$ybijab+$yptkp))/1000)*1000;

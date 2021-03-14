@@ -166,9 +166,9 @@
 			return $query;
 		}
 		function sendall(){
-			$bl = $this->session->flashdata('bulanperiode');
-			$th = $this->session->flashdata('tahunperiode');
 			$py = $this->session->flashdata('kodepayroll');
+			$bl = $py=='SALARY' ? $this->session->flashdata('bulanperiode') : '00';
+			$th = $this->session->flashdata('tahunperiode');
 			$hasil = $this->db->query("update payroll set send=1 where code = '".$py."' and periode = '".$th.$bl."' ");
 			return $hasil;
 		}
