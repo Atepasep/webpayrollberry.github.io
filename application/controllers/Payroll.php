@@ -21,6 +21,7 @@ class Payroll extends CI_Controller {
 		$this->load->model('mjabatan');
 		$this->load->model('mpayroll');
 		$this->load->library('pdf');
+		$this->load->library('mailer');
 	}
 	function index(){
 		$header['submodul'] = 4;
@@ -402,7 +403,31 @@ class Payroll extends CI_Controller {
         $pdf->Cell(40,6,rupiah($temp['realthp'],0),0,0,'R');
         $pdf->Output($file,'F');
         if(file_exists($file)){
-        	echo true;
+        	$kode = $temp['code'].' '.namabulan(substr($temp['periode'], 4,2)).' '.substr($temp['periode'], 0,4);
+        	$message = '<html><body>';
+			//$message .= '<h1>Hello User</h1>';
+			$message .= '<table style="border-collapse: collapse; width: 100%; height: 144px;" border="0">';
+			$message .= '<tbody>';
+			$message .= '<tr style="height: 126px;">';
+			$message .= '<td style="width: 509px; height: 126px;" colspan="2"><img style="display: block; margin-left: auto; margin-right: auto;" src="http://localhost/payrollberry/assets/images/gambar.png" alt="INDONEPTUNE.PNG" width="164" height="109" /></td>';
+			$message .= '</tr>';
+			$message .= '<tr style="height: 18px;">';
+			$message .= '<td style="width: 253px; height: 18px;" colspan="2">';
+			$message .= '<p style="text-align: justify;">Bersama ini kami kirimkan Slip '.$kode.'. Untuk membuka Slip terlampir gunakan password yang telah anda daftarkan.<br/>Slip dikirimkan dalam format PDF File. <br/>Pastikan Anda memiliki program Adobe Acrobat Reader atau sejenisnya untuk membuka Slip.<br/>Untuk informasi lebih lanjut, hubungi Administrator Data.</p>';
+			$message .= '<p style="text-align: justify;">Semoga bermanfaat.</p>';
+			$message .= '</td>';
+			$message .= '</tr>';
+			$message .= '</tbody>';
+			$message .= '</table>';
+			$message .= '</body></html>';
+        	$sendmail = array('file'=>$file,'penerima'=>$temp['email'],'pesan'=>$message,'subjek'=>$kode);
+        	$send = $this->mailer->send_with_attachment($sendmail);
+	        if(strtoupper($send['status'])=='SUKSES'){
+	        	//$this->mpayroll->sendmail($temp['id']);
+	        	echo true;
+	        }else{
+	        	echo $send['message'];
+	        }
     	}
 	}
 }

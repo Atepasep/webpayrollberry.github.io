@@ -32,7 +32,7 @@ class Mailer {
         // $mail->SMTPDebug = 2; // Aktifkan untuk melakukan debugging
 
         $mail->setFrom($this->email_pengirim, $this->nama_pengirim);
-        $mail->addAddress($this->email_penerima, '');
+        $mail->addAddress($data['penerima'], '');
         $mail->isHTML(true); // Aktifkan jika isi emailnya berupa html
 
         $mail->Subject = 'CEK'; //$data['subjek'];
@@ -50,7 +50,7 @@ class Mailer {
         return $response;
     }
 
-    public function send_with_attachment($data){
+    public function send_with_attachment($data=0){
         $mail = new PHPMailer;
         $mail->isSMTP();
 
@@ -63,25 +63,30 @@ class Mailer {
         // $mail->SMTPDebug = 2; // Aktifkan untuk melakukan debugging
 
         $mail->setFrom($this->email_pengirim, $this->nama_pengirim);
-        $mail->addAddress($this->email_penerima, '');
+        $mail->addAddress($data['penerima'], '');
         $mail->isHTML(true); // Aktifkan jika isi emailnya berupa html
 
-        $mail->Subject = 'CEK'; //$data['subjek'];
-        $mail->Body = 'Ini adalah email contoh'; //$data['content'];
+        $mail->Subject = $data['subjek'];
+        $mail->Body = $data['pesan'];
         //$mail->AddEmbeddedImage('image/logo.png', 'logo_mynotescode', 'logo.png'); // Aktifkan jika ingin menampilkan gambar dalam email
-
-        if($data['attachment']['size'] <= 25000000){ // Jika ukuran file <= 25 MB (25.000.000 bytes)
-            $mail->addAttachment($data['attachment']['tmp_name'], $data['attachment']['name']);
+        $gambar = $data['file']; //FCPATH.'assets\images\gambar.png';
+        if(file_exists($gambar)){
+        //if($data['attachment']['size'] <= 25000000){ // Jika ukuran file <= 25 MB (25.000.000 bytes)
+            //$mail->addAttachment($data['attachment']['tmp_name'], $data['attachment']['name']);
+            $mail->addAttachment($gambar, basename($gambar));
 
             $send = $mail->send();
 
             if($send){ // Jika Email berhasil dikirim
-                $response = array('status'=>'Sukses', 'message'=>'Email berhasil dikirim');
+                $response = array('status'=>'Sukses', 'message'=>'Email berhasil dikirim'.$gambar);
             }else{ // Jika Email Gagal dikirim
                 $response = array('status'=>'Gagal', 'message'=>'Email gagal dikirim');
             }
-        }else{ // Jika Ukuran file lebih dari 25 MB
-            $response = array('status'=>'Gagal', 'message'=>'Ukuran file attachment maksimal 25 MB');
+        // }else{ // Jika Ukuran file lebih dari 25 MB
+        //     $response = array('status'=>'Gagal', 'message'=>'Ukuran file attachment maksimal 25 MB');
+        // }
+        }else{
+            $response = array('status'=>'Gagal', 'message'=>'File tidak ada'.$gambar);
         }
 
         return $response;
