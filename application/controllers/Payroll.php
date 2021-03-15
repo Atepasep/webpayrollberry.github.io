@@ -419,7 +419,7 @@ class Payroll extends CI_Controller {
 			$message .= '</tr>';
 			$message .= '</tbody>';
 			$message .= '</table>';
-			$message .= '</body></html>';
+			$message .= '</body></html>';	
         	$sendmail = array('file'=>$file,'penerima'=>$temp['email'],'pesan'=>$message,'subjek'=>$kode);
         	$send = $this->mailer->send_with_attachment($sendmail);
 	        if(strtoupper($send['status'])=='SUKSES'){

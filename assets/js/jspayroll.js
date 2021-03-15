@@ -74,7 +74,7 @@ $(document).on('click','#membuatpdf',function(){
 		data : {id : rel},
 		success : function(data){
 			if(data==1){
-				alert('Data berhasil dibuat pdf');
+				pesan('info','kirim email berhasil');
 			}
 		}
 	})
