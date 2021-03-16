@@ -231,7 +231,7 @@
             </div>
 
             <li class="nav-item <?= $tif6 ?>">
-                <a class="nav-link" href="<?= base_url().'pengguna' ?>">
+                <a class="nav-link" href="<?= base_url().'pengguna/clear' ?>">
                     <i class="fas fa-fw fa-user"></i>
                     <span>User Aplikasi</span></a>
             </li>
@@ -301,6 +301,9 @@
                             </div>
                         </div>
                     </form> -->
+                    <!-- <div class="text-danger hilang" id="spinnya">
+                        <i class="fas fa-circle-notch fa-lg fa-spin"></i> Loading, Silahkan tunggu
+                    </div> -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">

@@ -33,6 +33,7 @@
 			$data['bagian'] = $this->input->post('bagian');
 			$data['jabatan'] = $this->input->post('jabatan');
 			$data['kontrak'] = $this->input->post('kontrak');
+			$data['password'] = encrypto($this->input->post('password'));
 			if($data['kontrak']==1){
 				$data['kontrakuntil'] = tglmysql($this->input->post('kontrakuntil'));
 			}
@@ -72,6 +73,10 @@
 			$data['bagian'] = $this->input->post('bagian');
 			$data['jabatan'] = $this->input->post('jabatan');
 			$data['kontrak'] = $this->input->post('kontrak');
+			$data['password'] = encrypto($this->input->post('password'));
+			if($data['password']==''){
+				unset($data['password']);
+			}
 			if($data['kontrak']==1){
 				$data['kontrakuntil'] = tglmysql($this->input->post('kontrakuntil'));
 			}

@@ -7,7 +7,8 @@ Class Rep_pdf extends CI_Controller{
     }
     
     function index(){
-        $pdf = new FPDF('p','mm','A5');
+        $pdf = new FPDF_Protection('p','mm','A5');
+        $pdf->SetProtection(array('print'), 'qwerty');
         // membuat halaman baru
         $pdf->AddPage();
         // setting jenis font yang akan digunakan

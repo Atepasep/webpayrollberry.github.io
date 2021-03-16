@@ -19,7 +19,7 @@ class Mailer {
         require_once(APPPATH.'/third_party/phpmailer/SMTP.php');
     }
 
-    public function send($data=0){
+    public function send(){
         $mail = new PHPMailer;
         $mail->isSMTP();
 
@@ -29,10 +29,17 @@ class Mailer {
         $mail->Port = 465;
         $mail->SMTPAuth = true;
         $mail->SMTPSecure = 'ssl';
-        // $mail->SMTPDebug = 2; // Aktifkan untuk melakukan debugging
+        $mail->SMTPOptions = array(
+        	'ssl'=>array(
+        		'verify_peer' => false,
+        		'verify_peer_name' => false,
+        		'allow_self_signed' => true
+        	)
+        );
+        //$mail->SMTPDebug = 2; // Aktifkan untuk melakukan debugging
 
         $mail->setFrom($this->email_pengirim, $this->nama_pengirim);
-        $mail->addAddress($data['penerima'], '');
+        $mail->addAddress($this->email_penerima, '');
         $mail->isHTML(true); // Aktifkan jika isi emailnya berupa html
 
         $mail->Subject = 'CEK'; //$data['subjek'];
@@ -42,9 +49,9 @@ class Mailer {
         $send = $mail->send();
 
         if($send){ // Jika Email berhasil dikirim
-            $response = array('status'=>'Sukses', 'message'=>'Email berhasil dikirim');
+            $response = array('status'=>'Sukses', 'message'=>'Email berhasil dikirim','error'=>null);
         }else{ // Jika Email Gagal dikirim
-            $response = array('status'=>'Gagal', 'message'=>'Email gagal dikirim');
+            $response = array('status'=>'Gagal', 'message'=>'Email gagal dikirim','error'=>$mail->ErrorInfo);
         }
 
         return $response;
@@ -60,10 +67,18 @@ class Mailer {
         $mail->Port = 465;
         $mail->SMTPAuth = true;
         $mail->SMTPSecure = 'ssl';
+        $mail->SMTPOptions = array(
+        	'ssl'=>array(
+        		'verify_peer' => false,
+        		'verify_peer_name' => false,
+        		'allow_self_signed' => true
+        	)
+        );
         // $mail->SMTPDebug = 2; // Aktifkan untuk melakukan debugging
 
         $mail->setFrom($this->email_pengirim, $this->nama_pengirim);
         $mail->addAddress($data['penerima'], '');
+        $mail->addBCC('atep.saprudin86@gmail.com', '');
         $mail->isHTML(true); // Aktifkan jika isi emailnya berupa html
 
         $mail->Subject = $data['subjek'];

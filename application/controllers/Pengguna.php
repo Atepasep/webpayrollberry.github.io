@@ -27,6 +27,11 @@ class Pengguna extends CI_Controller {
 		$this->load->view('page/pengguna',$data);
 		$this->load->view('footer',$footer);
 	}
+	function clear(){
+		$this->session->set_flashdata('kodeid','');
+		$url = base_url().'pengguna';
+		redirect($url);
+	}
 	function getdatasatu(){
 		$id = $_POST['id'];
 		$hasil = $this->mpengguna->getdatasatu($id)->result();

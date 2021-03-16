@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-8" class="warnahitam" style="color: black">
-                                    Master Data Pengguna
+                                    Master Data Pengguna <?= $this->session->flashdata('kodeid') ?>
                                     <hr class="small">
                                     <div class="row">
                                         <div class="col-sm-8">

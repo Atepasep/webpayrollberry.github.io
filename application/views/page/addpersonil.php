@@ -86,7 +86,30 @@
                                                             alamat harap di isi
                                                         </div>
                                                     </div>
-                                                </div>                                                
+                                                </div>
+                                                <!-- Card -->
+                                                <div class="card mb-4 mt-2 flat font-kecil">
+                                                    <div class="card-header flat bg-warning kartuku">
+                                                        Password untuk membuka PDF
+                                                    </div>
+                                                    <div class="card-body font-standar">
+                                                        <input type="password" name="password" id="password" class="form-control form-control-sm warnahitam flat">
+                                                    </div>
+                                                </div>
+                                                <!-- End Card -->  
+                                                <div class="form-group row">
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Foto</label>
+                                                    <div class="col-sm-9" style="text-align: center;">
+                                                        <img src="<?php if($profil!=null){ echo LOK_FOTO_USER.$profil; }else{ echo LOK_FOTO_USER.'nophoto.png'; } ?>" class="foto-profil" id="foto-profil">
+                                                        <div style="font-size: 9px;">double klik Foto <br>apabila ingin mengganti Foto</div>
+                                                        <div class="input-group input-group-flat">
+                                                            <input type="text" name="lokfile" class="hilang" id="lokfile" value="" rel="<?= LOK_FOTO_USER ?>">
+                                                            <input type="text" class="form-control flat hilang" name="file_path" id="file_path" autocomplete="off">
+                                                            <input type="file" name="logo" id="file" class="hidden hilang" accept=".jpg,.jpeg,.png,.bmp">
+                                                            <input type="text" name="old_logo" id="old_logo" value="<?= $profil ?>" class="hilang">
+                                                        </div>
+                                                    </div>
+                                                </div>                                           
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group row mt-2" style="margin-bottom: 0px;">
@@ -142,12 +165,17 @@
                                                 </div>
                                                 <div class="form-group row" style="margin-bottom: 0px;">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Bagian</label>
-                                                    <div class="col-sm-9">
+                                                    <div class="col-sm-5">
                                                         <select class="form-control form-control-sm flat warnahitam" id="bagian" name="bagian">
                                                             <option>-- Pilih Bagian --</option>
                                                             <?php foreach ($bagian as $databagian) { ?>
                                                                 <option value="<?= $databagian['id'] ?>" <?php if($xbagian==$databagian['id']){ echo "selected"; } ?>><?= $databagian['bagian'] ?></option>
                                                             <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <select class="form-control form-control-sm flat warnahitam" id="group" name="group">
+                                                            <option>-- Pilih Group --</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -215,23 +243,10 @@
                                                         </div>
                                                     </div>
                                                 </div> 
-                                                <div class="form-group row">
-                                                    <label for="inputEmail3" class="col-sm-3 col-form-label-sm">Foto</label>
-                                                    <div class="col-sm-9" style="text-align: center;">
-                                                        <img src="<?php if($profil!=null){ echo LOK_FOTO_USER.$profil; }else{ echo LOK_FOTO_USER.'nophoto.png'; } ?>" class="foto-profil" id="foto-profil">
-                                                        <div style="font-size: 9px;">double klik Foto <br>apabila ingin mengganti Foto</div>
-                                                        <div class="input-group input-group-flat">
-                                                            <input type="text" name="lokfile" class="hilang" id="lokfile" value="" rel="<?= LOK_FOTO_USER ?>">
-                                                            <input type="text" class="form-control flat hilang" name="file_path" id="file_path" autocomplete="off">
-                                                            <input type="file" name="logo" id="file" class="hidden hilang" accept=".jpg,.jpeg,.png,.bmp">
-                                                            <input type="text" name="old_logo" id="old_logo" value="<?= $profil ?>" class="hilang">
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </form>
-                                    <hr class="small">
+                                    <hr class="small mt-2">
                                     <div style="text-align: center;">
                                         <a href="#" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="savepersonil">
                                             <span class="icon text-white-50">

@@ -249,41 +249,16 @@ class Payroll extends CI_Controller {
 		$url = base_url().'payroll';
 		redirect($url);
 	}
- 	function kirimemail(){
-	    //pengaturan email
-	    $this->load->library('email');//panggil library email codeigniter
-	    $config = array(
-	        'protocol' => 'smtp',
-	        'smtp_host' => 'smtp.gmail.com',
-	        'smtp_port' => 587,
-	        'smtp_user' => 'informasi.ifn@gmail.com',//alamat email gmail
-	        'smtp_pass' => 'akuanakbaik',//password email 
-	        'mailtype' => 'html',
-	        'charset' => 'iso-8859-1',
-	        'wordwrap' => TRUE
-	    );
-	    $message = "Hello World, this is test email by codeigniter";//ini adalah isi/body email
-	    $email = 'atep.saprudin86@gmail.com';//email penerima
-
-	    $this->email->initialize($config);
-	    $this->email->set_newline("\r\n");
-	    $this->email->from($config['smtp_user']);
-	    $this->email->to($email);
-	    $this->email->subject('Email verifikasi');//subjek email
-	    $this->email->message($message);
-	    
-	    //proses kirim email
-	    if($this->email->send()){
-	        $this->session->set_flashdata('message','Sukses kirim email');
-	        ?>
-	        <script type="text/javascript">alert('Kirim email berhasil');</script>
-	        <?php
-	    }else{ 
-	        $this->session->set_flashdata('message', $this->email->print_debugger());
-	        ?>
-	        <script type="text/javascript">Alert(<?php echo $this->session->flashdata('message'); ?>);</script>
-	        <?php 
-	    }
+ 	function kirimemail($id){
+		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+		$temp = $this->mpayroll->getdatasatu($id)->row_array();
+		$data['id'] = $id;
+		$data['noinduk'] = $temp['noinduk'];
+		$data['nama'] = $temp['nama'];
+		$data['email'] = $temp['email'];
+		$this->load->view('page/kirimemail',$data); 		
 	}
 	function buatpdf(){
 		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
@@ -293,7 +268,8 @@ class Payroll extends CI_Controller {
 		$temp = $this->mpayroll->getdatasatu($id)->row_array();
 		$namafile = $this->session->flashdata('kodepayroll').'_'.namabulan($this->session->flashdata('bulanperiode')).'_'.$this->session->flashdata('tahunperiode');
 		$file = LOK_FILE.$namafile.'_'.$temp['noinduk'].'.pdf';
-        $pdf = new FPDF('p','mm','A5');
+        $pdf = new FPDF_Protection('p','mm','A5');
+        $pdf->SetProtection(array('print'), strtolower(decrypto($temp['password'])));
         // membuat halaman baru
         $pdf->AddPage();
         // setting jenis font yang akan digunakan
@@ -423,7 +399,7 @@ class Payroll extends CI_Controller {
         	$sendmail = array('file'=>$file,'penerima'=>$temp['email'],'pesan'=>$message,'subjek'=>$kode);
         	$send = $this->mailer->send_with_attachment($sendmail);
 	        if(strtoupper($send['status'])=='SUKSES'){
-	        	//$this->mpayroll->sendmail($temp['id']);
+	        	$this->mpayroll->sendmail($temp['id']);
 	        	echo true;
 	        }else{
 	        	echo $send['message'];

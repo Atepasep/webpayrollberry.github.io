@@ -7,8 +7,9 @@ Class Rem_email extends CI_Controller{
     }
     
     function index(){
-        $send = $this->mailer->send_with_attachment();
+        $send = $this->mailer->send();
         echo "<b>".$send['status']."</b><br />";    
-        echo $send['message'];
+        echo $send['message']."<br>";
+        echo $send['error']."<br>";
     }
 }

@@ -15,7 +15,7 @@
 			$py = $this->session->flashdata('kodepayroll');
 			$bl = $this->session->flashdata('kodepayroll')=='SALARY' ? $this->session->flashdata('bulanperiode') : '00';
 			$th = $this->session->flashdata('tahunperiode');
-			$hasil = $this->db->query("SELECT a.nama,a.noinduk,c.jabatan as jabatan,d.bagian as bagian,a.email,a.bank,a.bankadr,a.rekname,a.norek,b.* FROM karyawan a
+			$hasil = $this->db->query("SELECT a.nama,a.noinduk,c.jabatan as jabatan,d.bagian as bagian,a.email,a.bank,a.bankadr,a.rekname,a.norek,a.password,b.* FROM karyawan a
 										LEFT JOIN payroll b ON a.id = b.id_karyawan 
 										LEFT JOIN jabatan c ON a.jabatan = c.id
 										LEFT JOIN bagian d ON a.bagian = d.id
@@ -55,7 +55,7 @@
 				$data['gaji'] = $karyawan['gaji'];
 				$data['tunjab'] = $karyawan['tunjab'];
 				$data['tunskill'] = $karyawan['tunskill'];
-				$data['ptkp'] = $karyawan['ptkp'];
+				$data['ptkp'] = $karyawan['ptkp']/12;
 				if($data['code']=='SALARY'){
 					$data['other'] = 0;
 					$data['meal'] = 0;
@@ -171,6 +171,11 @@
 			$th = $this->session->flashdata('tahunperiode');
 			$hasil = $this->db->query("update payroll set send=1 where code = '".$py."' and periode = '".$th.$bl."' ");
 			return $hasil;
+		}
+		function sendmail($id){
+			$this->db->where('id',$id);
+			$data['sendmail'] = 1;
+			$hasil = $this->db->update('payroll',$data);
 		}
 	}
 ?>

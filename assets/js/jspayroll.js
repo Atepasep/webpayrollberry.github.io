@@ -67,6 +67,7 @@ $("#tahunperiode").on('change',function(){
 })
 $(document).on('click','#membuatpdf',function(){
 	var rel = $(this).attr('rel');
+	$("#spinnya").removeClass('hilang');
 	$.ajax({
 		dataType : 'json',
 		type : "POST",
@@ -74,7 +75,10 @@ $(document).on('click','#membuatpdf',function(){
 		data : {id : rel},
 		success : function(data){
 			if(data==1){
+				$("#spinnya").addClass('hilang');
 				pesan('info','kirim email berhasil');
+			}else{
+				pesan('danger',data);
 			}
 		}
 	})
