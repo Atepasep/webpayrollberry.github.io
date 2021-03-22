@@ -110,4 +110,11 @@ input.kecil, select.kecil {
 }
 .gbdepan img {
 	height: 300px; float: right; position: absolute; top: 90px; right: 40px
+	z-index : -1;
+}
+.kursbank {
+	padding: 15px 20px;
+}
+.kursbank span {
+	font-size: 20px;
 }

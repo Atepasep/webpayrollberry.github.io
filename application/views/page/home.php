@@ -13,62 +13,126 @@
 		<div class="col-sm-4">
 			<div class="row">
 				<div class="col-sm-6">
-					<div class="card bg-primary text-white shadow">
-                        <div class="card-body">
-                            Primary
-                            <div class="text-white-50 small">#4e73df</div>
-                            <div class="text-white-50 small">#4e73df</div>
+					<div class="card bg-primary text-white shadow flat">
+                        <div class="card-body kursbank" style="background-image: url('assets/images/gambarBCA.jpg'); background-size: cover;">
+                            <span class="font-tebal">BCA</span>
+                            <div class="row" style="font-size: 18px;">
+                            	<div class="col-sm-6">
+                            		<div class="text-white small font-tebal">Jual</div>
+                            		<div class="text-white small">13,500</div>
+                            	</div>
+                            	<div class="col-sm-6">
+                            		<div class="text-white small font-tebal">Beli</div>
+                            		<div class="text-white small">13,500</div>
+                            	</div>
+                        	</div>
                         </div>
                     </div>
                     <div class="card bg-light text-black shadow mt-1">
-                        <div class="card-body">
-                            Primary
-                            <div class="text-black-50 small">#4e73df</div>
-                            <div class="text-white-50 small">#4e73df</div>
+                        <div class="card-body kursbank flat" style="background-image: url('assets/images/gambarBTN.jpg'); background-size: cover;">
+                           <span class="font-tebal warnahitam">BTN</span> 
+                            <div class="row" style="font-size: 18px;">
+                            	<div class="col-sm-6">
+                            		<div class="warnahitam small font-tebal">Jual</div>
+                            		<div class="warnahitam small">13,500</div>
+                            	</div>
+                            	<div class="col-sm-6">
+                            		<div class="warnahitam small font-tebal">Beli</div>
+                            		<div class="warnahitam small">13,500</div>
+                            	</div>
+                        	</div>
                         </div>
                     </div>
                     <div class="card bg-info text-white shadow mt-1">
-                        <div class="card-body">
-                            Primary
-                            <div class="text-white-50 small">#4e73df</div>
-                            <div class="text-white-50 small">#4e73df</div>
+                        <div class="card-body kursbank flat" style="background-image: url('assets/images/gambarDanamon.jpg'); background-size: cover;">
+                            <span class="font-tebal">DANAMON</span>
+                            <div class="row" style="font-size: 18px;">
+                            	<div class="col-sm-6">
+                            		<div class="text-white small font-tebal">Jual</div>
+                            		<div class="text-white small">13,500</div>
+                            	</div>
+                            	<div class="col-sm-6">
+                            		<div class="text-white small font-tebal">Beli</div>
+                            		<div class="text-white small">13,500</div>
+                            	</div>
+                        	</div>
                         </div>
                     </div>
                     <div class="card bg-danger text-white shadow mt-1">
-                        <div class="card-body">
-                            Primary
-                            <div class="text-white-50 small">#4e73df</div>
-                            <div class="text-white-50 small">#4e73df</div>
+                        <div class="card-body kursbank flat" style="background-image: url('assets/images/gambarBNI.jpg'); background-size: cover;">
+                            <span class="font-tebal">BNI</span>
+                            <div class="row" style="font-size: 18px;">
+                            	<div class="col-sm-6">
+                            		<div class="text-white small font-tebal">Jual</div>
+                            		<div class="text-white small">13,500</div>
+                            	</div>
+                            	<div class="col-sm-6">
+                            		<div class="text-white small font-tebal">Beli</div>
+                            		<div class="text-white small">13,500</div>
+                            	</div>
+                        	</div>
                         </div>
                     </div>
 				</div>	
 				<div class="col-sm-6">
 					<div class="card bg-success text-black-50 shadow">
-                        <div class="card-body">
-                            Primary
-                            <div class="text-black-50 small">#4e73df</div>
-                            <div class="text-white-50 small">#4e73df</div>
+                        <div class="card-body kursbank flat" style="background-image: url('assets/images/gambarPermata.jpg'); background-size: cover;">
+                            <span class="font-tebal warnahitam">PERMATA</span>
+                            <div class="row" style="font-size: 18px;">
+                            	<div class="col-sm-6">
+                            		<div class="warnahitam small font-tebal">Jual</div>
+                            		<div class="warnahitam small">13,500</div>
+                            	</div>
+                            	<div class="col-sm-6">
+                            		<div class="warnahitam small font-tebal">Beli</div>
+                            		<div class="warnahitam small">13,500</div>
+                            	</div>
+                        	</div>
                         </div>
                     </div>
                     <div class="card bg-warning text-black-50 shadow mt-1">
-                        <div class="card-body">
-                            Primary
-                            <div class="text-black-50 small">#4e73df</div>
-                            <div class="text-white-50 small">#4e73df</div>
+                        <div class="card-body kursbank flat" style="background-image: url('assets/images/gambarBRI.jpg'); background-size: cover;">
+                            <span class="font-tebal text-white">BRI</span>
+                            <div class="row" style="font-size: 18px;">
+                            	<div class="col-sm-6">
+                            		<div class="text-white small font-tebal">Jual</div>
+                            		<div class="text-white small">13,500</div>
+                            	</div>
+                            	<div class="col-sm-6">
+                            		<div class="text-white small font-tebal">Beli</div>
+                            		<div class="text-white small">13,500</div>
+                            	</div>
+                        	</div>
                         </div>
                     </div>
                     <div class="card bg-secondary text-white shadow mt-1">
-                        <div class="card-body">
-                            Primary
-                            <div class="text-white-50 small">#4e73df</div>
-                            <div class="text-white-50 small">#4e73df</div>
+                        <div class="card-body kursbank flat" style="background-image: url('assets/images/gambarCIMB.jpg'); background-size: cover;">
+                            <span class="font-tebal">CIMB</span>
+                            <div class="row" style="font-size: 18px;">
+                            	<div class="col-sm-6">
+                            		<div class="text-white small font-tebal">Jual</div>
+                            		<div class="text-white small">13,500</div>
+                            	</div>
+                            	<div class="col-sm-6">
+                            		<div class="text-white small font-tebal">Beli</div>
+                            		<div class="text-white small">13,500</div>
+                            	</div>
+                        	</div>
                         </div>
                     </div>
                     <div class="card bg-dark text-white shadow mt-1">
-                        <div class="card-body">
-                            Primary
-                            <div class="text-white-50 small">#4e73df</div>
-                            <div class="text-white-50 small">#4e73df</div>
+                        <div class="card-body kursbank flat" style="background-image: url('assets/images/gambarMandiri.jpg'); background-size: cover;">
+                            <span class="font-tebal">MANDIRI</span>
+                            <div class="row" style="font-size: 18px;">
+                            	<div class="col-sm-6">
+                            		<div class="text-white small font-tebal">Jual</div>
+                            		<div class="text-white small">13,500</div>
+                            	</div>
+                            	<div class="col-sm-6">
+                            		<div class="text-white small font-tebal">Beli</div>
+                            		<div class="text-white small">13,500</div>
+                            	</div>
+                        	</div>
                         </div>
                     </div>
 				</div>	
@@ -84,7 +148,7 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
+                        Disini akan ada Grafik Kurs BI
                     </div>
                 </div>
             </div>
