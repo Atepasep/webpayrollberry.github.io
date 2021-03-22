@@ -27,9 +27,15 @@ class Bagian extends CI_Controller {
 		$this->load->view('page/bagian',$data);
 		$this->load->view('footer',$footer);
 	}
+	function clear(){
+		$this->session->set_flashdata('kodeid','');
+		$url = base_url().'bagian';
+		redirect($url);
+	}
 	function getdatasatu(){
 		$id = $_POST['id'];
 		$hasil = $this->mbagian->getdatasatu($id)->result();
+		$this->session->set_flashdata('kodeid',$id);
 		echo json_encode($hasil);
 	}
 	function simpanbagian(){
@@ -52,6 +58,28 @@ class Bagian extends CI_Controller {
 	}
 	function hapusbagian($id){
 		$this->mbagian->hapusbagian($id);
+		$url = base_url().'bagian';
+		redirect($url);
+	}
+	function getgroup(){
+		$id = $_POST['id'];
+		$hasil = $this->mbagian->getgroup($id)->result();
+		echo json_encode($hasil);
+	}
+	function addgroup($id){
+		$data['id'] = $id;
+		$this->load->view('page/addgroup',$data);
+	}
+	function simpangroup(){
+		$id = $_POST['id'];
+		$kode = strtoupper($_POST['kode']);
+		$nama = $_POST['nama'];
+		$hasil = $this->mbagian->simpangroup($id,$kode,$nama)->result();
+		echo json_encode($hasil);
+	}
+	function hapusgroup($id){
+		$hapus = $this->mbagian->hapusgroup($id);
+		$this->session->set_flashdata('kodeid',$hapus);
 		$url = base_url().'bagian';
 		redirect($url);
 	}

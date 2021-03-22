@@ -41,5 +41,25 @@
 			$this->db->where('id',$id);
 			$this->db->delete('bagian');
 		}
+		function getgroup($id){
+			$hasil = $this->db->query("select * from grp where id_bagian =".$id." ");
+			return $hasil;
+		}
+		function simpangroup($id,$kode,$nama){
+			$simpan = $this->db->query("insert into grp (id_bagian,kode_grp,grp) values (".$id.",'".$kode."','".$nama."') ");
+			if($simpan){
+				$hasil = $this->db->query("select * from grp where id_bagian = ".$id." ");
+			}else{
+				$hasil = "gagal";
+			}
+			return $hasil;
+		}
+		function hapusgroup($id){
+			$hasil = $this->db->query("select * from grp where id = ".$id)->row();
+			$this->db->where('id',$id);
+			$this->db->delete('grp');
+			//$hasil = $this->db->query("select * from grp where id_bagian = ".$id." ");
+			return $hasil->id_bagian;
+		}
 	}
 ?>

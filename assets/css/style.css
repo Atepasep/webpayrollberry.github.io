@@ -34,13 +34,13 @@
 .border-left-coklat {
   border-left: 0.25rem solid #5d3f32 !important;
 }
-#tabelku, .font-standar {
+#tabelku, #tabelku2, .font-standar {
 	font-size: 13px;
 }
 .font-kecil {
 	font-size: 12px;
 }
-#tabelku tbody tr td {
+#tabelku tbody tr td,#tabelku2 tbody tr td {
 	padding: 5px 5px;
 	font-style: normal;
 	color: black;
@@ -98,4 +98,16 @@ input.kecil, select.kecil {
 }
 #detailnya {
 	padding: 10px;
+}
+.gbdepan {
+	background-image: linear-gradient(to bottom, rgba(255,0,0,0), #f2f2f4); 
+	height: 200px; 
+	border-radius: 0 0 25px 25px; 
+	padding: 20px; 
+	font-family: 'Montserrat', sans-serif; 
+	color: #3d3b3b; 
+	margin-top: 100px;
+}
+.gbdepan img {
+	height: 300px; float: right; position: absolute; top: 90px; right: 40px
 }

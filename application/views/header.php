@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,600" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="<?= base_url().'assets/css/sb-admin-2.css' ?>" rel="stylesheet">
     <link href="<?= base_url().'assets/css/style.css' ?>" rel="stylesheet">
@@ -199,9 +200,9 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner flat" style="border-radius: 0px;">
                         <h6 class="collapse-header text-coklat">Pilih Modul</h6>
-                        <a class="collapse-item" href="<?= base_url().'didik' ?>">Pendidikan</a>
-                        <a class="collapse-item" href="<?= base_url().'bagian' ?>">Bagian</a>
-                        <a class="collapse-item" href="<?= base_url().'jabatan' ?>">Jabatan</a>
+                        <a class="collapse-item" href="<?= base_url().'didik/clear' ?>">Pendidikan</a>
+                        <a class="collapse-item" href="<?= base_url().'bagian/clear' ?>">Bagian</a>
+                        <a class="collapse-item" href="<?= base_url().'jabatan/clear' ?>">Jabatan</a>
                     </div>
                 </div>
             </li>
@@ -254,6 +255,21 @@
                 <a class="nav-link" href="<?= base_url().'validasi/clear' ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Validasi</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Personil
+            </div>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url() ?>">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>My Portal</span></a>
             </li>
 
             <!-- Divider -->

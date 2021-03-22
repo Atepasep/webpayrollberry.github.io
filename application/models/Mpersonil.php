@@ -150,5 +150,15 @@
 			}
 			return (!empty($uploadData)) ? $uploadData['file_name'] : 'nophoto.png';
 		}
+		function getgroup($id,$grup){
+			$hasil = $this->db->query("select * from grp where id_bagian = ".$id)->result_array();
+			$html = '<option value="">-- Pilih Group--</option>';
+			foreach ($hasil as $data) {
+				$selek = $data['id']==$grup ? "selected" : "";
+				$html .= '<option value="'.$data['id'].'" '.$selek.' >'.$data['grp'].'</option>';
+			}
+			$cocok  = array('datagroup' =>$html);
+			return $cocok;
+		}
 	}
 ?>

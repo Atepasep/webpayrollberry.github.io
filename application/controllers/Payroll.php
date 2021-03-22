@@ -385,7 +385,7 @@ class Payroll extends CI_Controller {
 			$message .= '<table style="border-collapse: collapse; width: 100%; height: 144px;" border="0">';
 			$message .= '<tbody>';
 			$message .= '<tr style="height: 126px;">';
-			$message .= '<td style="width: 509px; height: 126px;" colspan="2"><img style="display: block; margin-left: auto; margin-right: auto;" src="http://localhost/payrollberry/assets/images/gambar.png" alt="INDONEPTUNE.PNG" width="164" height="109" /></td>';
+			$message .= '<td style="width: 509px; height: 126px;" colspan="2"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://indoneptune.com/img/gambar.png" alt="INDONEPTUNE.PNG" width="164" height="109" /></td>';
 			$message .= '</tr>';
 			$message .= '<tr style="height: 18px;">';
 			$message .= '<td style="width: 253px; height: 18px;" colspan="2">';

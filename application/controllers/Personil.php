@@ -36,6 +36,7 @@ class Personil extends CI_Controller {
 		$data['bagian'] = $this->mbagian->getdata()->result_array();
 		$data['jabatan'] = $this->mjabatan->getdata()->result_array();
 		$data['ptkp'] = $this->mpersonil->getptkp()->result_array();
+		$data['urll'] = base_url().'Personil/datagrup';
 		$footer['modul'] = 'personil';
 		$data['id'] = null;
 		$data['noinduk'] = null;
@@ -62,7 +63,8 @@ class Personil extends CI_Controller {
 		$data['rekname'] = null;
 		$data['bankadr'] = null;
 		$data['profil'] = null;
-		$data['profil'] = null;
+		$data['loc'] = null;
+		$data['grp'] = null;
 		$this->load->view('header',$header);
 		$this->load->view('page/addpersonil',$data);
 		$this->load->view('footer',$footer);
@@ -75,6 +77,7 @@ class Personil extends CI_Controller {
 		$data['bagian'] = $this->mbagian->getdata()->result_array();
 		$data['jabatan'] = $this->mjabatan->getdata()->result_array();
 		$data['ptkp'] = $this->mpersonil->getptkp()->result_array();
+		$data['urll'] = base_url().'Personil/datagrup';
 		$footer['modul'] = 'personil';
 		$datapersonil = $this->mpersonil->getdatasatu($id)->row_array();
 		$data['id'] = $id;
@@ -102,6 +105,8 @@ class Personil extends CI_Controller {
 		$data['rekname'] = $datapersonil['rekname'];
 		$data['bankadr'] = $datapersonil['bankadr'];
 		$data['profil'] = $datapersonil['profil'];
+		$data['loc'] = $datapersonil['loc'];
+		$data['grp'] = $datapersonil['grp'];
 		$this->load->view('header',$header);
 		$this->load->view('page/addpersonil',$data);
 		$this->load->view('footer',$footer);	
@@ -134,9 +139,10 @@ class Personil extends CI_Controller {
 		$url = base_url().'personil';
 		redirect($url);
 	}
-	function getpass(){
-		$id = $_POST['ide'];
-		$hasil = $this->mpengguna->getpass($id);
+	function datagrup(){
+		$id = $_POST['id'];
+		$gr = $_POST['gr'];
+		$hasil = $this->mpersonil->getgroup($id,$gr);
 		echo json_encode($hasil);
 	}
 }

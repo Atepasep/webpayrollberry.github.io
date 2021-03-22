@@ -27,6 +27,11 @@ class Jabatan extends CI_Controller {
 		$this->load->view('page/jabatan',$data);
 		$this->load->view('footer',$footer);
 	}
+	function clear(){
+		$this->session->set_flashdata('kodeid','');
+		$url = base_url().'jabatan';
+		redirect($url);
+	}
 	function getdatasatu(){
 		$id = $_POST['id'];
 		$hasil = $this->mjabatan->getdatasatu($id)->result();

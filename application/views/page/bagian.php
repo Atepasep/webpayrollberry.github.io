@@ -96,6 +96,39 @@
                                             <span class="text">Cetak</span>
                                         </a>
                                     </div>
+                                    <div class="row mt-4">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-6">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase">
+                                                Data Group
+                                            </div>
+                                            <table class="table table-bordered" id="tabelku2">
+                                                <thead class="bg-secondary text-light">
+                                                    <tr>
+                                                        <th scope="col">No</th>
+                                                        <th scope="col">Group</th>
+                                                        <th scope="col">Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="data-tabelku2">
+                                                    <tr>
+                                                        <td colspan="3" style="text-align: center;">No Record Found</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3" style="text-align: center;">
+                                                            <a href="#" class="btn btn-success btn-icon-split btn-sm flat font-kecil" rel="CEK" id="addgroup">
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-plus"></i>
+                                                                </span>
+                                                                <span class="text">Tambah Group</span>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-sm-3"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

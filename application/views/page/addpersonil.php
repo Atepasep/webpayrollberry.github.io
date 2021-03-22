@@ -13,7 +13,7 @@
                                     <hr class="small">
                                     <div class="row font-standar">
                                         <div class="col-sm-6">
-                                            <form method="post" name="formpersonil" id="formpersonil" action="<?= $urlnya ?>" enctype="multipart/form-data">
+                                            <form method="post" enctype="multipart/form-data" id="formpersonil" name="formpersonil" action="<?= $urlnya ?>">
                                                 <input type="text" class="form-control form-control-sm flat warnahitam hilang" name="id" id="id" value="<?= $id ?>">
                                                 <div class="form-group row" style="margin-bottom: 0px;">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label-sm">NIK</label>
@@ -87,8 +87,18 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="form-group row mt-2" style="margin-bottom: 0px;">
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label-sm">LOC</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="form-control form-control-sm flat warnahitam" name="loc" id="loc">
+                                                            <option>-- Pilih --</option>
+                                                            <option <?php if($loc=='FACTORY'){ echo "selected"; } ?> value="FACTORY">FACTORY</option>
+                                                            <option <?php if($loc=='GENERAL'){ echo "selected"; } ?> value="GENERAL">GENERAL</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <!-- Card -->
-                                                <div class="card mb-4 mt-2 flat font-kecil">
+                                                <div class="card mb-4 flat font-kecil">
                                                     <div class="card-header flat bg-warning kartuku">
                                                         Password untuk membuka PDF
                                                     </div>
@@ -174,8 +184,8 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-4">
-                                                        <select class="form-control form-control-sm flat warnahitam" id="group" name="group">
-                                                            <option>-- Pilih Group --</option>
+                                                        <select class="form-control form-control-sm flat warnahitam" id="grp" name="grp">
+                                                                <option>-- Pilih Group --</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -246,6 +256,8 @@
                                             </div>
                                         </div>
                                     </form>
+                                    <input type="hidden" name="urll" id="urll" value="<?= $urll ?>">
+                                    <input type="hidden" name="xgrp" id="xgrp" value="<?= $grp ?>">
                                     <hr class="small mt-2">
                                     <div style="text-align: center;">
                                         <a href="#" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="savepersonil">
@@ -270,4 +282,4 @@
         </div>
     </div>
 </div>
-<!-- /.container-fluid
+<!-- /.container-fluid -->

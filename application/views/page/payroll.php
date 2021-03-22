@@ -118,10 +118,10 @@
                                                 <?php foreach($datapayroll as $data){ ?>
                                                     <tr>
                                                         <td class="font-kecil"><?= $data['noinduk'] ?></td>
-                                                        <td class="font-kecil"><?= $data['nama'] ?></td>
+                                                        <td class="font-kecil font-tebal"><?= $data['nama'] ?></td>
                                                         <td class="font-kecil" style="text-align: center;"><img src="<?php if($data['hg']==1){ echo base_url().'assets/images/sign-check.png'; }else{ echo base_url().'assets/images/sign-error.png';} ?>"></td>
                                                         <td class="font-kecil" style="text-align: center;"><img src="<?php if($data['mh']==1){ echo base_url().'assets/images/sign-check.png'; }else{ echo base_url().'assets/images/sign-error.png';} ?>"></td>
-                                                        <td><?= $data['bagian'] ?></td>
+                                                        <td><?= substr($data['loc'],0,3) ?></td>
                                                         <td><?= $data['jabatan'] ?></td>
                                                         <td class="kanan font-kecil"><?= rupiah($data['gaji'],0,',','.') ?></td>
                                                         <td class="kanan font-kecil"><?= rupiah($data['tunjab'],0,',','.') ?></td>

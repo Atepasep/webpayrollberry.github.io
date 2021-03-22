@@ -27,6 +27,11 @@ class Didik extends CI_Controller {
 		$this->load->view('page/didik',$data);
 		$this->load->view('footer',$footer);
 	}
+	function clear(){
+		$this->session->set_flashdata('kodeid','');
+		$url = base_url().'didik';
+		redirect($url);
+	}
 	function getdatasatu(){
 		$id = $_POST['id'];
 		$hasil = $this->mdidik->getdatasatu($id)->result();

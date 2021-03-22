@@ -1,6 +1,6 @@
 <div class='modal-body' id="test">
 	<input type="hidden" name="idkirim" id="idkirim" value="<?= $id ?>">
-	Apakah Anda yakin akan mengirim data <strong>'<?= $nama ?>'</strong> ?
+	Apakah Anda yakin akan mengirim data <strong>'<?= $nama ?>'</strong> untuk di Validasi ?
 </div>
 <div class='modal-footer'>
     <a href="#" class="btn-ok btn btn-success btn-icon-split btn-sm flat font-kecil" id="yakirim">
