@@ -60,6 +60,7 @@
     <script src="<?= base_url().'assets/plugins/jquery-easing/jquery.easing.min.js' ?>"></script>
     <script src="<?= base_url().'assets/plugins/toast/jquery.toast.min.js' ?>"></script>  
 
+
     <!-- Page level plugins -->
     <script src="<?= base_url().'assets/plugins/datatables/dataTables.min.js' ?>"></script>
 

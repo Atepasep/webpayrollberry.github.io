@@ -130,3 +130,7 @@ function rupiah(amount, decimalSeparator, thousandsSeparator, nDecimalDigits){
   function toAngka(rp){
     return rp.replace(/,*|\D/g,'');
   }
+
+  function randomScalingFactor(){
+  	return Math.round(Samples.utils.rand(-100, 100));
+  }
