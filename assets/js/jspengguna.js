@@ -88,7 +88,9 @@ $("#pass").on('dblclick',function(){
 	}
 })
 $("#foto-profil").on('dblclick',function(){
-	$("#file").click();
+	if($("#addpengguna").hasClass('hilang')){
+		$("#file").click();
+	}
 })
 $("#file").change(function(){
 	$("#file_path").val($(this).val());

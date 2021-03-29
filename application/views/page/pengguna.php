@@ -172,7 +172,7 @@
                                             </span>
                                             <span class="text">Ubah</span>
                                         </a>
-                                        <a href="#" class="btn btn-danger btn-icon-split btn-sm flat font-kecil" id="hapuspengguna" data-toggle="modal" data-target="#confirm-delete" data-href="<?= base_url().'pengguna/hapus/x' ?>">
+                                        <a href="#" class="btn btn-danger btn-icon-split btn-sm flat font-kecil" id="hapuspengguna" data-toggle="modal" data-target="#confirm-delete" data-news="Yakin akan menghapus data ini ?" data-href="<?= base_url().'pengguna/hapus/x' ?>">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash-alt"></i>
                                             </span>

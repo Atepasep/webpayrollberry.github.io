@@ -47,6 +47,11 @@ $(document).ready(function(){
 		document.getElementById("test2").innerHTML = $(e.relatedTarget).data('news');
 		$(this).find('.btn-oke').attr('href', $(e.relatedTarget).data('href'));
 	});
+
+	$(".sparkline").each(function () {
+      var $this = $(this);
+      $this.sparkline('html', $this.data());
+    });
 })
 function modalBox(){
 	$('#modalBox').on('show.bs.modal', function(e){

@@ -3,7 +3,7 @@
 		function getdata(){
 			$hasil = $this->db->query("SELECT karyawan.*,bagian.bagian AS xbagian,jabatan.jabatan AS xjabatan FROM karyawan
 					 LEFT JOIN bagian ON bagian.id=karyawan.bagian 
-					 LEFT JOIN jabatan ON jabatan.id=karyawan.jabatan");
+					 LEFT JOIN jabatan ON jabatan.id=karyawan.jabatan order by karyawan.ind desc");
 			return $hasil;
 		}
 		function getdatasatu($id){

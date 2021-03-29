@@ -29,8 +29,6 @@
 
     <link href="<?= base_url().'assets/plugins/datepicker/dist/css/bootstrap-datepicker.css' ?>" rel="stylesheet">
 
-            <script src="<?= base_url().'assets/plugins/grafik/chart.min.js' ?>"></script>
-
 </head>
 
 <body id="page-top">

@@ -21,6 +21,7 @@
                                 <table class="table table-bordered dt-responsive datatable table-hover" id="tabelku" width="100%" cellspacing="0">
                                     <thead class="bg-secondary text-light">
                                         <tr>
+                                            <th>Ind</th>
                                             <th>NIK</th>
                                             <th>Nama</th>
                                             <th>Bagian</th>
@@ -32,6 +33,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th>Ind</th>
                                             <th>NIK</th>
                                             <th>Nama</th>
                                             <th>Bagian</th>
@@ -44,6 +46,7 @@
                                     <tbody id="data-tabelku">
                                         <?php foreach($datapersonil as $data){ ?>
                                             <tr>
+                                                <td><?= $data['ind'] ?></td>
                                                 <td><?= $data['noinduk'] ?></td>
                                                 <td><?= $data['nama'] ?></td>
                                                 <td><?= $data['xbagian'] ?></td>

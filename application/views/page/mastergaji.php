@@ -15,6 +15,7 @@
                                         <table class="table table-bordered dt-responsive datatable table-hover" id="tabelku" width="100%" cellspacing="0">
                                             <thead class="bg-secondary text-light">
                                                 <tr>
+                                                    <th>Ind</th>
                                                     <th>NIK</th>
                                                     <th>Nama</th>
                                                     <th>Bagian</th>
@@ -22,11 +23,13 @@
                                                     <th>Gaji Pokok</th>
                                                     <th>Tunj Jabatan</th>
                                                     <th>Tunj Skill</th>
+                                                    <th>Total</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
+                                                    <th>Ind</th>
                                                     <th>NIK</th>
                                                     <th>Nama</th>
                                                     <th>Bagian</th>
@@ -34,12 +37,14 @@
                                                     <th>Gaji Pokok</th>
                                                     <th>Tunj Jabatan</th>
                                                     <th>Tunj Skill</th>
+                                                    <th>Total</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody id="data-tabelku">
                                                 <?php foreach($datagaji as $data){ ?>
                                                     <tr>
+                                                        <td><?= $data['ind'] ?></td>
                                                         <td><?= $data['noinduk'] ?></td>
                                                         <td><?= $data['nama'] ?></td>
                                                         <td><?= $data['bagian'] ?></td>
@@ -47,6 +52,7 @@
                                                         <td class="kanan"><?= rupiah($data['gaji'],0,',','.') ?></td>
                                                         <td class="kanan"><?= rupiah($data['tunjab'],0,',','.') ?></td>
                                                         <td class="kanan"><?= rupiah($data['tunskill'],0,',','.') ?></td>
+                                                        <td class="kanan font-tebal"><?= rupiah($data['gaji']+$data['tunjab']+$data['tunskill'],0,',','.') ?></td>
                                                         <td style="text-align: center;">
                                                             <a href="<?= base_url().'mastergaji/addgaji/'.$data['id_personil'] ?>" title="edit gaji <?= $data['nama'] ?>"><img src="<?= base_url().'assets/images/edit.png' ?>"></a>
                                                             <a href="<?= base_url().'mastergaji/getview/'.$data['id_personil'] ?>" title="view gaji <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="View History Gaji" data-target="#modalBox" ><img src="<?= base_url().'assets/images/view.png' ?>"></a>

@@ -120,6 +120,12 @@
                                         </div>
                                     </form>
                                     <hr class="small">
+                                     <div class="form-group row mb-0">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label-sm warnahitam">Total (Gaji Kotor)</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control form-control-sm flat warnahitam kanan" name="gakot" id="gakot" value="" readonly>
+                                            </div>
+                                    </div>
                                     <div style="text-align: right;">
                                         <a href="#" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="savegaji">
                                             <span class="icon text-white-50">

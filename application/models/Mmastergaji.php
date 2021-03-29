@@ -1,7 +1,7 @@
 <?php
 	class Mmastergaji extends CI_Model {
 		function getdata(){
-			$hasil = $this->db->query("SELECT a.id as id_personil,a.noinduk,a.nama,c.bagian,d.jabatan,b.* FROM karyawan a
+			$hasil = $this->db->query("SELECT a.id as id_personil,a.ind,a.noinduk,a.nama,c.bagian,d.jabatan,b.* FROM karyawan a
 										LEFT JOIN bagian c ON a.bagian = c.id
 										LEFT JOIN jabatan d ON a.jabatan = d.id
 										left JOIN gaji b ON a.id = b.id_karyawan where b.sampai is null");
@@ -25,6 +25,7 @@
 			unset($data['xgaji']);
 			unset($data['xtunjab']);
 			unset($data['xtunskill']);
+			unset($data['gakot']);
 			$first = $this->db->query("update gaji set sampai=now() where id_karyawan='".$data['id_karyawan']."' and sampai is null ");
 			if($first){
 				$simpan = $this->db->insert('gaji',$data);

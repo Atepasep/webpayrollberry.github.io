@@ -69,6 +69,8 @@
 
     <script src="<?= base_url().'assets/plugins/datepicker/dist/js/bootstrap-datepicker.js' ?>"></script>
 
+                <script src="<?= base_url().'assets/plugins/grafik/jquery.sparkline.min.js' ?>"></script>
+
     <!-- Custom scripts me-->
     <script src="<?= base_url().'assets/js/myscript.js' ?>"></script>
 
