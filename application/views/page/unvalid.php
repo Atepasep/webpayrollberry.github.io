@@ -32,6 +32,7 @@
                     $("#tbvalid"+xid).attr('title','Validasi data');
                     document.getElementById('tbvalid'+xid).innerHTML = "validasi";
                     $("#tbvalid"+xid).attr('href','validasi/validoke/'+xid);
+                    $("#gbvalid"+xid).attr('src','assets/images/sign-error.png');
                     $("#tombolkembali").click();
                 }
             }

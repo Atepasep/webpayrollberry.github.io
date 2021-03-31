@@ -89,6 +89,11 @@ img.foto-profil {
     color: black !important;
     font-size: 13px;
 }
+.tbvalidasi {
+	display: inline-block;
+	min-width: 50px;
+	text-align: center;
+}
 .kanan {
 	text-align: right !important;
 }

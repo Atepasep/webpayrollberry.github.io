@@ -64,11 +64,12 @@
                                         <table class="table table-bordered dt-responsive datatable table-hover" id="tabelku" width="100%" cellspacing="0">
                                             <thead class="bg-secondary text-light">
                                                 <tr>
-                                                    <th data-priority="1">NIK</th>
+                                                    <th data-priority="1">Ind</th>
+                                                    <!-- <th data-priority="1">NIK</th> -->
                                                     <th data-priority="2">Nama</th>
                                                     <th data-priority="3" style="width: 10px;">H G</th>
                                                     <th data-priority="4" style="width: 10px;">M H</th>
-                                                    <th data-priority="9">Loc</th>
+                                                    <!-- <th data-priority="9">Loc</th> -->
                                                     <th data-priority="6">Position</th>
                                                     <th>Basic Salary</th>
                                                     <th>Pos Allowance</th>
@@ -81,7 +82,7 @@
                                                     <th>Meal</th>
                                                     <th>Transport</th>
                                                     <th>Koperasi</th>
-                                                    <th data-priority="5">thp</th>
+                                                    <th data-priority="5">Thp</th>
                                                     <th>Loan</th>
                                                     <th>BPJS</th>
                                                     <th data-priority="8">Real Thp</th>
@@ -90,11 +91,12 @@
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                    <th>NIK</th>
+                                                    <th>Ind</th>
+                                                    <!-- <th>NIK</th> -->
                                                     <th>Nama</th>
                                                     <th>H G</th>
                                                     <th>M H</th>
-                                                    <th>Loc</th>
+                                                    <!-- <th>Loc</th> -->
                                                     <th>Position</th>
                                                     <th>Basic Salary</th>
                                                     <th>Pos Allowance</th>
@@ -107,7 +109,7 @@
                                                     <th>Meal</th>
                                                     <th>Transport</th>
                                                     <th>Koperasi</th>
-                                                    <th>thp</th>
+                                                    <th>Thp</th>
                                                     <th>Loan</th>
                                                     <th>BPJS</th>
                                                     <th>Real Thp</th>
@@ -117,11 +119,10 @@
                                             <tbody id="data-tabelku">
                                                 <?php foreach($datapayroll as $data){ ?>
                                                     <tr>
-                                                        <td class="font-kecil"><?= $data['noinduk'] ?></td>
+                                                        <td class="font-kecil font-tebal kanan"><?= $data['ind'] ?></td>
                                                         <td class="font-kecil font-tebal"><?= $data['nama'] ?></td>
                                                         <td class="font-kecil" style="text-align: center;"><img src="<?php if($data['hg']==1){ echo base_url().'assets/images/sign-check.png'; }else{ echo base_url().'assets/images/sign-error.png';} ?>"></td>
                                                         <td class="font-kecil" style="text-align: center;"><img src="<?php if($data['mh']==1){ echo base_url().'assets/images/sign-check.png'; }else{ echo base_url().'assets/images/sign-error.png';} ?>"></td>
-                                                        <td><?= substr($data['loc'],0,3) ?></td>
                                                         <td><?= $data['jabatan'] ?></td>
                                                         <td class="kanan font-kecil"><?= rupiah($data['gaji'],0,',','.') ?></td>
                                                         <td class="kanan font-kecil"><?= rupiah($data['tunjab'],0,',','.') ?></td>
@@ -138,7 +139,7 @@
                                                         <td class="kanan font-kecil" id="kolomloan<?= $data['id'] ?>"><?= rupiah($data['loan'],0,',','.') ?></td>
                                                         <td class="kanan font-kecil" id="kolombpjs<?= $data['id'] ?>"><?= rupiah($data['bpjs'],0,',','.') ?></td>
                                                         <td class="kanan font-kecil font-tebal" id="kolomrealthp<?= $data['id'] ?>"><?= rupiah($data['realthp'],0,',','.') ?></td>
-                                                        <td style="text-align: center;">
+                                                        <td style="">
                                                             <a class="<?php if($data['send']==1){ echo "hilang"; }  ?>" id="tb1gambar<?= $data['id'] ?>" href="<?= base_url().'payroll/editview/'.$data['id'] ?>" title="Edit payroll <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="Edit Payroll" data-target="#modalBox" ><img id="gambar<?= $data['id'] ?>" src="<?php if($data['editke']>=1){ echo base_url().'assets/images/pencil-valid.png'; }else{ echo base_url().'assets/images/pencil.png'; } ?>"></a>
                                                             <a class="<?php if($data['send']==1){ echo "hilang"; }  ?>" id="tb2gambar<?= $data['id'] ?>" data-toggle="modal" data-target="#modalBox-task" href="<?= base_url().'payroll/senddata/'.$data['id'] ?>" title="Kirim data" data-title="Kirim data" data-news="Apakah Anda yakin akan mengirim data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer;"><img src="<?= LOK_FOTO.'paper-plane.png' ?>"></a>
                                                             <a href="<?= base_url().'payroll/getview/'.$data['id'] ?>" title="View Detail" data-remote="false" data-toggle="modal" data-title="View Detail" data-target="#modalBox-lg" ><img src="<?= base_url().'assets/images/file-pdf-icon.png' ?>"></a>

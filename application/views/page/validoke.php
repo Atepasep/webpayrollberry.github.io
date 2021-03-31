@@ -32,6 +32,7 @@
                     $("#tbvalid"+xid).attr('title','Batalkan Validasi');
                     document.getElementById('tbvalid'+xid).innerHTML = "batal";
                     $("#tbvalid"+xid).attr('href','validasi/unvalid/'+xid);
+                    $("#gbvalid"+xid).attr('src','assets/images/sign-check.png');
                     $("#tombolkembali").click();
                 }
             }

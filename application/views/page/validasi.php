@@ -54,7 +54,7 @@
                                         <table class="table table-bordered dt-responsive datatable table-hover" id="tabelku" width="100%" cellspacing="0">
                                             <thead class="bg-secondary text-light">
                                                 <tr>
-                                                    <th data-priority="1">NIK</th>
+                                                    <!-- <th data-priority="1">NIK</th>
                                                     <th data-priority="2">Nama</th>
                                                     <th data-priority="9">Loc</th>
                                                     <th data-priority="6">Position</th>
@@ -64,22 +64,47 @@
                                                     <th data-priority="5">Gross Salary</th>
                                                     <th data-priority="5">thp</th>
                                                     <th data-priority="8">Real Thp</th>
-                                                    <th data-priority="7">Aksi</th>
+                                                    <th data-priority="7">Aksi</th> -->
+                                                    <th data-priority="1">No</th>
+                                                    <th data-priority="2">Name</th>
+                                                    <th>Basic</th>
+                                                    <th>Position</th>
+                                                    <th>Skill</th>
+                                                    <th>Gross</th>
+                                                    <th>Other</th>
+                                                    <th>Insurance</th>
+                                                    <th>Pension</th>
+                                                    <th>Tax</th>
+                                                    <th>Transport</th>
+                                                    <th>Meal</th>
+                                                    <th>Koperasi</th>
+                                                    <th>Installment</th>
+                                                    <th>BPJS</th>
+                                                    <th data-priority="5">Take Home Pay</th>
+                                                    <th data-priority="3">Valid</th>
+                                                    <th data-priority="4">Action</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                    <th>NIK</th>
-                                                    <th>Nama</th>
-                                                    <th>Loc</th>
+                                                <th>No</th>
+                                                    <th>Name</th>
+                                                    <th>Basic</th>
                                                     <th>Position</th>
-                                                    <th>Basic Salary</th>
-                                                    <th>Pos Allowance</th>
-                                                    <th>Skill Allowance</th>
-                                                    <th>Gross Salary</th>
-                                                    <th>thp</th>
-                                                    <th>Real Thp</th>
-                                                    <th>Aksi</th>
+                                                    <th>Skill</th>
+                                                    <th>Gross</th>
+                                                    <th>Other</th>
+                                                    <th>Insurance</th>
+                                                    <th>Pension</th>
+                                                    <th>Tax</th>
+                                                    <th>Transport</th>
+                                                    <th>Meal</th>
+                                                    <th>Koperasi</th>
+                                                    <th>Installment</th>
+                                                    <th>BPJS</th>
+                                                    <th>Take Home Pay</th>
+                                                    <th>Valid</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody id="data-tabelku">
@@ -88,22 +113,30 @@
                                                     $by = $data[$kde]==1 ? 'bg-success' : 'bg-warning';
                                                     $ttl = $data[$kde]==1 ? 'Batal Validasi' : 'Validasi Data';
                                                     $cpt = $data[$kde]==1 ? 'batal' : 'validasi';
+                                                    $gbr = $data[$kde]==1 ? LOK_FOTO.'sign-check.png' : LOK_FOTO.'sign-error.png'; 
                                                     $urrl= $data[$kde]==0 ? base_url().'validasi/validoke/'.$data['id'] : base_url().'validasi/unvalid/'.$data['id'];
                                                  ?>
                                                     <tr>
-                                                        <td class="font-kecil"><?= $data['noinduk'] ?></td>
-                                                        <td class="font-kecil"><?= $data['nama'] ?></td>
-                                                        <td class="font-kecil"><?= $data['bagian'] ?></td>
-                                                        <td class="font-kecil"><?= $data['jabatan'] ?></td>
+                                                        <td class="font-kecil kanan font-tebal"><?= $data['ind'] ?></td>
+                                                        <td class="font-kecil font-tebal"><?= $data['nama'] ?></td>
                                                         <td class="kanan font-kecil"><?= rupiah($data['gaji'],0,',','.') ?></td>
                                                         <td class="kanan font-kecil"><?= rupiah($data['tunjab'],0,',','.') ?></td>
                                                         <td class="kanan font-kecil"><?= rupiah($data['tunskill'],0,',','.') ?></td>
                                                         <td class="kanan font-kecil"><?= rupiah($data['gaji']+$data['tunjab']+$data['tunskill'],0,',','.') ?></td>
-                                                        <td class="kanan font-tebal text-danger font-kecil" id="kolomthp<?= $data['id'] ?>"><?= rupiah($data['thp'],0,',','.') ?></td>
-                                                        <td class="kanan font-tebal font-kecil" id="kolomrealthp<?= $data['id'] ?>"><?= rupiah($data['realthp'],0,',','.') ?></td>
-                                                        <td style="text-align: center;">
-                                                            <a id="tbvalid<?= $data['id'] ?>" data-toggle="modal" data-target="#modalBox-task" href="<?= $urrl ?>" title="<?= $ttl ?>" data-title="Peringatan" id="unsenddata" data-news="Apakah Anda yakin akan menarik data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer; text-decoration: none;" class="<?= $by ?> warnahitam"><?= $cpt ?></a>
+                                                        <td class="kanan font-kecil"><?= rupiah($data['other'],0,',','.') ?></td>
+                                                        <td class="kanan font-kecil"><?= rupiah($data['astek'],0,',','.') ?></td>
+                                                        <td class="kanan font-kecil"><?= rupiah($data['jp'],0,',','.') ?></td>
+                                                        <td class="kanan font-kecil"><?= rupiah($data['pphmonth'],0,',','.') ?></td>
+                                                        <td class="kanan font-kecil"><?= rupiah($data['transport'],0,',','.') ?></td>
+                                                        <td class="kanan font-kecil"><?= rupiah($data['meal'],0,',','.') ?></td>
+                                                        <td class="kanan font-kecil"><?= rupiah($data['koperasi'],0,',','.') ?></td>
+                                                        <td class="kanan font-kecil"><?= rupiah(0,0,',','.') ?></td>
+                                                        <td class="kanan font-kecil"><?= rupiah($data['bpjs'],0,',','.') ?></td>
+                                                        <td class="kanan font-tebal text-danger font-kecil" id="kolomrealthp<?= $data['id'] ?>"><?= rupiah($data['realthp'],0,',','.') ?></td>
+                                                        <td style="text-align:center;"><img id="gbvalid<?= $data['id'] ?>" src='<?= $gbr ?>'></td>
+                                                        <td style="">
                                                             <a href="<?= base_url().'payroll/getview/'.$data['id'] ?>" title="View Detail" data-remote="false" data-toggle="modal" data-title="View Detail" data-target="#modalBox-lg" ><img src="<?= base_url().'assets/images/file-pdf-icon.png' ?>"></a>
+                                                            <a id="tbvalid<?= $data['id'] ?>" data-toggle="modal" data-target="#modalBox-task" href="<?= $urrl ?>" title="<?= $ttl ?>" data-title="Peringatan" id="unsenddata" data-news="Apakah Anda yakin akan menarik data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer; text-decoration: none;" class="<?= $by ?> tbvalidasi warnahitam"><?= $cpt ?></a>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
