@@ -54,7 +54,7 @@
                       <!--<input type="submit" value="Login">-->
                       <button type="submit" class="btn btn-lg font-tebal" style="display: none;">Test</button>
                        <a href="#" class="btn btn-lg font-tebal" id="submitakun" style="background-color: #5D3F32;">Submit</a>
-                       <a href="#" class="switch">Belum punya Akun</a>
+                       <a href="#" class="switch">Info Aplikasi</a>
                     </div>
                  </form>
               </div><!-- End Login Form -->
@@ -63,40 +63,14 @@
               <!-- Signup Form -->
               <div class="signup form-peice switched">
                  <form class="signup-form" action="<?= $formAction2 ?>" method="post" id="formsignup">
-
-                    <div class="form-group">
-                       <label for="name">Nama Lengkap</label>
-                       <input type="text" name="name" id="name" class="name">
-                       <span class="error"></span>
-                    </div>
-
-                    <div class="form-group">
-                       <label for="phone">NIK</small></label>
-                       <input type="text" name="noinduk" id="noinduk">
-                    </div>
-
-                    <div class="form-group">
-                       <label for="email">Alamat Email</label>
-                       <input type="email" name="email" id="email" class="email">
-                       <span class="error"></span>
-                    </div>
-
-                    <div class="form-group">
-                       <label for="name">Username</label>
-                       <input type="text" name="username" id="username" class="name">
-                       <span class="error"></span>
-                    </div>
-
-                    <div class="form-group">
-                       <label for="password">Password</label>
-                       <input type="password" name="password" id="password" class="pass">
-                       <span class="error"></span>
-                    </div>
-
-                    <div class="CTA">
-                       <!--<input type="submit" value="Signup Now" id="submit">-->
-                       <a href="#" class="btn btn-lg font-tebal" id="submitakunbaru" style="background-color: #5D3F32;">Submit</a>
-                       <a href="#" class="switch">Sudah punya Akun</a>
+                  <div class="warnahitam">
+                     Aplikasi Untuk melihat profile Personil, Slip Gaji Manajemen PT. Indoneptune Net Manufacturing
+                  </div>
+                  <div class="warnahitam">
+                     Info dan Saran dibutuhkan demi perkembangan dari aplikasi ini..
+                  </div>
+                  <div class="CTA">
+                       <a href="#" class="switch warnahitam">Kembali</a>
                     </div>
                  </form>
               </div><!-- End Signup Form -->
@@ -111,7 +85,7 @@
   <script src="<?= base_url() ?>assets/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="<?= base_url().'assets/js/jslogin.js' ?>"></script>
   <?php
-    if($this->session->flashdata('msgx')=='suksesbrad'){ ?>
+    if($this->session->flashdata('msgx')=='suksesmasukportal'){ ?>
       <script type="text/javascript">
         setTimeout(function () { $('.signup, .login').hide(); }, 700);
         setTimeout(function () { $('.brand').addClass('active'); }, 300);
