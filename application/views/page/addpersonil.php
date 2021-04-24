@@ -18,10 +18,20 @@
                                                 <div class="form-group row" style="margin-bottom: 0px;">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label-sm">NIK</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control form-control-sm flat warnahitam" name="noinduk" id="noinduk" placeholder="NIK" value="<?= $noinduk ?>">
-                                                        <div class="invalid-feedback">
-                                                            No induk harap di isi
-                                                        </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control form-control-sm flat warnahitam" name="noinduk" id="noinduk" placeholder="NIK" value="<?= $noinduk ?>">
+                                                                    <div class="invalid-feedback">
+                                                                        No induk harap di isi
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <input type="text" class="form-control form-control-sm flat warnahitam" name="ind" id="ind" placeholder="IND" value="<?= $ind ?>">
+                                                                    <div class="invalid-feedback">
+                                                                        No IND harap di isi
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row" style="margin-bottom: 0px;">
@@ -253,6 +263,12 @@
                                                         </div>
                                                     </div>
                                                 </div> 
+                                                <div class="form-group row mt-2" style="margin-bottom: 0px;">
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label-sm">No Kartu</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control form-control-sm flat warnahitam" name="cardcode" id="cardcode" placeholder="" value="<?= $cardcode ?>"> 
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
