@@ -10,6 +10,8 @@ $("#savepersonil").click(function(){
 	$("#tgllahir").removeClass('is-invalid');
 	$("#alamat").removeClass('is-invalid');
 	$("#ptkp").removeClass('is-invalid');
+	$("#ind").removeClass('is-invalid');
+	$("#cardcode").removeClass('is-invalid');
 	if($("#noinduk").val()==''){
 		$("#noinduk").addClass('is-invalid');
 	}
@@ -31,6 +33,14 @@ $("#savepersonil").click(function(){
 	}
 	if($("#ptkp").val()==''){
 		$("#ptkp").addClass('is-invalid');
+		jadi = false;
+	}
+	if($("#ind").val()==''){
+		$("#ind").addClass('is-invalid');
+		jadi = false;
+	}
+	if($("#cardcode").val()==''){
+		$("#cardcode").addClass('is-invalid');
 		jadi = false;
 	}
 	if($("#email").val()==''){

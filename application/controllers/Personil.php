@@ -39,6 +39,7 @@ class Personil extends CI_Controller {
 		$data['urll'] = base_url().'Personil/datagrup';
 		$footer['modul'] = 'personil';
 		$data['id'] = null;
+		$data['ind'] = null;
 		$data['noinduk'] = null;
 		$data['nama'] = null;
 		$data['jenkel'] = null;
@@ -65,6 +66,7 @@ class Personil extends CI_Controller {
 		$data['profil'] = null;
 		$data['loc'] = null;
 		$data['grp'] = null;
+		$data['cardcode'] = null;
 		$this->load->view('header',$header);
 		$this->load->view('page/addpersonil',$data);
 		$this->load->view('footer',$footer);
@@ -81,6 +83,7 @@ class Personil extends CI_Controller {
 		$footer['modul'] = 'personil';
 		$datapersonil = $this->mpersonil->getdatasatu($id)->row_array();
 		$data['id'] = $id;
+		$data['ind'] = $datapersonil['ind'];
 		$data['noinduk'] = $datapersonil['noinduk'];
 		$data['nama'] = $datapersonil['nama'];
 		$data['jenkel'] = $datapersonil['jenkel'];
@@ -107,6 +110,7 @@ class Personil extends CI_Controller {
 		$data['profil'] = $datapersonil['profil'];
 		$data['loc'] = $datapersonil['loc'];
 		$data['grp'] = $datapersonil['grp'];
+		$data['cardcode'] = $datapersonil['cardcode'];
 		$this->load->view('header',$header);
 		$this->load->view('page/addpersonil',$data);
 		$this->load->view('footer',$footer);	
