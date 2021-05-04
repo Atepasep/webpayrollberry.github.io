@@ -381,23 +381,22 @@ class Payroll extends CI_Controller {
         if(file_exists($file)){
         	$kode = $temp['code'].' '.namabulan(substr($temp['periode'], 4,2)).' '.substr($temp['periode'], 0,4);
 			$bapakibu = $temp['jenkel']=='L' ? 'Bapak ' : 'Ibu ';
-			$namakar  = $temp['nama'];
-			$message = '<html><body>';
+        	$message = '<html><body>';
+			//$message .= '<h1>Hello User</h1>';
 			$message .= '<table style="border-collapse: collapse; width: 100%; height: 144px;" border="0">';
 			$message .= '<tbody>';
-			$message .= '<tr><td colspan="3">Kepada Yth <br> '.$bapakibu.' <strong>'.$namakar.'</strong></td></tr>';
-			$message .= '<tr><td colspan="3">Terlampir kami sampaikan e-Slip <strong>'.$kode.'</strong> anda.<br></td></tr>';
-			$message .= '<tr><td colspan="3">Silahkan gunakan password untuk membuka e-Slip gaji anda, yang terdiri dari :<br></td></tr>';
-			$message .= '<tr><td style="width:45px; padding-left:20px;">xxxx</td><td>:</td><td>Empat Digit terakhir nomor kartu debit anda<td></tr>';
-			$message .= '<tr><td style="padding-left:20px;">dd</td><td>:</td><td>Dua digit tanggal lahir anda</td></tr>';
-			$message .= '<tr><td style="padding-left:20px;">mm</td><td>:</td><td>Dua digit bulan lahir anda</td></tr>';
-			$message .= '<tr><td style="padding-left:20px;">yy</td><td>:</td><td>Dua digit tahun lahir anda</td></tr>';
-			$message .= '<tr><td colspan="3"><br>Contoh : Password untuk tanggal lahir 20 Maret 1971 dan 4 Digit terakhir kartu debit anda misalnya 4444 adalah 4444200371.<br></td></tr>';
-			$message .= '<tr><td colspan="3"><br>Untuk menikmati fasilitas layanan e-Slip gaji, pastikan anda memiliki program Adobe Reader minimal versi 6.0 pada komputer atau handphone anda.<br></td></tr>';
-			$message .= '<tr><td colspan="3"><br>Hormat kami, <br> Berry Laksana</td></tr>';
+			$message .= '<tr style="height: 126px;">';
+			$message .= '<td style="width: 509px; height: 126px;" colspan="2"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://indoneptune.com/img/gambar.png" alt="INDONEPTUNE.PNG" width="164" height="109" /></td>';
+			$message .= '</tr>';
+			$message .= '<tr style="height: 18px;">';
+			$message .= '<td style="width: 253px; height: 18px;" colspan="2">';
+			$message .= '<p style="text-align: justify;">Bersama ini kami kirimkan Slip '.$kode.'. Untuk membuka Slip terlampir gunakan password yang telah anda daftarkan.<br/>Slip dikirimkan dalam format PDF File. <br/>Pastikan Anda memiliki program Adobe Acrobat Reader atau sejenisnya untuk membuka Slip.<br/>Untuk informasi lebih lanjut, hubungi Administrator Data.</p>';
+			$message .= '<p style="text-align: justify;">Semoga bermanfaat.</p>';
+			$message .= '</td>';
+			$message .= '</tr>';
 			$message .= '</tbody>';
 			$message .= '</table>';
-			$message .= '</body></html>';
+			$message .= '</body></html>';	
         	$sendmail = array('file'=>$file,'penerima'=>$temp['email'],'pesan'=>$message,'subjek'=>$kode);
         	$send = $this->mailer->send_with_attachment($sendmail);
 	        if(strtoupper($send['status'])=='SUKSES'){
