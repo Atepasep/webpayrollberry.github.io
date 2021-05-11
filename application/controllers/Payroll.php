@@ -269,7 +269,7 @@ class Payroll extends CI_Controller {
 		$namafile = $this->session->flashdata('kodepayroll').'_'.namabulan($this->session->flashdata('bulanperiode')).'_'.$this->session->flashdata('tahunperiode');
 		$file = LOK_FILE.$namafile.'_'.$temp['noinduk'].'.pdf';
         $pdf = new FPDF_Protection('p','mm','A5');
-        $pdf->SetProtection(array('print'), strtolower(decrypto($temp['password'])));
+        $pdf->SetProtection(array('print'), strtolower($temp['pdfpass']));
         // membuat halaman baru
         $pdf->AddPage();
         // setting jenis font yang akan digunakan

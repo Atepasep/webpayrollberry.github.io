@@ -61,7 +61,7 @@
                             <div class="row" style="clear: both;">
                                 <div class="col-sm-12">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered dt-responsive datatable table-hover" id="tabelku" width="100%" cellspacing="0">
+                                        <table class="table table-bordered datatable table-hover" id="tabelku" width="100%" cellspacing="0">
                                             <thead class="bg-secondary text-light">
                                                 <tr>
                                                     <th data-priority="1">Ind</th>

@@ -15,7 +15,7 @@
 			$py = $this->session->flashdata('kodepayroll');
 			$bl = $this->session->flashdata('kodepayroll')=='SALARY' ? $this->session->flashdata('bulanperiode') : '00';
 			$th = $this->session->flashdata('tahunperiode');
-			$hasil = $this->db->query("SELECT a.nama,a.noinduk,a.jenkel,c.jabatan as jabatan,d.bagian as bagian,a.email,a.bank,a.bankadr,a.rekname,a.norek,a.password,b.* FROM karyawan a
+			$hasil = $this->db->query("SELECT a.nama,a.noinduk,a.jenkel,c.jabatan as jabatan,d.bagian as bagian,a.email,a.bank,a.bankadr,a.rekname,a.norek,a.password,CONCAT(a.cardcode,DATE_FORMAT(a.tgllahir,'%d%m%y')) as pdfpass,b.* FROM karyawan a
 										LEFT JOIN payroll b ON a.id = b.id_karyawan 
 										LEFT JOIN jabatan c ON a.jabatan = c.id
 										LEFT JOIN bagian d ON a.bagian = d.id
