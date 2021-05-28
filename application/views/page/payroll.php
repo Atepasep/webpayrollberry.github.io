@@ -40,7 +40,7 @@
                                                 </span>
                                                 <span class="text kode">Reset</span>
                                             </a>
-                                            <a class="btn btn-secondary btn-icon-split btn-sm flat font-kecil ml-1" data-toggle="modal" data-target="#confirm-task" data-href="<?= base_url().'payroll/sendall' ?>" title="Send semua data" data-news="Apakah Anda yakin akan kirim semua data periode ini ?" style="cursor: pointer;">
+                                            <a class="btn btn-secondary btn-icon-split btn-sm flat font-kecil ml-1" data-toggle="modal" data-target="#confirm-task" data-href="<?= base_url().'/payroll/sendall' ?>" title="Send semua data" data-news="Apakah Anda yakin akan kirim semua data periode ini ?" style="cursor: pointer;">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-paper-plane"></i>
                                                 </span>
@@ -149,6 +149,25 @@
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
+                                                     <tr style="background-color:rgb( 249, 231, 159 )" class="font-tebal kanan">
+                                                        <td colspan="5" style="text-align:center">Total</td>
+                                                        <td>Basic Salary</td>
+                                                        <td>Pos Allowance</td>
+                                                        <td>Skill Allowance</td>
+                                                        <td>Gross Salary</td>
+                                                        <td>Otder</td>
+                                                        <td>Astek</td>
+                                                        <td>Jp</td>
+                                                        <td>PPh Montd</td>
+                                                        <td>Meal</td>
+                                                        <td>Transport</td>
+                                                        <td>Koperasi</td>
+                                                        <td>tdp</td>
+                                                        <td>Loan</td>
+                                                        <td>BPJS</td>
+                                                        <td>Real tdp</td>
+                                                        <td>Aksi</td>
+                                                    </tr>
                                             </tbody>
                                         </table>
                                     </div>
