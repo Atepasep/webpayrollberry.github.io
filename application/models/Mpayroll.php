@@ -43,6 +43,7 @@
 			unset($data['filetransport']);
 			unset($data['filepathtransport']);
 			unset($data['persenthrbonus']);
+			// Cek
 			if($id=1){
 				$this->db->query("delete from payroll where periode = '".$data['periode']."' and code = '".$data['code']."' ");
 			}
