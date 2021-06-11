@@ -76,9 +76,6 @@
             Apakah Anda yakin ingin menghapus data ini?
         </div>
         <div class='modal-footer'>
-<!--           <a class='btn-ok'>
-            <button type="button" class="btn btn-social btn-flat btn-danger btn-sm" id="ok-delete"><i class='fa fa-trash-o'></i> Hapus</button>
-          </a> -->
             <a href="#" class="btn-ok btn btn-danger btn-icon-split btn-sm flat font-kecil" id="ok-delete">
                 <span class="icon text-white-50">
                     <i class="fas fa-trash-alt"></i>
@@ -101,15 +98,12 @@
     <div class='modal-content'>
       <div class='modal-header btn-info'>
         <!-- <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button> -->
-        <h4 class='modal-title' id='myModalLabel'><i class='fa fa-exclamation-triangle text-danger'></i> Konfirmasi</h4>
+        <h4 class='modal-title' id='myModalLabel'><i class='fa fa-exclamation-triangle text-info'></i> Konfirmasi</h4>
         </div>
         <div class='modal-body' id="test2">
-            Apakah Anda yakin ingin menghapus data ini?
+            Apakah Anda yakin ingin menghapus data ini kah?
         </div>
         <div class='modal-footer'>
-<!--           <a class='btn-ok'>
-            <button type="button" class="btn btn-social btn-flat btn-danger btn-sm" id="ok-delete"><i class='fa fa-trash-o'></i> Hapus</button>
-          </a> -->
             <a href="#" class="btn-oke btn btn-danger btn-icon-split btn-sm flat font-kecil" id="ok-delete">
                 <span class="icon text-white-50">
                     <i class="fas fa-trash-alt"></i>

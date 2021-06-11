@@ -108,13 +108,29 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody id="data-tabelku">
-                                                <?php foreach($datavalidasi as $data){
+                                                <?php 
+                                                $jmgaji = 0;$jmtunjab=0;$jmtunskil=0;$jmother=0;$jmastek=0;$jmjp=0;$jmpphmonth=0;$jmmeal=0;$jmtrans=0;$jmkop=0;$jmthp=0;$jmloan=0;$jmbpjs=0;$jmrealthp=0;
+                                                foreach($datavalidasi as $data){
                                                     $kde = $this->session->flashdata('kodevalid'); 
                                                     $by = $data[$kde]==1 ? 'bg-success' : 'bg-warning';
                                                     $ttl = $data[$kde]==1 ? 'Batal Validasi' : 'Validasi Data';
                                                     $cpt = $data[$kde]==1 ? 'batal' : 'validasi';
                                                     $gbr = $data[$kde]==1 ? LOK_FOTO.'sign-check.png' : LOK_FOTO.'sign-error.png'; 
                                                     $urrl= $data[$kde]==0 ? base_url().'validasi/validoke/'.$data['id'] : base_url().'validasi/unvalid/'.$data['id'];
+                                                    $jmgaji += $data['gaji'];
+                                                    $jmtunjab += $data['tunjab'];
+                                                    $jmtunskil += $data['tunskill'];
+                                                    $jmother += $data['other'];
+                                                    $jmastek += $data['astek'];
+                                                    $jmjp += $data['jp'];
+                                                    $jmpphmonth += $data['pphmonth'];
+                                                    $jmmeal += $data['meal'];
+                                                    $jmtrans += $data['transport'];
+                                                    $jmkop += $data['koperasi'];
+                                                    $jmthp += $data['thp'];
+                                                    $jmloan += $data['loan'];
+                                                    $jmbpjs += $data['bpjs'];
+                                                    $jmrealthp += $data['realthp'];
                                                  ?>
                                                     <tr>
                                                         <td class="font-kecil kanan font-tebal"><?= $data['ind'] ?></td>
@@ -140,6 +156,25 @@
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
+                                                    <tr style="background-color:rgb( 249, 231, 159 )" class="font-tebal kanan">
+                                                        <td colspan="2" style="text-align:center">Total</td>
+                                                        <td><?= rupiah($jmgaji,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmtunjab,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmtunskil,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmgaji+$jmtunskil+$jmtunjab,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmother,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmastek,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmjp,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmpphmonth,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmmeal,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmtrans,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmkop,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmthp,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmloan,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmbpjs,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmrealthp,0,',','.') ?></td>
+                                                        <td>-</td>
+                                                    </tr>
                                             </tbody>
                                         </table>
                                     </div>

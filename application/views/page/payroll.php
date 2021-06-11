@@ -117,7 +117,24 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody id="data-tabelku">
-                                                <?php foreach($datapayroll as $data){ ?>
+                                                <?php 
+                                                $jmgaji = 0;$jmtunjab=0;$jmtunskil=0;$jmother=0;$jmastek=0;$jmjp=0;$jmpphmonth=0;$jmmeal=0;$jmtrans=0;$jmkop=0;$jmthp=0;$jmloan=0;$jmbpjs=0;$jmrealthp=0;
+                                                foreach($datapayroll as $data){ 
+                                                $jmgaji += $data['gaji'];
+                                                $jmtunjab += $data['tunjab'];
+                                                $jmtunskil += $data['tunskill'];
+                                                $jmother += $data['other'];
+                                                $jmastek += $data['astek'];
+                                                $jmjp += $data['jp'];
+                                                $jmpphmonth += $data['pphmonth'];
+                                                $jmmeal += $data['meal'];
+                                                $jmtrans += $data['transport'];
+                                                $jmkop += $data['koperasi'];
+                                                $jmthp += $data['thp'];
+                                                $jmloan += $data['loan'];
+                                                $jmbpjs += $data['bpjs'];
+                                                $jmrealthp += $data['realthp'];
+                                                ?>
                                                     <tr>
                                                         <td class="font-kecil font-tebal kanan"><?= $data['ind'] ?></td>
                                                         <td class="font-kecil font-tebal"><?= $data['nama'] ?></td>
@@ -151,25 +168,26 @@
                                                 <?php } ?>
                                                      <tr style="background-color:rgb( 249, 231, 159 )" class="font-tebal kanan">
                                                         <td colspan="5" style="text-align:center">Total</td>
-                                                        <td>Basic Salary</td>
-                                                        <td>Pos Allowance</td>
-                                                        <td>Skill Allowance</td>
-                                                        <td>Gross Salary</td>
-                                                        <td>Otder</td>
-                                                        <td>Astek</td>
-                                                        <td>Jp</td>
-                                                        <td>PPh Montd</td>
-                                                        <td>Meal</td>
-                                                        <td>Transport</td>
-                                                        <td>Koperasi</td>
-                                                        <td>tdp</td>
-                                                        <td>Loan</td>
-                                                        <td>BPJS</td>
-                                                        <td>Real tdp</td>
+                                                        <td><?= rupiah($jmgaji,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmtunjab,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmtunskil,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmgaji+$jmtunskil+$jmtunjab,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmother,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmastek,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmjp,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmpphmonth,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmmeal,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmtrans,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmkop,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmthp,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmloan,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmbpjs,0,',','.') ?></td>
+                                                        <td><?= rupiah($jmrealthp,0,',','.') ?></td>
                                                         <td>Aksi</td>
                                                     </tr>
                                             </tbody>
                                         </table>
+                                        <a data-toggle="modal" data-target="#confirm-delete" data-href="<?= base_url().'personil/hapuspersonil' ?>" title="Delete data" id="hapuspersonil" data-news="Apakah XXX Anda yakin ingin menghapus data XX?" style="cursor: pointer;"><img src="<?= LOK_FOTO.'del.png' ?>"></a>
                                     </div>
                                 </div>
                             </div>

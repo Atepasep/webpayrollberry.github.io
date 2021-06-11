@@ -9,7 +9,7 @@
 										LEFT JOIN payroll b ON a.id = b.id_karyawan 
 										LEFT JOIN jabatan c ON a.jabatan = c.id
 										LEFT JOIN bagian d ON a.bagian = d.id
-										WHERE b.code = '".$py."' AND b.periode = '".$th.$bl."' and send=1 ");
+										WHERE b.code = '".$py."' AND b.periode = '".$th.$bl."' and send=1 order by a.ind ");
 			return $hasil;
 		}
 		function getdatasatu($id){

@@ -41,9 +41,13 @@ $(document).ready(function(){
 		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 	});
 	$('#confirm-task').on('show.bs.modal', function(e) {
-		var string2 = document.getElementById("confirm-delete").innerHTML;
+		var string = document.getElementById("confirm-task").innerHTML;
+		var hasil = string.replace("fa fa-exclamation-triangle text-danger","fa fa-exclamation-triangle text-info");
+		document.getElementById("confirm-task").innerHTML = hasil;
+
+		var string2 = document.getElementById("confirm-task").innerHTML;
 		var hasil2 = string2.replace("Konfirmasi", "&nbspKonfirmasi");
-		document.getElementById("confirm-delete").innerHTML = hasil2;
+		document.getElementById("confirm-task").innerHTML = hasil2;
 		document.getElementById("test2").innerHTML = $(e.relatedTarget).data('news');
 		$(this).find('.btn-oke').attr('href', $(e.relatedTarget).data('href'));
 	});
