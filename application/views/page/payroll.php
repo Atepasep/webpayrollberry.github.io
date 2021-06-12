@@ -33,6 +33,13 @@
                                             <option <?php if($l==10){ echo "selected";} ?> value="12">Desember</option>
                                         </select>
                                         <input type="text" class="form-control small flat kecil font-kecil mr-2" style="width: 60px;" name="tahunperiode" id="tahunperiode" value="<?= $this->session->flashdata('tahunperiode') ?>">
+                                        <?php
+                                            $send=0;$sendmail=0;
+                                            foreach($hitungkirim as $kirim){
+                                                $send = $kirim['send'];
+                                                $sendmail = $kirim['sendmail'];
+                                            }
+                                        ?>
                                         <?php if($count > 0){ ?>
                                             <a href="<?= base_url().'payroll/prosespayroll/1' ?>" class="btn btn-danger btn-icon-split btn-sm flat font-kecil" id="resetpayroll">
                                                 <span class="icon text-white-50">
@@ -42,10 +49,18 @@
                                             </a>
                                             <a class="btn btn-secondary btn-icon-split btn-sm flat font-kecil ml-1" data-toggle="modal" data-target="#confirm-task" data-href="<?= base_url().'/payroll/sendall' ?>" title="Send semua data" data-news="Apakah Anda yakin akan kirim semua data periode ini ?" style="cursor: pointer;">
                                                 <span class="icon text-white-50">
-                                                    <i class="fas fa-paper-plane"></i>
+                                                    <i class="fas fa-mail-bulk"></i>
                                                 </span>
-                                                <span class="text kode">Send</span>
+                                                <span class="text kode">Kirim Validasi</span>
                                             </a> 
+                                            <?php if($count==$send) { ?>
+                                                <a class="btn btn-info btn-icon-split btn-sm flat font-kecil ml-1" data-toggle="modal" data-target="#confirm-task" data-href="<?= base_url().'/payroll/sendallmail' ?>" title="Send mail semua data" data-news="Apakah Anda yakin akan kirim email ke semua Personil ?" style="cursor: pointer;">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-paper-plane"></i>
+                                                    </span>
+                                                    <span class="text kode">Kirim ke Mail</span>
+                                                </a> 
+                                            <?php } ?>
                                         <?php }else{ ?>
                                             <a href="<?= base_url().'payroll/prosespayroll' ?>" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="xprosespayroll">
                                                 <span class="icon text-white-50">
@@ -166,28 +181,27 @@
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
-                                                     <tr style="background-color:rgb( 249, 231, 159 )" class="font-tebal kanan">
-                                                        <td colspan="5" style="text-align:center">Total</td>
-                                                        <td><?= rupiah($jmgaji,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmtunjab,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmtunskil,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmgaji+$jmtunskil+$jmtunjab,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmother,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmastek,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmjp,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmpphmonth,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmmeal,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmtrans,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmkop,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmthp,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmloan,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmbpjs,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmrealthp,0,',','.') ?></td>
-                                                        <td>Aksi</td>
-                                                    </tr>
                                             </tbody>
+                                                <tr style="background-color:rgb( 249, 231, 159 )" class="font-tebal kanan">
+                                                    <td colspan="5" style="text-align:center">Total</td>
+                                                    <td><?= rupiah($jmgaji,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmtunjab,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmtunskil,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmgaji+$jmtunskil+$jmtunjab,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmother,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmastek,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmjp,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmpphmonth,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmmeal,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmtrans,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmkop,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmthp,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmloan,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmbpjs,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmrealthp,0,',','.') ?></td>
+                                                    <td>Aksi</td>
+                                                </tr>
                                         </table>
-                                        <a data-toggle="modal" data-target="#confirm-delete" data-href="<?= base_url().'personil/hapuspersonil' ?>" title="Delete data" id="hapuspersonil" data-news="Apakah XXX Anda yakin ingin menghapus data XX?" style="cursor: pointer;"><img src="<?= LOK_FOTO.'del.png' ?>"></a>
                                     </div>
                                 </div>
                             </div>

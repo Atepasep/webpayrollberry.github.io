@@ -22,6 +22,14 @@
 										WHERE b.code = '".$py."' AND b.periode = '".$th.$bl."' and b.id = ".$id);
 			return $hasil;
 		}
+		function gethitungkirim(){
+			$py = $this->session->flashdata('kodepayroll');
+			$bl = $this->session->flashdata('kodepayroll')=='SALARY' ? $this->session->flashdata('bulanperiode') : '00';
+			$th = $this->session->flashdata('tahunperiode');
+			$hasil = $this->db->query("SELECT COUNT(*) AS jmpersonil,SUM(send) AS send,SUM(sendmail) AS sendmail FROM payroll
+										WHERE code = '".$py."' AND periode = '".$th.$bl."' ");
+			return $hasil;
+		}
 		function daftargajisatu($id){
 			$hasil = $this->db->query("select * from gaji where id_karyawan =".$id." ");
 			return $hasil;

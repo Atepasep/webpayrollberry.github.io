@@ -54,17 +54,6 @@
                                         <table class="table table-bordered dt-responsive datatable table-hover" id="tabelku" width="100%" cellspacing="0">
                                             <thead class="bg-secondary text-light">
                                                 <tr>
-                                                    <!-- <th data-priority="1">NIK</th>
-                                                    <th data-priority="2">Nama</th>
-                                                    <th data-priority="9">Loc</th>
-                                                    <th data-priority="6">Position</th>
-                                                    <th>Basic Salary</th>
-                                                    <th>Pos Allowance</th>
-                                                    <th>Skill Allowance</th>
-                                                    <th data-priority="5">Gross Salary</th>
-                                                    <th data-priority="5">thp</th>
-                                                    <th data-priority="8">Real Thp</th>
-                                                    <th data-priority="7">Aksi</th> -->
                                                     <th data-priority="1">No</th>
                                                     <th data-priority="2">Name</th>
                                                     <th>Basic</th>
@@ -87,7 +76,7 @@
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                <th>No</th>
+                                                    <th>No</th>
                                                     <th>Name</th>
                                                     <th>Basic</th>
                                                     <th>Position</th>
@@ -156,26 +145,26 @@
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
-                                                    <tr style="background-color:rgb( 249, 231, 159 )" class="font-tebal kanan">
-                                                        <td colspan="2" style="text-align:center">Total</td>
-                                                        <td><?= rupiah($jmgaji,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmtunjab,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmtunskil,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmgaji+$jmtunskil+$jmtunjab,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmother,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmastek,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmjp,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmpphmonth,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmmeal,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmtrans,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmkop,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmthp,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmloan,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmbpjs,0,',','.') ?></td>
-                                                        <td><?= rupiah($jmrealthp,0,',','.') ?></td>
-                                                        <td>-</td>
-                                                    </tr>
                                             </tbody>
+                                                <tr style="background-color:rgb( 249, 231, 159 )" class="font-tebal kanan">
+                                                    <td colspan="2" style="text-align:center">Total</td>
+                                                    <td><?= rupiah($jmgaji,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmtunjab,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmtunskil,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmgaji+$jmtunskil+$jmtunjab,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmother,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmastek,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmjp,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmpphmonth,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmmeal,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmtrans,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmkop,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmthp,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmloan,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmbpjs,0,',','.') ?></td>
+                                                    <td><?= rupiah($jmrealthp,0,',','.') ?></td>
+                                                    <td>-</td>
+                                                </tr>
                                         </table>
                                     </div>
                                 </div>

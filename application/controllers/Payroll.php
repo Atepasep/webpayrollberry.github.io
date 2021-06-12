@@ -27,8 +27,6 @@ class Payroll extends CI_Controller {
 		$header['submodul'] = 4;
 		$header['namalogpayroll']=$this->session->userdata('namalogpayroll');
 		if(!$this->session->flashdata('kodepayroll')){
-			//$data['bulanperiode'] = date('m');
-			//$data['tahunperiode'] = date('Y');
 			$this->session->set_flashdata('bulanperiode',date('m'));
 			$this->session->set_flashdata('tahunperiode',date('Y'));
 			$this->session->set_flashdata('kodepayroll','SALARY');
@@ -39,6 +37,7 @@ class Payroll extends CI_Controller {
 		}
 		$data['datapayroll'] = $this->mpayroll->getdata()->result_array();
 		$data['count'] = count($data['datapayroll']);
+		$data['hitungkirim'] = $this->mpayroll->gethitungkirim()->result_array();
 		$footer['modul'] = 'payroll';
 		$this->load->view('header',$header);
 		$this->load->view('page/payroll',$data);
