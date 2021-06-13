@@ -55,7 +55,7 @@
     })
     function kirimemailnya(rel,ke){
         $("#spinnya").removeClass('hilang');
-        document.getElementById('spinnya').innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>'+ke;
+        //document.getElementById('spinnya').innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>'+ke;
         $.ajax({
             dataType : 'json',
             type : "POST",
