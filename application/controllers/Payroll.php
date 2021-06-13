@@ -407,4 +407,11 @@ class Payroll extends CI_Controller {
 	        }
     	}
 	}
+	function getalldatatomail(){
+		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
+		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
+		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+		$temp['dataemail'] = $this->mpayroll->getdata()->result_array();
+		$this->load->view('page/kirimemailall',$temp); 
+	}
 }

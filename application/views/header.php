@@ -43,7 +43,7 @@
       </div>
     </div>
  </div>
-  <div class="modal fade" id="modalBox-lg" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modalBox-lg" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class='modal-dialog modal-lg'>
         <div class='modal-content'>
           <div class='modal-header bg-info'>

@@ -41,20 +41,24 @@
                                             }
                                         ?>
                                         <?php if($count > 0){ ?>
-                                            <a href="<?= base_url().'payroll/prosespayroll/1' ?>" class="btn btn-danger btn-icon-split btn-sm flat font-kecil" id="resetpayroll">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-sync-alt"></i>
-                                                </span>
-                                                <span class="text kode">Reset</span>
-                                            </a>
-                                            <a class="btn btn-secondary btn-icon-split btn-sm flat font-kecil ml-1" data-toggle="modal" data-target="#confirm-task" data-href="<?= base_url().'/payroll/sendall' ?>" title="Send semua data" data-news="Apakah Anda yakin akan kirim semua data periode ini ?" style="cursor: pointer;">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-mail-bulk"></i>
-                                                </span>
-                                                <span class="text kode">Kirim Validasi</span>
-                                            </a> 
+                                            <?php if($send<$count) { ?>
+                                                <a href="<?= base_url().'payroll/prosespayroll/1' ?>" class="btn btn-danger btn-icon-split btn-sm flat font-kecil" id="resetpayroll">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-sync-alt"></i>
+                                                    </span>
+                                                    <span class="text kode">Reset</span>
+                                                </a>
+                                            <?php } ?>
+                                            <?php if($count>$send) { ?>
+                                                <a class="btn btn-secondary btn-icon-split btn-sm flat font-kecil ml-1" data-toggle="modal" data-target="#confirm-task" data-href="<?= base_url().'/payroll/sendall' ?>" title="Send semua data" data-news="Apakah Anda yakin akan kirim semua data periode ini ?" style="cursor: pointer;">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-mail-bulk"></i>
+                                                    </span>
+                                                    <span class="text kode">Kirim Validasi</span>
+                                                </a> 
+                                            <?php } ?>
                                             <?php if($count==$send) { ?>
-                                                <a class="btn btn-info btn-icon-split btn-sm flat font-kecil ml-1" data-toggle="modal" data-target="#confirm-task" data-href="<?= base_url().'/payroll/sendallmail' ?>" title="Send mail semua data" data-news="Apakah Anda yakin akan kirim email ke semua Personil ?" style="cursor: pointer;">
+                                                <a class="btn btn-info btn-icon-split btn-sm flat font-kecil ml-1" href="<?= base_url().'/payroll/getalldatatomail' ?>" data-remote="false" data-toggle="modal" data-title="Send Mail" data-target="#modalBox-lg"  title="Send mail semua data" data-news="Apakah Anda yakin akan kirim email ke semua Personil ?" style="cursor: pointer;">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-paper-plane"></i>
                                                     </span>
