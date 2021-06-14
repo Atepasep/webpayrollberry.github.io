@@ -58,7 +58,7 @@
                                                 </a> 
                                             <?php } ?>
                                             <?php if($count==$send) { ?>
-                                                <a class="btn btn-info btn-icon-split btn-sm flat font-kecil ml-1" href="<?= base_url().'/payroll/getalldatatomail' ?>" data-remote="false" data-toggle="modal" data-title="Send Mail" data-target="#modalBox-lg"  title="Send mail semua data" data-news="Apakah Anda yakin akan kirim email ke semua Personil ?" style="cursor: pointer;">
+                                                <a class="btn btn-info btn-icon-split btn-sm flat font-kecil ml-1" href="<?= base_url().'/payroll/getalldatatomail' ?>" data-remote="false" data-toggle="modal" data-title="Kirim eMail ke Semua Personil" data-target="#modalBox-lg"  title="Send mail semua data" data-news="Apakah Anda yakin akan kirim email ke semua Personil ?" style="cursor: pointer;">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-paper-plane"></i>
                                                     </span>
@@ -175,7 +175,7 @@
                                                         <td class="kanan font-kecil" id="kolomloan<?= $data['id'] ?>"><?= rupiah($data['loan'],0,',','.') ?></td>
                                                         <td class="kanan font-kecil" id="kolombpjs<?= $data['id'] ?>"><?= rupiah($data['bpjs'],0,',','.') ?></td>
                                                         <td class="kanan font-kecil font-tebal" id="kolomrealthp<?= $data['id'] ?>"><?= rupiah($data['realthp'],0,',','.') ?></td>
-                                                        <td style="">
+                                                        <td style="text-align:center;">
                                                             <a class="<?php if($data['send']==1){ echo "hilang"; }  ?>" id="tb1gambar<?= $data['id'] ?>" href="<?= base_url().'payroll/editview/'.$data['id'] ?>" title="Edit payroll <?= $data['nama'] ?>" data-remote="false" data-toggle="modal" data-title="Edit Payroll" data-target="#modalBox" ><img id="gambar<?= $data['id'] ?>" src="<?php if($data['editke']>=1){ echo base_url().'assets/images/pencil-valid.png'; }else{ echo base_url().'assets/images/pencil.png'; } ?>"></a>
                                                             <a class="<?php if($data['send']==1){ echo "hilang"; }  ?>" id="tb2gambar<?= $data['id'] ?>" data-toggle="modal" data-target="#modalBox-task" href="<?= base_url().'payroll/senddata/'.$data['id'] ?>" title="Kirim data" data-title="Kirim data" data-news="Apakah Anda yakin akan mengirim data <strong>'<?= $data['nama'] ?>'</strong> ?" style="cursor: pointer;"><img src="<?= LOK_FOTO.'paper-plane.png' ?>"></a>
                                                             <a href="<?= base_url().'payroll/getview/'.$data['id'] ?>" title="View Detail" data-remote="false" data-toggle="modal" data-title="View Detail" data-target="#modalBox-lg" ><img src="<?= base_url().'assets/images/file-pdf-icon.png' ?>"></a>
