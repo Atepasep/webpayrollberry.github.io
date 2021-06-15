@@ -26,7 +26,7 @@
 			$py = $this->session->flashdata('kodepayroll');
 			$bl = $this->session->flashdata('kodepayroll')=='SALARY' ? $this->session->flashdata('bulanperiode') : '00';
 			$th = $this->session->flashdata('tahunperiode');
-			$hasil = $this->db->query("SELECT COUNT(*) AS jmpersonil,SUM(send) AS send,SUM(sendmail) AS sendmail FROM payroll
+			$hasil = $this->db->query("SELECT COUNT(*) AS jmpersonil,SUM(send) AS send,SUM(sendmail) AS sendmail,SUM(hg) AS validhg,SUM(mh) AS validmh FROM payroll
 										WHERE code = '".$py."' AND periode = '".$th.$bl."' ");
 			return $hasil;
 		}
