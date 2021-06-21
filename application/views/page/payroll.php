@@ -78,6 +78,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php echo $this->session->flashdata('msgupload'); ?>
                             <hr class="small mb-1" style="clear: both;">
                             <div class="row" style="clear: both;">
                                 <div class="col-sm-12">

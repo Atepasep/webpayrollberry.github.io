@@ -58,7 +58,7 @@
                                     </div>
                                     <hr class="small hilang">
                                     <div class="input-group">
-                                        <input type="file" name="filetransport" id="filetransport" accept=".DBF" class="hilang">
+                                        <input type="file" name="filetransport" id="filetransport" accept=".DBF" class="">
                                         <input type="text" class="form-control form-control-sm bg-light flat warnahitam" id="filepathtransport" placeholder="File transport (DBF)"
                                             aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">

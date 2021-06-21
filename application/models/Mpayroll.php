@@ -41,6 +41,10 @@
 				$data['periode'] = $data['tahunperiode'].'00';
 				$data['prc_bonus'] = $data['persenthrbonus'];
 			}
+			$filetransport = $this->input->post('filepathtransport');
+			if(!empty($filetransport)){
+				$trans = $this->uploadtransport();
+			}
 			unset($data['bulanperiode']);
 			unset($data['tahunperiode']);
 			unset($data['xcode']);
@@ -48,7 +52,7 @@
 			unset($data['xtahunperiode']);
 			unset($data['filekoperasi']);
 			unset($data['filepathkoperasi']);
-			unset($data['filetransport']);
+			//unset($data['filetransport']);
 			unset($data['filepathtransport']);
 			unset($data['persenthrbonus']);
 			// Cek
@@ -185,6 +189,41 @@
 			$this->db->where('id',$id);
 			$data['sendmail'] = 1;
 			$hasil = $this->db->update('payroll',$data);
+		}
+		public function uploadtransport(){
+			$this->load->library('upload');
+			$this->uploadConfig = array(
+				'upload_path' => LOK_UPLOAD_USER,
+				'allowed_types' => 'dbf',
+				'max_size' => max_upload() * 1024,
+			);
+			// Adakah berkas yang disertakan?
+			$adaBerkas = $_FILES['filetransport']['name'];
+			if (empty($adaBerkas))
+			{
+				return NULL;
+			}
+			$uploadData = NULL;
+			$this->upload->initialize($this->uploadConfig);
+			if ($this->upload->do_upload('filetransport'))
+			{
+				$uploadData = $this->upload->data();
+				$namaFileUnik = uniqid('PY').$uploadData['file_ext']; //$uploadData['file_name'];
+				$fileRenamed = rename(
+					$this->uploadConfig['upload_path'].$uploadData['file_name'],
+					$this->uploadConfig['upload_path'].$namaFileUnik
+				);
+				$uploadData['file_name'] = $fileRenamed ? $namaFileUnik : $uploadData['file_name'];
+				//$this->session->set_flashdata('msgupload',$uploadData['file_name']);
+			}
+			else
+			{
+				$_SESSION['success'] = -1;
+				$tidakupload = $this->upload->display_errors(NULL, NULL);
+				$this->session->set_flashdata('msgupload',$tidakupload);
+			}
+			//return (!empty($uploadData)) ? 'Ok Send' : 'NG Send';
+			return (!empty($uploadData)) ? $uploadData['file_name'] : 'nophoto.png';
 		}
 	}
 ?>

@@ -76,6 +76,7 @@ class Payroll extends CI_Controller {
 		$this->session->set_flashdata('bulanperiode',$this->session->flashdata('bulanperiode'));
 		$this->session->set_flashdata('tahunperiode',$this->session->flashdata('tahunperiode'));
 		$this->session->set_flashdata('kodepayroll',$this->session->flashdata('kodepayroll'));
+		$this->session->set_flashdata('msgupload',$this->session->flashdata('msgupload'));
 		$url = base_url().'payroll';
 		redirect($url);
 	}
