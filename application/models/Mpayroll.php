@@ -43,7 +43,7 @@
 			}
 			$filetransport = $this->input->post('filepathtransport');
 			if(!empty($filetransport)){
-				$trans = $this->uploadtransport();
+				$this->uploadtransport();
 			}
 			unset($data['bulanperiode']);
 			unset($data['tahunperiode']);
@@ -193,28 +193,32 @@
 		public function uploadtransport(){
 			$this->load->library('upload');
 			$this->uploadConfig = array(
-				'upload_path' => LOK_UPLOAD_USER,
-				'allowed_types' => 'dbf',
-				'max_size' => max_upload() * 1024,
+				'upload_path' => LOK_FILE,
+				'allowed_types' => '*',
+				//'max_size' => max_upload() * 1024,
 			);
 			// Adakah berkas yang disertakan?
 			$adaBerkas = $_FILES['filetransport']['name'];
 			if (empty($adaBerkas))
 			{
 				return NULL;
+			}else{
+				$fotodulu = FCPATH."assets/FILE/".$_FILES['filetransport']['name'];
+				if(file_exists($fotodulu)){
+					unlink($fotodulu);
+				}
 			}
 			$uploadData = NULL;
 			$this->upload->initialize($this->uploadConfig);
 			if ($this->upload->do_upload('filetransport'))
 			{
 				$uploadData = $this->upload->data();
-				$namaFileUnik = uniqid('PY').$uploadData['file_ext']; //$uploadData['file_name'];
-				$fileRenamed = rename(
-					$this->uploadConfig['upload_path'].$uploadData['file_name'],
-					$this->uploadConfig['upload_path'].$namaFileUnik
-				);
-				$uploadData['file_name'] = $fileRenamed ? $namaFileUnik : $uploadData['file_name'];
-				//$this->session->set_flashdata('msgupload',$uploadData['file_name']);
+				// $namaFileUnik = uniqid('PY').$uploadData['file_ext']; //$uploadData['file_name'];
+				// $fileRenamed = rename(
+				// 	$this->uploadConfig['upload_path'].$uploadData['file_name'],
+				// 	$this->uploadConfig['upload_path'].$namaFileUnik
+				// );
+				// $uploadData['file_name'] = $fileRenamed ? $namaFileUnik : $uploadData['file_name'];
 			}
 			else
 			{
