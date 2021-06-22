@@ -22,6 +22,7 @@ class Payroll extends CI_Controller {
 		$this->load->model('mpayroll');
 		$this->load->library('pdf');
 		$this->load->library('mailer');
+		$this->load->library('dbf');
 	}
 	function index(){
 		$header['submodul'] = 4;

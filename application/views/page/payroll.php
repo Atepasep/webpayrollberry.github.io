@@ -74,6 +74,18 @@
                                                 </span>
                                                 <span class="text kode">Proses</span>
                                             </a>
+                                            <a href="<?= base_url().'payroll/prosestransport' ?>" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="xprosestransport">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                <span class="text kode">Transport</span>
+                                            </a>
+                                            <a href="<?= base_url().'payroll/proseskoperasi' ?>" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="xproseskoperasi">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                <span class="text kode">Koperasi</span>
+                                            </a>
                                         <?php } ?>
                                     </div>
                                 </div>
