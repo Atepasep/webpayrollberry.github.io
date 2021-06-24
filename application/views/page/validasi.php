@@ -51,11 +51,11 @@
                             <div class="row" style="clear: both;">
                                 <div class="col-sm-12">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered dt-responsive datatable table-hover" id="tabelku" width="100%" cellspacing="0">
+                                        <table class="table table-bordered datatable table-hover" id="tabelku" width="100%" cellspacing="0">
                                             <thead class="bg-secondary text-light">
                                                 <tr>
-                                                    <th data-priority="1">No</th>
-                                                    <th data-priority="2">Name</th>
+                                                    <th>No</th>
+                                                    <th>Name</th>
                                                     <th>Basic</th>
                                                     <th>Position</th>
                                                     <th>Skill</th>
@@ -69,9 +69,9 @@
                                                     <th>Koperasi</th>
                                                     <th>Installment</th>
                                                     <th>BPJS</th>
-                                                    <th data-priority="5">Take Home Pay</th>
-                                                    <th data-priority="3">Valid</th>
-                                                    <th data-priority="4">Action</th>
+                                                    <th>Take Home Pay</th>
+                                                    <th>Valid</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>

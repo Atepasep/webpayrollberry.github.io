@@ -67,7 +67,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="input-group mt-2 hilang">
+                                    <div class="input-group mt-2">
                                         <input type="file" name="filekoperasi" id="filekoperasi" accept=".DBF" class="hilang">
                                         <input type="text" class="form-control form-control-sm bg-light flat warnahitam" id="filepathkoperasi" name="filepathkoperasi" placeholder="File koperasi (DBF)"
                                             aria-label="Search" aria-describedby="basic-addon2">

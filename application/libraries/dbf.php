@@ -11,12 +11,17 @@
         public function bacadbf($file=0){
             $table = new TableReader($file);
             $isi = '';
+            $array1 = [];
             while ($record = $table->nextRecord()) {
-                $isi .= $record->get('nama');
+                $a = $record->get('no');
+                $b = $record->get('total');
+                $array1[$a] = $b;
+                //$x = array($a=>$b);
+                //$array1 = array_merge($array1,$x);
                 //or
                 //echo $record->my_column;
             }
-            return $isi;
+            return $array1;
         }
     }
 ?>

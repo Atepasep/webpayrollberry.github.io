@@ -44,7 +44,7 @@
                                         ?>
                                         <?php if($count > 0){ ?>
                                             <?php if($send<$count || ($vlhg==0 && $vlmh==0)) { ?>
-                                                <a href="<?= base_url().'payroll/prosespayroll/1' ?>" class="btn btn-danger btn-icon-split btn-sm flat font-kecil" id="resetpayroll">
+                                                <a href="<?= base_url().'payroll/prosespayroll/1' ?>" class="btn btn-danger btn-icon-split btn-sm flat font-kecil mr-1" id="resetpayroll">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-sync-alt"></i>
                                                     </span>
@@ -73,18 +73,6 @@
                                                     <i class="fas fa-plus"></i>
                                                 </span>
                                                 <span class="text kode">Proses</span>
-                                            </a>
-                                            <a href="<?= base_url().'payroll/prosestransport' ?>" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="xprosestransport">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-plus"></i>
-                                                </span>
-                                                <span class="text kode">Transport</span>
-                                            </a>
-                                            <a href="<?= base_url().'payroll/proseskoperasi' ?>" class="btn btn-success btn-icon-split btn-sm flat font-kecil" id="xproseskoperasi">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-plus"></i>
-                                                </span>
-                                                <span class="text kode">Koperasi</span>
                                             </a>
                                         <?php } ?>
                                     </div>

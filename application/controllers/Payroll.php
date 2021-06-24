@@ -415,4 +415,12 @@ class Payroll extends CI_Controller {
 		$temp['dataemail'] = $this->mpayroll->getdata()->result_array();
 		$this->load->view('page/kirimemailall',$temp); 
 	}
+	function bacadbf($file){
+		if(file_exists($file)){
+			$datatrans = $this->dbf->bacadbf($file);
+			$stres = print_r($datatrans);
+			$this->session->set_flashdata('msgbacadbf',$stres);
+			return $stres;
+		}
+	}
 }

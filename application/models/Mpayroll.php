@@ -42,15 +42,20 @@
 				$data['prc_bonus'] = $data['persenthrbonus'];
 			}
 			$filetransport = $this->input->post('filepathtransport');
+			$filekoperasi = $this->input->post('filepathkoperasi');
 			if(!empty($filetransport)){
 				$this->uploadtransport();
 			}
+			if(!empty($filekoperasi)){
+				$this->uploadkoperasi();
+			}
+			$data['xperiode'] = $data['bulanperiode'].$data['tahunperiode'];
 			unset($data['bulanperiode']);
 			unset($data['tahunperiode']);
 			unset($data['xcode']);
 			unset($data['xbulanperiode']);
 			unset($data['xtahunperiode']);
-			unset($data['filekoperasi']);
+			//unset($data['filekoperasi']);
 			unset($data['filepathkoperasi']);
 			//unset($data['filetransport']);
 			unset($data['filepathtransport']);
@@ -59,12 +64,30 @@
 			if($id=1){
 				$this->db->query("delete from payroll where periode = '".$data['periode']."' and code = '".$data['code']."' ");
 			}
-			$datakaryawan = $this->db->query("SELECT a.id AS xid_karyawan,a.nama,a.ptkp as kodeptkp,a.kontrak,c.ptkp,b.* FROM karyawan a
+			if(file_exists('assets/FILE/TRANSPMAN'.$data['xperiode'].'.DBF')){
+				$datatrans = $this->dbf->bacadbf('assets/FILE/TRANSPMAN'.$data['xperiode'].'.DBF');
+			}
+			if(file_exists('assets/FILE/KOPMANA'.$data['xperiode'].'.DBF')){
+				$datakoper = $this->dbf->bacadbf('assets/FILE/KOPMANA'.$data['xperiode'].'.DBF');
+			}
+			unset($data['xperiode']);
+			$datakaryawan = $this->db->query("SELECT a.id AS xid_karyawan,a.nama,a.ind,a.ptkp as kodeptkp,a.kontrak,c.ptkp,b.* FROM karyawan a
 												LEFT JOIN gaji b on a.id = b.id_karyawan
 												LEFT JOIN ptkp c ON a.ptkp = c.kodeptkp
 												WHERE b.sampai IS null ")->result_array();
 			foreach ($datakaryawan as $karyawan) {
 				$data['id_karyawan'] = $karyawan['xid_karyawan'];
+				$data['ind'] = $karyawan['ind'];
+				if(!empty($datatrans)){
+					$data['transport'] = $datatrans[$data['ind']];
+				}else{
+					$data['transport'] = 0;
+				}
+				if(!empty($datakoper)){
+					$data['koperasi'] = $datakoper[$data['ind']];
+				}else{
+					$data['koperasi'] = 0;
+				}
 				$data['gaji'] = $karyawan['gaji'];
 				$data['tunjab'] = $karyawan['tunjab'];
 				$data['tunskill'] = $karyawan['tunskill'];
@@ -72,8 +95,8 @@
 				if($data['code']=='SALARY'){
 					$data['other'] = 0;
 					$data['meal'] = 0;
-					$data['transport'] = 0;
-					$data['koperasi'] = 0;
+					//$data['transport'] = 0;
+					//$data['koperasi'] = 0;
 					$data['loan'] = 0;
 					$data['bpjs'] = 0;
 					$gross = $data['gaji']+$data['tunjab']+$data['tunskill'];
@@ -213,12 +236,6 @@
 			if ($this->upload->do_upload('filetransport'))
 			{
 				$uploadData = $this->upload->data();
-				// $namaFileUnik = uniqid('PY').$uploadData['file_ext']; //$uploadData['file_name'];
-				// $fileRenamed = rename(
-				// 	$this->uploadConfig['upload_path'].$uploadData['file_name'],
-				// 	$this->uploadConfig['upload_path'].$namaFileUnik
-				// );
-				// $uploadData['file_name'] = $fileRenamed ? $namaFileUnik : $uploadData['file_name'];
 			}
 			else
 			{
@@ -226,7 +243,38 @@
 				$tidakupload = $this->upload->display_errors(NULL, NULL);
 				$this->session->set_flashdata('msgupload',$tidakupload);
 			}
-			//return (!empty($uploadData)) ? 'Ok Send' : 'NG Send';
+			return (!empty($uploadData)) ? $uploadData['file_name'] : 'nophoto.png';
+		}
+		public function uploadkoperasi(){
+			$this->load->library('upload');
+			$this->uploadConfig = array(
+				'upload_path' => LOK_FILE,
+				'allowed_types' => '*',
+				//'max_size' => max_upload() * 1024,
+			);
+			// Adakah berkas yang disertakan?
+			$adaBerkas = $_FILES['filekoperasi']['name'];
+			if (empty($adaBerkas))
+			{
+				return NULL;
+			}else{
+				$fotodulu = FCPATH."assets/FILE/".$_FILES['filekoperasi']['name'];
+				if(file_exists($fotodulu)){
+					unlink($fotodulu);
+				}
+			}
+			$uploadData = NULL;
+			$this->upload->initialize($this->uploadConfig);
+			if ($this->upload->do_upload('filekoperasi'))
+			{
+				$uploadData = $this->upload->data();
+			}
+			else
+			{
+				$_SESSION['success'] = -1;
+				$tidakupload = $this->upload->display_errors(NULL, NULL);
+				$this->session->set_flashdata('msgupload',$tidakupload);
+			}
 			return (!empty($uploadData)) ? $uploadData['file_name'] : 'nophoto.png';
 		}
 	}
