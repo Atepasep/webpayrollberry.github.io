@@ -64,10 +64,10 @@
 			if($id=1){
 				$this->db->query("delete from payroll where periode = '".$data['periode']."' and code = '".$data['code']."' ");
 			}
-			if(file_exists('assets/FILE/TRANSPMAN'.$data['xperiode'].'.DBF')){
+			if(file_exists('assets/FILE/TRANSPMAN'.$data['xperiode'].'.DBF') && !empty($filetransport)){
 				$datatrans = $this->dbf->bacadbf('assets/FILE/TRANSPMAN'.$data['xperiode'].'.DBF');
 			}
-			if(file_exists('assets/FILE/KOPMANA'.$data['xperiode'].'.DBF')){
+			if(file_exists('assets/FILE/KOPMANA'.$data['xperiode'].'.DBF') && !empty($filekoperasi)){
 				$datakoper = $this->dbf->bacadbf('assets/FILE/KOPMANA'.$data['xperiode'].'.DBF');
 			}
 			unset($data['xperiode']);

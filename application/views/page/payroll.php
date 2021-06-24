@@ -43,7 +43,7 @@
                                             }
                                         ?>
                                         <?php if($count > 0){ ?>
-                                            <?php if($send<$count || ($vlhg==0 && $vlmh==0)) { ?>
+                                            <?php if($send<$count && ($vlhg==0 && $vlmh==0)) { ?>
                                                 <a href="<?= base_url().'payroll/prosespayroll/1' ?>" class="btn btn-danger btn-icon-split btn-sm flat font-kecil mr-1" id="resetpayroll">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-sync-alt"></i>
@@ -51,7 +51,7 @@
                                                     <span class="text kode">Reset</span>
                                                 </a>
                                             <?php } ?>
-                                            <?php if($send>$count) { ?>
+                                            <?php if($send<$count) { ?>
                                                 <a class="btn btn-secondary btn-icon-split btn-sm flat font-kecil ml-1" data-toggle="modal" data-target="#confirm-task" data-href="<?= base_url().'/payroll/sendall' ?>" title="Send semua data" data-news="Apakah Anda yakin akan kirim semua data periode ini ?" style="cursor: pointer;">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-mail-bulk"></i>
@@ -59,7 +59,7 @@
                                                     <span class="text kode">Kirim Validasi</span>
                                                 </a> 
                                             <?php } ?>
-                                            <?php if($send==$count && $count==$vlhg && $count==$vlhg) { ?>
+                                            <?php if($send==$count && $count==$vlhg && $count==$vlmh) { ?>
                                                 <a class="btn btn-info btn-icon-split btn-sm flat font-kecil ml-1" href="<?= base_url().'/payroll/getalldatatomail' ?>" data-remote="false" data-toggle="modal" data-title="Kirim eMail ke Semua Personil" data-target="#modalBox-lg"  title="Send mail semua data" data-news="Apakah Anda yakin akan kirim email ke semua Personil ?" style="cursor: pointer;">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-paper-plane"></i>
