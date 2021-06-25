@@ -78,15 +78,17 @@
 			foreach ($datakaryawan as $karyawan) {
 				$data['id_karyawan'] = $karyawan['xid_karyawan'];
 				$data['ind'] = $karyawan['ind'];
+				$data['transport'] = 0;
+				$data['koperasi'] = 0;
 				if(!empty($datatrans)){
-					$data['transport'] = $datatrans[$data['ind']];
-				}else{
-					$data['transport'] = 0;
+					if(isset($datatrans[$data['ind']])){
+						$data['transport'] = $datatrans[$data['ind']];
+					}
 				}
 				if(!empty($datakoper)){
-					$data['koperasi'] = $datakoper[$data['ind']];
-				}else{
-					$data['koperasi'] = 0;
+					if(isset($datakoper[$data['ind']])){
+						$data['koperasi'] = $datakoper[$data['ind']];
+					}
 				}
 				$data['gaji'] = $karyawan['gaji'];
 				$data['tunjab'] = $karyawan['tunjab'];
