@@ -71,7 +71,7 @@
 				$datakoper = $this->dbf->bacadbf('assets/FILE/KOPMANA'.$data['xperiode'].'.DBF');
 			}
 			unset($data['xperiode']);
-			$datakaryawan = $this->db->query("SELECT a.id AS xid_karyawan,a.nama,a.ind,a.ptkp as kodeptkp,a.kontrak,c.ptkp,b.* FROM karyawan a
+			$datakaryawan = $this->db->query("SELECT a.id AS xid_karyawan,a.nama,a.ind,a.noinduk,a.ptkp as kodeptkp,a.kontrak,c.ptkp,b.* FROM karyawan a
 												LEFT JOIN gaji b on a.id = b.id_karyawan
 												LEFT JOIN ptkp c ON a.ptkp = c.kodeptkp
 												WHERE b.sampai IS null ")->result_array();
@@ -80,16 +80,18 @@
 				$data['ind'] = $karyawan['ind'];
 				$data['transport'] = 0;
 				$data['koperasi'] = 0;
+				$cekkaryawan = $karyawan['noinduk'];
 				if(!empty($datatrans)){
-					if(isset($datatrans[$data['ind']])){
-						$data['transport'] = $datatrans[$data['ind']];
+					if(isset($datatrans[$cekkaryawan])){
+						$data['transport'] = $datatrans[$cekkaryawan];
 					}
 				}
 				if(!empty($datakoper)){
-					if(isset($datakoper[$data['ind']])){
-						$data['koperasi'] = $datakoper[$data['ind']];
+					if(isset($datakoper[$cekkaryawan])){
+						$data['koperasi'] = $datakoper[$cekkaryawan];
 					}
 				}
+				//$data['edrrr'] = print_r($datatrans);
 				$data['gaji'] = $karyawan['gaji'];
 				$data['tunjab'] = $karyawan['tunjab'];
 				$data['tunskill'] = $karyawan['tunskill'];

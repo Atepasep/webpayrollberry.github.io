@@ -13,7 +13,7 @@
             $isi = '';
             $array1 = [];
             while ($record = $table->nextRecord()) {
-                $a = $record->get('no');
+                $a = $record->get('noinduk');
                 $b = $record->get('total');
                 $array1[$a] = $b;
                 //$x = array($a=>$b);
