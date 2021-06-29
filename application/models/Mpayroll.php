@@ -112,7 +112,7 @@
 						$data['jp'] = $gross>$maxgaji ? round($maxgaji*0.01) : round($gross*0.01);
 					}
 					$data['bijab'] = ($gross*0.05)<500000 ? $gross*0.05 : 500000; 
-					$pkp = ((($gross-($data['astek']+$data['jp']+$data['bijab']+$data['ptkp']))/1000)*1000)*12;
+					$pkp = (floor(($gross-($data['astek']+$data['jp']+$data['bijab']+$data['ptkp']))/1000)*1000)*12;
 					$pphyear = 0;
 					if($pkp > 500000000){
 						$pphyear = 95000000+(($pkp-500000000)*0.3);
